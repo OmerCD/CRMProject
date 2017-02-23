@@ -28,11 +28,13 @@ namespace CRMKurs
         }
         Control AddControl(Control container) // Her butona ve her control'e ID vermek gerekiyor
         {
-            Label lbl = new Label();
-            Button btn = new Button();
+            Label lbl = new Label(); //Numaralandırma için labellar
+            Button btn = new Button(); //Alan çıkarmak için butonlar
             btn.Size = new Size(25, 25);
             btn.Text = "-";
-            Control cont = (Control)Activator.CreateInstance(_creationType);
+            Control cont = (Control)Activator.CreateInstance(_creationType); //Verilen control tipindeki instancelar
+
+            
             cont.Location = new Point(_x, _y);
             lbl.Location = new Point(_x - 15, _y);
             btn.Location = new Point(_x + 100, _y);
@@ -68,11 +70,14 @@ namespace CRMKurs
             _result = "";
             foreach (Control cont in GeneralPanel.Controls)
             {
-                if (cont.Text==string.Empty)
+                if (cont.GetType() == _creationType)
                 {
-                    continue;
+                    if (cont.Text == string.Empty)
+                    {
+                        continue;
+                    }
+                    _result += cont.Text + ';';
                 }
-                _result += cont.Text + ';';
             }
             DialogResult = DialogResult.OK;
         }

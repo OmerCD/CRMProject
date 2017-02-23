@@ -26,7 +26,7 @@ namespace CRMKurs.Öğrenci
 
         private void btnEpostaMA_Click(object sender, EventArgs e)
         {
-            frmMultipleAdder frm = new frmMultipleAdder(txtBEposta.Text,typeof(EmailTextBox));
+            frmMultipleAdder frm = new frmMultipleAdder(txtBEposta.Text,typeof(CustomTools.EmailTextBox));
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 txtBEposta.Text = frm.Result;
@@ -37,7 +37,7 @@ namespace CRMKurs.Öğrenci
 
         private void btnTelefonMA_Click(object sender, EventArgs e)
         {
-            frmMultipleAdder frm = new frmMultipleAdder(txtBTelefon.Text,typeof(TextBox));
+            frmMultipleAdder frm = new frmMultipleAdder(txtBTelefon.Text,typeof(CustomTools.PhoneTextBox));
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 txtBTelefon.Text = frm.Result;
