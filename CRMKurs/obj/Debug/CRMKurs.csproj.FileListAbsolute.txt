@@ -1,0 +1,16 @@
+C:\Users\CCY\Documents\Visual Studio 2015\Projects\CRMKurs\CRMKurs\bin\Debug\CRMKurs.exe.config
+C:\Users\CCY\Documents\Visual Studio 2015\Projects\CRMKurs\CRMKurs\bin\Debug\CRMKurs.exe
+C:\Users\CCY\Documents\Visual Studio 2015\Projects\CRMKurs\CRMKurs\bin\Debug\CRMKurs.pdb
+C:\Users\CCY\Documents\Visual Studio 2015\Projects\CRMKurs\CRMKurs\bin\Debug\MySql.Data.dll
+C:\Users\CCY\Documents\Visual Studio 2015\Projects\CRMKurs\CRMKurs\bin\Debug\System.Windows.Forms.Calendar.dll
+C:\Users\CCY\Documents\Visual Studio 2015\Projects\CRMKurs\CRMKurs\bin\Debug\MySql.Data.xml
+C:\Users\CCY\Documents\Visual Studio 2015\Projects\CRMKurs\CRMKurs\obj\Debug\CRMKurs.csprojResolveAssemblyReference.cache
+C:\Users\CCY\Documents\Visual Studio 2015\Projects\CRMKurs\CRMKurs\obj\Debug\CRMKurs.Calendar.resources
+C:\Users\CCY\Documents\Visual Studio 2015\Projects\CRMKurs\CRMKurs\obj\Debug\CRMKurs.MainCRMWindow.resources
+C:\Users\CCY\Documents\Visual Studio 2015\Projects\CRMKurs\CRMKurs\obj\Debug\CRMKurs.frmMultipleAdder.resources
+C:\Users\CCY\Documents\Visual Studio 2015\Projects\CRMKurs\CRMKurs\obj\Debug\CRMKurs.Öğrenci.frmÖğrenci.resources
+C:\Users\CCY\Documents\Visual Studio 2015\Projects\CRMKurs\CRMKurs\obj\Debug\CRMKurs.Properties.Resources.resources
+C:\Users\CCY\Documents\Visual Studio 2015\Projects\CRMKurs\CRMKurs\obj\Debug\CRMKurs.Öğrenci.frmÖğrenciDüzenle.resources
+C:\Users\CCY\Documents\Visual Studio 2015\Projects\CRMKurs\CRMKurs\obj\Debug\CRMKurs.csproj.GenerateResource.Cache
+C:\Users\CCY\Documents\Visual Studio 2015\Projects\CRMKurs\CRMKurs\obj\Debug\CRMKurs.exe
+C:\Users\CCY\Documents\Visual Studio 2015\Projects\CRMKurs\CRMKurs\obj\Debug\CRMKurs.pdb
