@@ -37,8 +37,24 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Calendar.NET.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.9\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.Calendar">
       <HintPath>..\..\..\..\..\Desktop\CalendarTest\System.Windows.Forms.Calendar.dll</HintPath>
@@ -60,6 +76,9 @@
     <Compile Include="Calendar.Designer.cs">
       <DependentUpon>Calendar.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomTools\DataComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CustomTools\PhoneTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -68,6 +87,14 @@
     <Compile Include="CustomTools\EmailTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="EntityClasses\Abstract\EntityIdDefine.cs" />
+    <Compile Include="EntityClasses\ExtraField.cs" />
+    <Compile Include="EntityClasses\Abstract\MainEntity.cs" />
+    <Compile Include="EntityClasses\MainTypes.cs" />
+    <Compile Include="EntityClasses\Okul.cs" />
+    <Compile Include="EntityClasses\Abstract\Person.cs" />
+    <Compile Include="EntityClasses\Öğrenci.cs" />
+    <Compile Include="EntityClasses\Öğretmen.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +106,24 @@
     </Compile>
     <Compile Include="frmMultipleAdder.Designer.cs">
       <DependentUpon>frmMultipleAdder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703021334541_test.cs" />
+    <Compile Include="Migrations\201703021334541_test.Designer.cs">
+      <DependentUpon>201703021334541_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="ModelBuild.cs" />
+    <Compile Include="Okul\frmOkul.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Okul\frmOkul.Designer.cs">
+      <DependentUpon>frmOkul.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Okul\frmOkulDüzenle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Okul\frmOkulDüzenle.Designer.cs">
+      <DependentUpon>frmOkulDüzenle.cs</DependentUpon>
     </Compile>
     <Compile Include="Öğrenci\frmÖğrenci.cs">
       <SubType>Form</SubType>
@@ -94,6 +139,12 @@
     <Compile Include="Öğrenci\frmÖğrenciDüzenle.Designer.cs">
       <DependentUpon>frmÖğrenciDüzenle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Öğretmen\frmÖğretmen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Öğretmen\frmÖğretmen.Designer.cs">
+      <DependentUpon>frmÖğretmen.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Calendar.resx">
       <DependentUpon>Calendar.cs</DependentUpon>
     </EmbeddedResource>
@@ -102,6 +153,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMultipleAdder.resx">
       <DependentUpon>frmMultipleAdder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703021334541_test.resx">
+      <DependentUpon>201703021334541_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Okul\frmOkul.resx">
+      <DependentUpon>frmOkul.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Okul\frmOkulDüzenle.resx">
+      <DependentUpon>frmOkulDüzenle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Öğrenci\frmÖğrenci.resx">
       <DependentUpon>frmÖğrenci.cs</DependentUpon>
@@ -119,6 +179,10 @@
     <EmbeddedResource Include="Öğrenci\frmÖğrenciDüzenle.resx">
       <DependentUpon>frmÖğrenciDüzenle.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Öğretmen\frmÖğretmen.resx">
+      <DependentUpon>frmÖğretmen.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -130,7 +194,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\theme_brush.png" />
@@ -144,6 +210,7 @@
   <ItemGroup>
     <None Include="Resources\setting.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

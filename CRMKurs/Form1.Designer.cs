@@ -120,6 +120,7 @@
             this.okulToolStripMenuItem.Name = "okulToolStripMenuItem";
             this.okulToolStripMenuItem.Size = new System.Drawing.Size(44, 46);
             this.okulToolStripMenuItem.Text = "Okul";
+            this.okulToolStripMenuItem.Click += new System.EventHandler(this.okulToolStripMenuItem_Click);
             this.okulToolStripMenuItem.MouseEnter += new System.EventHandler(this.ChangeColorOfText);
             this.okulToolStripMenuItem.MouseLeave += new System.EventHandler(this.ChangeColorOfText);
             // 
@@ -164,9 +165,9 @@
             this.ColorPanel.Controls.Add(this.YellowGreenBox);
             this.ColorPanel.Controls.Add(this.RedBox);
             this.ColorPanel.Controls.Add(this.YellowBox);
-            this.ColorPanel.Location = new System.Drawing.Point(593, 45);
+            this.ColorPanel.Location = new System.Drawing.Point(599, 37);
             this.ColorPanel.Name = "ColorPanel";
-            this.ColorPanel.Size = new System.Drawing.Size(66, 79);
+            this.ColorPanel.Size = new System.Drawing.Size(65, 77);
             this.ColorPanel.TabIndex = 5;
             this.ColorPanel.Visible = false;
             // 
@@ -278,6 +279,7 @@
             this.opsToolStripMenuItem.Image = global::CRMKurs.Properties.Resources.setting;
             this.opsToolStripMenuItem.Name = "opsToolStripMenuItem";
             this.opsToolStripMenuItem.Size = new System.Drawing.Size(28, 46);
+            this.opsToolStripMenuItem.Click += new System.EventHandler(this.opsToolStripMenuItem_Click);
             // 
             // asdToolStripMenuItem
             // 

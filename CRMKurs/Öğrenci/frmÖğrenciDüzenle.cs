@@ -12,16 +12,23 @@ namespace CRMKurs.Öğrenci
 {
     public partial class frmÖğrenciDüzenle : Form
     {
-        int _öğrenciID;
-        public frmÖğrenciDüzenle(int ÖğrenciId)
+        string _öğrenciTelefon;
+        public frmÖğrenciDüzenle(string ÖğrencTelefon)
         {
             InitializeComponent();
-            _öğrenciID = ÖğrenciId;
+            _öğrenciTelefon = ÖğrencTelefon;
         }
 
         private void frmÖğrenciDüzenle_Load(object sender, EventArgs e)
         {
-
+            cBİl.SelectedIndex= cBHitap.SelectedIndex = 0;
+            var okullar =DBConnection.dbCon.Okul.ToArray();
+            foreach (var okul in okullar)
+            {
+                cBOkul.Items.Add(okul.AdSoyad);
+                cBOkul.RealValues.Add(okul.Id);
+            }
+            cBOkul.SelectedIndex = 0;
         }
 
         private void btnEpostaMA_Click(object sender, EventArgs e)
@@ -44,6 +51,43 @@ namespace CRMKurs.Öğrenci
             }
             frm.Dispose();
             frm = null;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //EntityClasses.Öğrenci öğrenci = new EntityClasses.Öğrenci {
+            //    Adres=txtBAdres.Text,
+            //    AdSoyad=txtBAdSoyad.Text,
+            //    Bölge=txtBBölge.Text,
+            //    EPosta=txtBEposta.Text,
+            //    Hitap=cBHitap.SelectedItem.ToString(),
+            //    Notlar=txtBNotlar.Text,
+            //    Okul=cBOkul.SelectedItem.ToString(),
+            //    PostaKodu=txtBPostaKodu.Text,
+            //    Sınıf=cBSınıf.SelectedItem.ToString(),
+            //    Telefon=txtBTelefon.Text,
+            //    Tür=txtBTür.Text,
+            //    Ülke=txtBÜlke.Text,
+            //    İl=cBİl.SelectedItem.ToString()
+            //};
+            EntityClasses.Öğrenci öğrenci = new EntityClasses.Öğrenci
+            {
+                Adres = txtBAdres.Text,
+                AdSoyad = txtBAdSoyad.Text,
+                Bölge = txtBBölge.Text,
+                EPosta = txtBEposta.Text,
+                Hitap = cBHitap.SelectedItem.ToString(),
+                Notlar = txtBNotlar.Text,
+                Okul = DBConnection.dbCon.Okul.First(x => x.Id == cBOkul.GetSelectedValue),
+                PostaKodu = txtBPostaKodu.Text,
+                Sınıf = "TestSınıf",
+                Telefon = txtBTelefon.Text,
+                Tür = txtBTür.Text,
+                Ülke = txtBÜlke.Text,
+                İl = cBİl.SelectedItem.ToString()
+            };
+            DBConnection.dbCon.Öğrenci.Add(öğrenci);
+            DBConnection.dbCon.SaveChanges();
         }
     }
 }

@@ -26,19 +26,28 @@ namespace CRMKurs
             _current = Current;
             _creationType = type;
         }
+        void ReArrangeControls(List<Control> controls)
+        {
+
+        }
         Control AddControl(Control container) // Her butona ve her control'e ID vermek gerekiyor
         {
+            string attTag = _counter.ToString();
             Label lbl = new Label(); //Numaralandırma için labellar
             Button btn = new Button(); //Alan çıkarmak için butonlar
             btn.Size = new Size(25, 25);
             btn.Text = "-";
+            btn.Tag = attTag;
+            btn.Click += Btn_Click;
             Control cont = (Control)Activator.CreateInstance(_creationType); //Verilen control tipindeki instancelar
 
             
             cont.Location = new Point(_x, _y);
+            cont.Tag = attTag;
             lbl.Location = new Point(_x - 15, _y);
             btn.Location = new Point(_x + 100, _y);
             lbl.Text = _counter.ToString();
+            lbl.Tag = attTag;
             _y += SPACING;
             _counter++;
             container.Controls.Add(btn);
@@ -46,6 +55,33 @@ namespace CRMKurs
             container.Controls.Add(lbl);
             return cont;
         }
+        private void Btn_Click(object sender, EventArgs e)
+        {
+            var tagToRemove = (sender as Control).Tag;
+            int tagCheck = Convert.ToInt32(tagToRemove);
+            List<Control> controlsToRemove = new List<Control>();
+            foreach (Control cont in GeneralPanel.Controls)
+            {
+                if (cont.Tag==tagToRemove)
+                {
+                    controlsToRemove.Add(cont);
+                    
+                }
+                else if (Convert.ToInt32(cont.Tag) > tagCheck)
+                {
+                    cont.Location = new Point(cont.Location.X, cont.Location.Y - SPACING);
+                    if (cont is Label)
+                    {
+                        cont.Text = (Convert.ToInt32(cont.Text) - 1).ToString();
+                    }
+                }
+            }
+            foreach (var item in controlsToRemove)
+            {
+                GeneralPanel.Controls.Remove(item);
+            }
+        }
+
         private void frmMultipleAdder_Load(object sender, EventArgs e)
         {
             

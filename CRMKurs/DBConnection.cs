@@ -2,17 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace DesktopAppCRM
+abstract class DBConnection
 {
-    abstract class DBConnection
+    public static CRMKurs.ModelBuild dbCon;
+    protected MySqlConnection _mySqlConnection;
+    public DBConnection()
     {
-        protected MySqlConnection _mySqlConnection;
-        public DBConnection()
-        {
-            _mySqlConnection = new MySqlConnection(DataBaseConnectionOptions.ConnectionString);
-        }
+        _mySqlConnection = new MySqlConnection(DesktopAppCRM.DataBaseConnectionOptions.MySqlConnectionString);
     }
 }

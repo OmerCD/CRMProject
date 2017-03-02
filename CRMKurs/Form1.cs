@@ -12,9 +12,11 @@ namespace CRMKurs
 
     public partial class MainCRMWindow : Form
     {
+        
         public MainCRMWindow()
         {
             InitializeComponent();
+            DBConnection.dbCon = new ModelBuild();
         }
 
         private void renkToolStripMenuItem_Click(object sender, EventArgs e)
@@ -46,6 +48,16 @@ namespace CRMKurs
         private void öğretimToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Öğrenci.frmÖğrenci frm = new Öğrenci.frmÖğrenci();
+            frm.ShowDialog();
+        }
+
+        private void opsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void okulToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Okul.frmOkul frm = new Okul.frmOkul();
             frm.ShowDialog();
         }
     }

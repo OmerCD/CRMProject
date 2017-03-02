@@ -41,7 +41,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.cBOkul = new System.Windows.Forms.ComboBox();
             this.cBSınıf = new System.Windows.Forms.ComboBox();
             this.txtBTelefon = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -59,6 +58,8 @@
             this.txtBNotlar = new System.Windows.Forms.TextBox();
             this.btnEpostaMA = new System.Windows.Forms.Button();
             this.btnTelefonMA = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.cBOkul = new CRMKurs.CustomTools.DataComboBox();
             this.SuspendLayout();
             // 
             // rbKurum
@@ -121,6 +122,7 @@
             this.txtBAdSoyad.Name = "txtBAdSoyad";
             this.txtBAdSoyad.Size = new System.Drawing.Size(100, 20);
             this.txtBAdSoyad.TabIndex = 11;
+            this.txtBAdSoyad.Text = "Ömer";
             // 
             // label3
             // 
@@ -146,6 +148,7 @@
             this.txtBTür.Name = "txtBTür";
             this.txtBTür.Size = new System.Drawing.Size(100, 20);
             this.txtBTür.TabIndex = 14;
+            this.txtBTür.Text = "Sol";
             // 
             // txtBEposta
             // 
@@ -153,6 +156,7 @@
             this.txtBEposta.Name = "txtBEposta";
             this.txtBEposta.Size = new System.Drawing.Size(100, 20);
             this.txtBEposta.TabIndex = 15;
+            this.txtBEposta.Text = "asd@hotmail.com.tr";
             // 
             // label5
             // 
@@ -181,14 +185,6 @@
             this.label7.TabIndex = 18;
             this.label7.Text = "Sınıf";
             // 
-            // cBOkul
-            // 
-            this.cBOkul.FormattingEnabled = true;
-            this.cBOkul.Location = new System.Drawing.Point(84, 180);
-            this.cBOkul.Name = "cBOkul";
-            this.cBOkul.Size = new System.Drawing.Size(100, 21);
-            this.cBOkul.TabIndex = 19;
-            // 
             // cBSınıf
             // 
             this.cBSınıf.FormattingEnabled = true;
@@ -203,6 +199,7 @@
             this.txtBTelefon.Name = "txtBTelefon";
             this.txtBTelefon.Size = new System.Drawing.Size(100, 20);
             this.txtBTelefon.TabIndex = 21;
+            this.txtBTelefon.Text = "543605128";
             // 
             // label8
             // 
@@ -274,10 +271,93 @@
             this.txtBAdres.Name = "txtBAdres";
             this.txtBAdres.Size = new System.Drawing.Size(292, 61);
             this.txtBAdres.TabIndex = 29;
+            this.txtBAdres.Text = "asdasdasd";
             // 
             // cBİl
             // 
             this.cBİl.FormattingEnabled = true;
+            this.cBİl.Items.AddRange(new object[] {
+            "Adana ",
+            "Adıyaman",
+            "Afyonkarahisar",
+            "Ağrı",
+            "Aksaray",
+            "Amasya",
+            "Ankara",
+            "Antalya",
+            "Ardahan",
+            "Artvin",
+            "Aydın",
+            "Balıkesir",
+            "Bartın",
+            "Batman",
+            "Bayburt",
+            "Bilecik",
+            "Bingöl",
+            "Bitlis",
+            "Bolu",
+            "Burdur",
+            "Bursa",
+            "Çanakkale",
+            "Çankırı",
+            "Çorum",
+            "Denizli",
+            "Diyarbakır",
+            "Düzce",
+            "Edirne ",
+            "Elazığ",
+            "Erzincan",
+            "Erzurum",
+            "Eskişehir",
+            "Gaziantep",
+            "Giresun",
+            "Gümüşhane",
+            "Hakkari",
+            "Hatay",
+            "Iğdır",
+            "Isparta",
+            "İstanbul",
+            "İzmir",
+            "Kahramanmaraş",
+            "Karabük",
+            "Karaman",
+            "Kars",
+            "Kastamonu",
+            "Kayseri",
+            "Kırıkkale",
+            "Kırklareli",
+            "Kırşehir",
+            "Kilis",
+            "Kocaeli",
+            "Konya",
+            "Kütahya",
+            "Malatya",
+            "Manisa",
+            "Mardin",
+            "Mersin",
+            "Muğla",
+            "Muş",
+            "Nevşehir",
+            "Niğde",
+            "Ordu",
+            "Osmaniye",
+            "Rize",
+            "Sakarya",
+            "Samsun",
+            "Siirt",
+            "Sinop",
+            "Sivas",
+            "Şırnak",
+            "Tekirdağ",
+            "Tokat",
+            "Trabzon",
+            "Tunceli",
+            "Şanlıurfa",
+            "Uşak",
+            "Van ",
+            "Yalova",
+            "Yozgat",
+            "Zonguldak"});
             this.cBİl.Location = new System.Drawing.Point(350, 94);
             this.cBİl.Name = "cBİl";
             this.cBİl.Size = new System.Drawing.Size(121, 21);
@@ -289,6 +369,7 @@
             this.txtBBölge.Name = "txtBBölge";
             this.txtBBölge.Size = new System.Drawing.Size(100, 20);
             this.txtBBölge.TabIndex = 31;
+            this.txtBBölge.Text = "SSağ";
             // 
             // txtBÜlke
             // 
@@ -296,6 +377,7 @@
             this.txtBÜlke.Name = "txtBÜlke";
             this.txtBÜlke.Size = new System.Drawing.Size(100, 20);
             this.txtBÜlke.TabIndex = 32;
+            this.txtBÜlke.Text = "Zimbabwe";
             // 
             // txtBPostaKodu
             // 
@@ -303,6 +385,7 @@
             this.txtBPostaKodu.Name = "txtBPostaKodu";
             this.txtBPostaKodu.Size = new System.Drawing.Size(100, 20);
             this.txtBPostaKodu.TabIndex = 33;
+            this.txtBPostaKodu.Text = "34303";
             // 
             // txtBNotlar
             // 
@@ -311,6 +394,7 @@
             this.txtBNotlar.Name = "txtBNotlar";
             this.txtBNotlar.Size = new System.Drawing.Size(292, 61);
             this.txtBNotlar.TabIndex = 34;
+            this.txtBNotlar.Text = "Yok";
             // 
             // btnEpostaMA
             // 
@@ -332,11 +416,32 @@
             this.btnTelefonMA.UseVisualStyleBackColor = true;
             this.btnTelefonMA.Click += new System.EventHandler(this.btnTelefonMA_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(28, 329);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 37;
+            this.button1.Text = "Onayla";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // cBOkul
+            // 
+            this.cBOkul.FormattingEnabled = true;
+            this.cBOkul.Location = new System.Drawing.Point(83, 178);
+            this.cBOkul.Name = "cBOkul";
+            this.cBOkul.RealValues = new System.Collections.Generic.List<string>();
+            this.cBOkul.Size = new System.Drawing.Size(101, 21);
+            this.cBOkul.TabIndex = 38;
+            // 
             // frmÖğrenciDüzenle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(626, 364);
+            this.Controls.Add(this.cBOkul);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnTelefonMA);
             this.Controls.Add(this.btnEpostaMA);
             this.Controls.Add(this.txtBNotlar);
@@ -354,7 +459,6 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtBTelefon);
             this.Controls.Add(this.cBSınıf);
-            this.Controls.Add(this.cBOkul);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -391,7 +495,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox cBOkul;
         private System.Windows.Forms.ComboBox cBSınıf;
         private System.Windows.Forms.TextBox txtBTelefon;
         private System.Windows.Forms.Label label8;
@@ -409,5 +512,7 @@
         private System.Windows.Forms.TextBox txtBNotlar;
         private System.Windows.Forms.Button btnEpostaMA;
         private System.Windows.Forms.Button btnTelefonMA;
+        private System.Windows.Forms.Button button1;
+        private CustomTools.DataComboBox cBOkul;
     }
 }
