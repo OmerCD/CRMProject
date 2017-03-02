@@ -26,26 +26,26 @@ namespace CRMKurs
             _current = Current;
             _creationType = type;
         }
-        void ReArrangeControls(List<Control> controls)
-        {
-
-        }
         Control AddControl(Control container) // Her butona ve her control'e ID vermek gerekiyor
         {
             string attTag = _counter.ToString();
             Label lbl = new Label(); //Numaralandırma için labellar
+            lbl.ForeColor = Color.White;
             Button btn = new Button(); //Alan çıkarmak için butonlar
-            btn.Size = new Size(25, 25);
+            btn.Size = new Size(20, 20);
             btn.Text = "-";
             btn.Tag = attTag;
             btn.Click += Btn_Click;
+            btn.FlatStyle = FlatStyle.Flat;
+            btn.BackColor = Color.DeepSkyBlue;
+            btn.ForeColor = Color.White;
             Control cont = (Control)Activator.CreateInstance(_creationType); //Verilen control tipindeki instancelar
 
             
             cont.Location = new Point(_x, _y);
             cont.Tag = attTag;
             lbl.Location = new Point(_x - 15, _y);
-            btn.Location = new Point(_x + 100, _y);
+            btn.Location = new Point(_x + 110, _y);
             lbl.Text = _counter.ToString();
             lbl.Tag = attTag;
             _y += SPACING;
@@ -57,6 +57,8 @@ namespace CRMKurs
         }
         private void Btn_Click(object sender, EventArgs e)
         {
+            _counter--;
+            _y -= SPACING;
             var tagToRemove = (sender as Control).Tag;
             int tagCheck = Convert.ToInt32(tagToRemove);
             List<Control> controlsToRemove = new List<Control>();
@@ -70,9 +72,11 @@ namespace CRMKurs
                 else if (Convert.ToInt32(cont.Tag) > tagCheck)
                 {
                     cont.Location = new Point(cont.Location.X, cont.Location.Y - SPACING);
+                    string newTag = (Convert.ToInt32(cont.Tag) - 1).ToString();
+                    cont.Tag = newTag;
                     if (cont is Label)
                     {
-                        cont.Text = (Convert.ToInt32(cont.Text) - 1).ToString();
+                        cont.Text = newTag;
                     }
                 }
             }
@@ -80,6 +84,11 @@ namespace CRMKurs
             {
                 GeneralPanel.Controls.Remove(item);
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private void frmMultipleAdder_Load(object sender, EventArgs e)
@@ -98,6 +107,11 @@ namespace CRMKurs
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            if (_counter>=11)
+            {
+                MessageBox.Show("10'dan fazla alan ekleyemezsiniz", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             AddControl(GeneralPanel);
         }
 
@@ -108,6 +122,17 @@ namespace CRMKurs
             {
                 if (cont.GetType() == _creationType)
                 {
+                    if (cont is CustomTools.EmailTextBox)
+                    {
+                        if (cont.Text.Length > 0)
+                        {
+                            if (!(cont as CustomTools.EmailTextBox).CorrectCheck())
+                            {
+                                MessageBox.Show("E-Posta adreslerinin doğruluğunu kontrol edin\n" + cont.Text, "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return;
+                            }
+                        }
+                    }
                     if (cont.Text == string.Empty)
                     {
                         continue;

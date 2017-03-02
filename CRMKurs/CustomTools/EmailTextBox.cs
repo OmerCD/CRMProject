@@ -18,7 +18,7 @@ namespace CRMKurs.CustomTools
             if (Text.Length < 8) return false;
             if (!Text.Contains("@")) return false;
             if (Text.Substring(0, 3).Contains("@")) return false;
-            if (Text.Split('@')[2].Length < 4) return false;
+            if (Text.Split('@')[1].Length < 4) return false;
             return true;
         }
     }
