@@ -77,6 +77,7 @@
             this.button1.TabIndex = 69;
             this.button1.Text = "Onayla";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnTelefonMA
             // 
@@ -86,6 +87,7 @@
             this.btnTelefonMA.TabIndex = 68;
             this.btnTelefonMA.Text = "+";
             this.btnTelefonMA.UseVisualStyleBackColor = true;
+            this.btnTelefonMA.Click += new System.EventHandler(this.btnTelefonMA_Click);
             // 
             // btnEpostaMA
             // 
@@ -95,6 +97,7 @@
             this.btnEpostaMA.TabIndex = 67;
             this.btnEpostaMA.Text = "+";
             this.btnEpostaMA.UseVisualStyleBackColor = true;
+            this.btnEpostaMA.Click += new System.EventHandler(this.btnEpostaMA_Click);
             // 
             // txtBNotlar
             // 
@@ -435,6 +438,7 @@
             this.Controls.Add(this.label4);
             this.Name = "frmÖğretmenDüzenle";
             this.Text = "Öğretmen Bilgilerini Düzenle";
+            this.Load += new System.EventHandler(this.frmÖğretmenDüzenle_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

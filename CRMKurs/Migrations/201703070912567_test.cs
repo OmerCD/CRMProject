@@ -46,6 +46,31 @@ namespace CRMKurs.Migrations
                 .Index(t => t.Telefon, unique: true);
             
             CreateTable(
+                "dbo.Olays",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
+                        Tarih = c.DateTime(nullable: false, precision: 0),
+                        OlayAdı = c.String(unicode: false),
+                        OlayBilgi = c.String(unicode: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Workers",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
+                        KullanıcıAdı = c.String(unicode: false),
+                        Şifre = c.String(unicode: false),
+                        Statü = c.Int(nullable: false),
+                        Olay_Id = c.String(maxLength: 128, storeType: "nvarchar"),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Olays", t => t.Olay_Id)
+                .Index(t => t.Olay_Id);
+            
+            CreateTable(
                 "dbo.Öğrenci",
                 c => new
                     {
@@ -99,13 +124,17 @@ namespace CRMKurs.Migrations
         {
             DropForeignKey("dbo.Öğretmen", "Okul_Id", "dbo.Okuls");
             DropForeignKey("dbo.Öğrenci", "Okul_Id", "dbo.Okuls");
+            DropForeignKey("dbo.Workers", "Olay_Id", "dbo.Olays");
             DropIndex("dbo.Öğretmen", new[] { "Okul_Id" });
             DropIndex("dbo.Öğretmen", new[] { "Telefon" });
             DropIndex("dbo.Öğrenci", new[] { "Okul_Id" });
             DropIndex("dbo.Öğrenci", new[] { "Telefon" });
+            DropIndex("dbo.Workers", new[] { "Olay_Id" });
             DropIndex("dbo.Okuls", new[] { "Telefon" });
             DropTable("dbo.Öğretmen");
             DropTable("dbo.Öğrenci");
+            DropTable("dbo.Workers");
+            DropTable("dbo.Olays");
             DropTable("dbo.Okuls");
             DropTable("dbo.MainTypes");
             DropTable("dbo.ExtraFields");

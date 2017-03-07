@@ -21,5 +21,7 @@ namespace CRMKurs
         public virtual DbSet<EntityClasses.Okul> Okul { get; set; }
         public virtual DbSet<EntityClasses.ExtraField> ExtraField {get;set;}
         public virtual DbSet<EntityClasses.MainTypes> MainTypes { get; set; }
+        public virtual DbSet<EntityClasses.Olay> Olaylar { get; set; }
+        public virtual DbSet<EntityClasses.Staff.Worker> Workers { get; set; }
     }
 }

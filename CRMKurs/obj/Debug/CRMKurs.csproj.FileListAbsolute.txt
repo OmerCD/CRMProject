@@ -36,4 +36,6 @@ C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\bin\Debug\EntityFramework.SqlSe
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Okul.frmOkul.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Okul.frmOkulDüzenle.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Öğretmen.frmÖğretmen.resources
+C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Öğretmen.frmÖğretmenDüzenle.resources
+C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.frmKullanıcıGiriş.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Migrations.test.resources

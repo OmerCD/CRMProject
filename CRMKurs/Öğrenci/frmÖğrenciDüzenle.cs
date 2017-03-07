@@ -44,7 +44,7 @@ namespace CRMKurs.Öğrenci
 
         private void btnTelefonMA_Click(object sender, EventArgs e)
         {
-            frmMultipleAdder frm = new frmMultipleAdder(txtBTelefon.Text,typeof(CustomTools.PhoneTextBox));
+            frmMultipleAdder frm = new frmMultipleAdder(txtBTelefon.Text, typeof(CustomTools.PhoneTextBox));
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 txtBTelefon.Text = frm.Result;

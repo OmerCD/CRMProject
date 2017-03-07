@@ -86,16 +86,18 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DataBaseConnectionOptions.cs" />
-    <Compile Include="DBConnection.cs" />
     <Compile Include="CustomTools\EmailTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DBConnection.cs" />
     <Compile Include="EntityClasses\Abstract\EntityIdDefine.cs" />
     <Compile Include="EntityClasses\ExtraField.cs" />
     <Compile Include="EntityClasses\Abstract\MainEntity.cs" />
     <Compile Include="EntityClasses\MainTypes.cs" />
     <Compile Include="EntityClasses\Okul.cs" />
     <Compile Include="EntityClasses\Abstract\Person.cs" />
+    <Compile Include="EntityClasses\Olay.cs" />
+    <Compile Include="EntityClasses\Staff\Worker.cs" />
     <Compile Include="EntityClasses\Öğrenci.cs" />
     <Compile Include="EntityClasses\Öğretmen.cs" />
     <Compile Include="Form1.cs">
@@ -104,6 +106,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmKullanıcıGiriş.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKullanıcıGiriş.Designer.cs">
+      <DependentUpon>frmKullanıcıGiriş.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMultipleAdder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,9 +119,9 @@
       <DependentUpon>frmMultipleAdder.cs</DependentUpon>
     </Compile>
     <Compile Include="ListViewComparer.cs" />
-    <Compile Include="Migrations\201703070726278_test.cs" />
-    <Compile Include="Migrations\201703070726278_test.Designer.cs">
-      <DependentUpon>201703070726278_test.cs</DependentUpon>
+    <Compile Include="Migrations\201703070912567_test.cs" />
+    <Compile Include="Migrations\201703070912567_test.Designer.cs">
+      <DependentUpon>201703070912567_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelBuild.cs" />
@@ -129,6 +137,7 @@
     <Compile Include="Okul\frmOkulDüzenle.Designer.cs">
       <DependentUpon>frmOkulDüzenle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="Öğrenci\frmÖğrenci.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,11 +170,14 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmKullanıcıGiriş.resx">
+      <DependentUpon>frmKullanıcıGiriş.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMultipleAdder.resx">
       <DependentUpon>frmMultipleAdder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703070726278_test.resx">
-      <DependentUpon>201703070726278_test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703070912567_test.resx">
+      <DependentUpon>201703070912567_test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Okul\frmOkul.resx">
       <DependentUpon>frmOkul.cs</DependentUpon>
