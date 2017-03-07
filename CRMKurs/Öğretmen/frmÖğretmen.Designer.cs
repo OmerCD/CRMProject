@@ -372,6 +372,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnYeni);
             this.Name = "frmÖğretmen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmÖğretmen";
             this.ResumeLayout(false);
             this.PerformLayout();

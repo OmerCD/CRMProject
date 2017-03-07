@@ -79,6 +79,9 @@
     <Compile Include="CustomTools\DataComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CustomTools\ListViewCompare.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CustomTools\PhoneTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -107,9 +110,10 @@
     <Compile Include="frmMultipleAdder.Designer.cs">
       <DependentUpon>frmMultipleAdder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703021334541_test.cs" />
-    <Compile Include="Migrations\201703021334541_test.Designer.cs">
-      <DependentUpon>201703021334541_test.cs</DependentUpon>
+    <Compile Include="ListViewComparer.cs" />
+    <Compile Include="Migrations\201703070726278_test.cs" />
+    <Compile Include="Migrations\201703070726278_test.Designer.cs">
+      <DependentUpon>201703070726278_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelBuild.cs" />
@@ -145,6 +149,12 @@
     <Compile Include="Öğretmen\frmÖğretmen.Designer.cs">
       <DependentUpon>frmÖğretmen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Öğretmen\frmÖğretmenDüzenle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Öğretmen\frmÖğretmenDüzenle.Designer.cs">
+      <DependentUpon>frmÖğretmenDüzenle.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Calendar.resx">
       <DependentUpon>Calendar.cs</DependentUpon>
     </EmbeddedResource>
@@ -154,8 +164,8 @@
     <EmbeddedResource Include="frmMultipleAdder.resx">
       <DependentUpon>frmMultipleAdder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703021334541_test.resx">
-      <DependentUpon>201703021334541_test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703070726278_test.resx">
+      <DependentUpon>201703070726278_test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Okul\frmOkul.resx">
       <DependentUpon>frmOkul.cs</DependentUpon>
@@ -181,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Öğretmen\frmÖğretmen.resx">
       <DependentUpon>frmÖğretmen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Öğretmen\frmÖğretmenDüzenle.resx">
+      <DependentUpon>frmÖğretmenDüzenle.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

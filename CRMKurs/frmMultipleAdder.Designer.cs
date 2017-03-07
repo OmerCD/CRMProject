@@ -95,6 +95,7 @@
             this.Controls.Add(this.btnOnayla);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMultipleAdder";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmMultipleAdder";
             this.Load += new System.EventHandler(this.frmMultipleAdder_Load);
             this.ResumeLayout(false);

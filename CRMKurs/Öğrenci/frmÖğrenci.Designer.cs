@@ -56,7 +56,7 @@
             this.lblÜlke = new System.Windows.Forms.Label();
             this.lblPostaKodu = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lVÖğrenciler = new System.Windows.Forms.ListView();
+            this.lVÖğrenciler = new CRMKurs.CustomTools.ListViewCompare();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
@@ -319,11 +319,9 @@
             this.lVÖğrenciler.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
-            this.lVÖğrenciler.FullRowSelect = true;
-            this.lVÖğrenciler.Location = new System.Drawing.Point(630, 50);
-            this.lVÖğrenciler.MultiSelect = false;
+            this.lVÖğrenciler.Location = new System.Drawing.Point(630, 44);
             this.lVÖğrenciler.Name = "lVÖğrenciler";
-            this.lVÖğrenciler.Size = new System.Drawing.Size(173, 272);
+            this.lVÖğrenciler.Size = new System.Drawing.Size(173, 277);
             this.lVÖğrenciler.TabIndex = 51;
             this.lVÖğrenciler.UseCompatibleStateImageBehavior = false;
             this.lVÖğrenciler.View = System.Windows.Forms.View.Details;
@@ -332,12 +330,12 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "İsim";
-            this.columnHeader1.Width = 80;
+            this.columnHeader1.Width = 88;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Telefon";
-            this.columnHeader2.Width = 89;
+            this.columnHeader2.Width = 79;
             // 
             // frmÖğrenci
             // 
@@ -374,6 +372,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnYeni);
             this.Name = "frmÖğrenci";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmÖğrenci";
             this.Load += new System.EventHandler(this.frmÖğrenci_Load);
             this.ResumeLayout(false);
@@ -410,7 +409,7 @@
         private System.Windows.Forms.Label lblÜlke;
         private System.Windows.Forms.Label lblPostaKodu;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView lVÖğrenciler;
+        private CustomTools.ListViewCompare lVÖğrenciler;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
     }

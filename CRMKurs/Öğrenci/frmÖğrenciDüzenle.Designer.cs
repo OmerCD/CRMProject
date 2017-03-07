@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmÖğrenciDüzenle));
             this.rbKurum = new System.Windows.Forms.RadioButton();
             this.rbKişi = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
@@ -431,7 +432,7 @@
             this.cBOkul.FormattingEnabled = true;
             this.cBOkul.Location = new System.Drawing.Point(83, 178);
             this.cBOkul.Name = "cBOkul";
-            this.cBOkul.RealValues = new System.Collections.Generic.List<string>();
+            this.cBOkul.RealValues = ((System.Collections.Generic.List<string>)(resources.GetObject("cBOkul.RealValues")));
             this.cBOkul.Size = new System.Drawing.Size(101, 21);
             this.cBOkul.TabIndex = 38;
             // 
@@ -473,6 +474,7 @@
             this.Controls.Add(this.rbKişi);
             this.Controls.Add(this.label1);
             this.Name = "frmÖğrenciDüzenle";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmÖğrenciDüzenle";
             this.Load += new System.EventHandler(this.frmÖğrenciDüzenle_Load);
             this.ResumeLayout(false);

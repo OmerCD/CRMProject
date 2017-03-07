@@ -18,12 +18,21 @@ namespace CRMKurs.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.MainTypes",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
+                        Name = c.String(unicode: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.Okuls",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
-                        Tür = c.String(unicode: false),
                         AdSoyad = c.String(unicode: false),
+                        Tür = c.String(unicode: false),
                         EPosta = c.String(unicode: false),
                         Telefon = c.String(maxLength: 11, storeType: "nvarchar"),
                         Adres = c.String(unicode: false),
@@ -98,6 +107,7 @@ namespace CRMKurs.Migrations
             DropTable("dbo.Öğretmen");
             DropTable("dbo.Öğrenci");
             DropTable("dbo.Okuls");
+            DropTable("dbo.MainTypes");
             DropTable("dbo.ExtraFields");
         }
     }

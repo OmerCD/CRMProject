@@ -1,16 +1,18 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-abstract class DBConnection
+
+namespace CRMKurs
 {
-    public static CRMKurs.ModelBuild dbCon;
-    protected MySqlConnection _mySqlConnection;
-    public DBConnection()
+    class DBConnection
     {
-        _mySqlConnection = new MySqlConnection(DesktopAppCRM.DataBaseConnectionOptions.MySqlConnectionString);
+        public static ModelBuild dbCon;
+        public DBConnection()
+        {
+
+            dbCon = new ModelBuild();
+        }
     }
 }
