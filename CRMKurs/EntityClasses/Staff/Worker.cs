@@ -12,9 +12,16 @@ namespace CRMKurs.EntityClasses.Staff
             public string Şifre { get; set; }
         public enum Status
         {
-            Boss, Admin, User
+            [EnumNameAttributes.Repr("Patron")]
+
+            Boss,
+            [EnumNameAttributes.Repr("Yönetici")]
+            Admin,
+            [EnumNameAttributes.Repr("Yönetici")]
+            User
 
         }
         public Status Statü { get; set; }
+        public string EMail { get; set; }
     }
 }

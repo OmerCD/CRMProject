@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using static CRMKurs.EntityClasses.Staff.Worker;
+
+namespace CRMKurs
+{
+    public partial class frmKullanıcıKaydı : Form
+    {
+        public frmKullanıcıKaydı()
+        {
+            InitializeComponent();
+        }
+     
+        private void frmKullanıcıKaydı_Load(object sender, EventArgs e)
+        {
+            foreach (var item in Enum.GetNames(typeof(Status)))
+            {
+                cBStatü.Items.Add(item);
+            }
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (txtŞifre.Text==txtŞifret.Text)
+            {
+                EntityClasses.Staff.Worker calisan = new EntityClasses.Staff.Worker {
+                KullanıcıAdı =txtKullanıcı.Text,
+                Şifre=txtŞifre.Text,
+                
+            };
+                DBConnection.dbCon.Workers.Add(calisan);
+                DBConnection.dbCon.SaveChanges();
+
+            }
+           
+        }
+    }
+}

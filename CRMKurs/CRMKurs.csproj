@@ -100,6 +100,7 @@
     <Compile Include="EntityClasses\Staff\Worker.cs" />
     <Compile Include="EntityClasses\Öğrenci.cs" />
     <Compile Include="EntityClasses\Öğretmen.cs" />
+    <Compile Include="EnumNameAttributes.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +112,12 @@
     </Compile>
     <Compile Include="frmKullanıcıGiriş.Designer.cs">
       <DependentUpon>frmKullanıcıGiriş.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmKullanıcıKaydı.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKullanıcıKaydı.Designer.cs">
+      <DependentUpon>frmKullanıcıKaydı.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMultipleAdder.cs">
       <SubType>Form</SubType>
@@ -172,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmKullanıcıGiriş.resx">
       <DependentUpon>frmKullanıcıGiriş.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmKullanıcıKaydı.resx">
+      <DependentUpon>frmKullanıcıKaydı.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMultipleAdder.resx">
       <DependentUpon>frmMultipleAdder.cs</DependentUpon>

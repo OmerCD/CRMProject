@@ -19,7 +19,7 @@ namespace CRMKurs
 
         private void frmKullanıcıGiriş_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void frmKullanıcıGiriş_KeyDown(object sender, KeyEventArgs e)
@@ -28,7 +28,11 @@ namespace CRMKurs
             {
                 if (Login())
                 {
-                    //Ana Sayfa Açılacak
+                    frmKullanıcıGiriş g = new frmKullanıcıGiriş();
+                   MainCRMWindow f = new MainCRMWindow();
+                  f.Show();
+                  g.Close();
+                    
                 }
             }
         }

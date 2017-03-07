@@ -74,5 +74,10 @@ namespace CRMKurs.Öğretmen
             frm.Dispose();
             frm = null;
         }
+
+        private void cBHitap_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

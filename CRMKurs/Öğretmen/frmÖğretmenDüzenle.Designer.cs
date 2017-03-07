@@ -375,6 +375,7 @@
             this.cBHitap.Name = "cBHitap";
             this.cBHitap.Size = new System.Drawing.Size(100, 21);
             this.cBHitap.TabIndex = 45;
+            this.cBHitap.SelectedIndexChanged += new System.EventHandler(this.cBHitap_SelectedIndexChanged);
             // 
             // txtBAdSoyad
             // 
