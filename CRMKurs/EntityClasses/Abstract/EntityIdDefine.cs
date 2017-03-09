@@ -11,6 +11,7 @@ namespace CRMKurs.EntityClasses.Abstract
     {
         [Key]
         public string Id { get; set; }
+        public string OwnerId { get; set; }
         public EntityIdDefine()
         {
             Id = Guid.NewGuid().ToString();

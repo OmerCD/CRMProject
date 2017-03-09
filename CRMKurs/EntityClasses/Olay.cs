@@ -13,5 +13,5 @@ namespace CRMKurs.EntityClasses
         public string OlayBilgi { get; set; }
         public List<EntityClasses.Staff.Worker> Çalışan { get; set; }
 
-} 
+    } 
 }

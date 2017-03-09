@@ -14,5 +14,6 @@ namespace DesktopAppCRM
         [Obsolete]
         public static string ConnectionString => ("SERVER = " + serverName + "; DATABASE =" + databaseName + "; UID =" + userName + ";PWD=" + password + ";");
         public static string MySqlConnectionString => ("SERVER=www.deletecrm.com;DATABASE=ccy_delete;UID=ccy_delete;PWD=Ah!g9x87;");
+        public static string OwnerUserId;
     }
 }

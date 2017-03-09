@@ -39,8 +39,8 @@ namespace CRMKurs.Okul
                 Ülke = txtBÜlke.Text,
                 İl = cBİl.SelectedItem.ToString()
             };
-            DBConnection.dbCon.Okul.Add(okul);
-            DBConnection.dbCon.SaveChanges();
+            DBConnection.DbCon.Okul.Add(okul);
+            DBConnection.DbCon.SaveChanges();
         }
     }
 }

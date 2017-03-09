@@ -22,9 +22,7 @@ C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.csprojResolve
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Calendar.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.MainCRMWindow.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.frmMultipleAdder.resources
-C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Öğrenci.frmÖğrenci.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Properties.Resources.resources
-C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Öğrenci.frmÖğrenciDüzenle.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.csproj.GenerateResource.Cache
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.exe
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.pdb
@@ -35,10 +33,7 @@ C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\bin\Debug\EntityFramework.xml
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Okul.frmOkul.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Okul.frmOkulDüzenle.resources
-C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Öğretmen.frmÖğretmen.resources
-C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Öğretmen.frmÖğretmenDüzenle.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.frmKullanıcıGiriş.resources
-C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Migrations.test.resources
 C:\Users\ccy-05\Desktop\CRMProject-master\CRMProject-master\CRMKurs\bin\Debug\CRMKurs.exe.config
 C:\Users\ccy-05\Desktop\CRMProject-master\CRMProject-master\CRMKurs\obj\Debug\CRMKurs.exe
 C:\Users\ccy-05\Desktop\CRMProject-master\CRMProject-master\CRMKurs\obj\Debug\CRMKurs.pdb
@@ -65,3 +60,8 @@ C:\Users\ccy-05\Desktop\CRMProject-master\CRMProject-master\CRMKurs\obj\Debug\CR
 C:\Users\ccy-05\Desktop\CRMProject-master\CRMProject-master\CRMKurs\obj\Debug\CRMKurs.Öğretmen.frmÖğretmenDüzenle.resources
 C:\Users\ccy-05\Desktop\CRMProject-master\CRMProject-master\CRMKurs\obj\Debug\CRMKurs.csproj.GenerateResource.Cache
 C:\Users\ccy-05\Desktop\CRMProject-master\CRMProject-master\CRMKurs\obj\Debug\CRMKurs.frmKullanıcıKaydı.resources
+C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.frmKullanıcıKaydı.resources
+C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.frmExtraField.resources
+C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Kişi.frmKişi.resources
+C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Kişi.frmKişDüzenle.resources
+C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Migrations.test.resources

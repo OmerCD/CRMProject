@@ -8,40 +8,45 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CRMKurs.Öğrenci
+namespace CRMKurs.Kişi
 {
-    public partial class frmÖğrenci : Form
+    public partial class frmKişi : Form
     {
-        public frmÖğrenci()
+        public frmKişi()
         {
             InitializeComponent();
         }
 
         private void btnYeni_Click(object sender, EventArgs e)
         {
-            Öğrenci.frmÖğrenciDüzenle frm = new Öğrenci.frmÖğrenciDüzenle("-1"); 
-            frm.ShowDialog();
+            using (var frm = new frmKişDüzenle("-1"))
+            {
+                if(frm.ShowDialog()==DialogResult.OK) RefreshPeople();
+            }
+            //var frm = new frmKişDüzenle("-1"); 
+            //frm.ShowDialog();
         }
 
         private void frmÖğrenci_Load(object sender, EventArgs e)
         {
-            RefreshStudents();
+            RefreshPeople();
         }
-        void RefreshStudents()
+
+        private void RefreshPeople()
         {
-            List<EntityClasses.Öğrenci> öğrenciList = DBConnection.dbCon.Öğrenci.ToList();
+            var öğrenciList = DBConnection.DbCon.Kişi.ToList();
             foreach (var öğrenci in öğrenciList)
             {
-                ListViewItem lvItem = new ListViewItem(new string[] { öğrenci.AdSoyad, öğrenci.Telefon });
-                lVÖğrenciler.Items.Add(lvItem);
+                var lvItem = new ListViewItem(new [] { öğrenci.AdSoyad, öğrenci.Telefon });
+                lVKişiler.Items.Add(lvItem);
             }
         }
 
         private void lVÖğrenciler_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lVÖğrenciler.SelectedIndices.Count == 0) return;
-            string selectedPhone = lVÖğrenciler.Items[lVÖğrenciler.SelectedIndices[0]].SubItems[1].Text;
-            EntityClasses.Öğrenci öğrenci=DBConnection.dbCon.Öğrenci.First(x => x.Telefon == selectedPhone);
+            if (lVKişiler.SelectedIndices.Count == 0) return;
+            string selectedPhone = lVKişiler.Items[lVKişiler.SelectedIndices[0]].SubItems[1].Text;
+            var öğrenci=DBConnection.DbCon.Kişi.First(x => x.Telefon == selectedPhone);
 
             lblAdSoyad.Text = öğrenci.AdSoyad;
             lblBölge.Text = öğrenci.Bölge;
@@ -56,6 +61,16 @@ namespace CRMKurs.Öğrenci
             lblİl.Text = öğrenci.İl;
             txtBAdres.Text = öğrenci.Adres;
             txtBNotlar.Text = öğrenci.Notlar;
+        }
+
+        private void btnDüzenle_Click(object sender, EventArgs e)
+        {
+            if (lVKişiler.SelectedIndices.Count == 0) return;
+            var phoneNumber = lVKişiler.SelectedItems[0].SubItems["PhoneNumber"].Text;
+            using (var frm = new frmKişDüzenle(phoneNumber))
+            {
+                if (frm.ShowDialog() == DialogResult.OK) RefreshPeople();
+            }
         }
     }
 }

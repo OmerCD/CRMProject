@@ -16,12 +16,13 @@ namespace CRMKurs
         {
             DbConfiguration.SetConfiguration(new MySql.Data.Entity.MySqlEFConfiguration());
         }
-        public virtual DbSet<EntityClasses.Öğrenci> Öğrenci { get; set; }
-        public virtual DbSet<EntityClasses.Öğretmen> Öğretmen { get; set; }
+        public virtual DbSet<EntityClasses.Person> Kişi { get; set; }
         public virtual DbSet<EntityClasses.Okul> Okul { get; set; }
         public virtual DbSet<EntityClasses.ExtraField> ExtraField {get;set;}
         public virtual DbSet<EntityClasses.MainTypes> MainTypes { get; set; }
         public virtual DbSet<EntityClasses.Olay> Olaylar { get; set; }
+        public virtual DbSet<EntityClasses.MainBoss> Bosses { get; set; }
         public virtual DbSet<EntityClasses.Staff.Worker> Workers { get; set; }
+        public virtual DbSet<EntityClasses.PersonTypes> PersonTypes { get; set; }
     }
 }

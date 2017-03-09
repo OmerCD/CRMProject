@@ -1,6 +1,6 @@
-﻿namespace CRMKurs.Öğrenci
+﻿namespace CRMKurs.Kişi
 {
-    partial class frmÖğrenciDüzenle
+    partial class frmKişDüzenle
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmÖğrenciDüzenle));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmKişDüzenle));
             this.rbKurum = new System.Windows.Forms.RadioButton();
             this.rbKişi = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,7 +42,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.cBSınıf = new System.Windows.Forms.ComboBox();
             this.txtBTelefon = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -61,6 +60,7 @@
             this.btnTelefonMA = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.cBOkul = new CRMKurs.CustomTools.DataComboBox();
+            this.txtSınıf = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // rbKurum
@@ -185,14 +185,6 @@
             this.label7.Size = new System.Drawing.Size(27, 13);
             this.label7.TabIndex = 18;
             this.label7.Text = "Sınıf";
-            // 
-            // cBSınıf
-            // 
-            this.cBSınıf.FormattingEnabled = true;
-            this.cBSınıf.Location = new System.Drawing.Point(84, 210);
-            this.cBSınıf.Name = "cBSınıf";
-            this.cBSınıf.Size = new System.Drawing.Size(100, 21);
-            this.cBSınıf.TabIndex = 20;
             // 
             // txtBTelefon
             // 
@@ -436,11 +428,20 @@
             this.cBOkul.Size = new System.Drawing.Size(101, 21);
             this.cBOkul.TabIndex = 38;
             // 
-            // frmÖğrenciDüzenle
+            // txtSınıf
+            // 
+            this.txtSınıf.Location = new System.Drawing.Point(84, 211);
+            this.txtSınıf.Name = "txtSınıf";
+            this.txtSınıf.Size = new System.Drawing.Size(100, 20);
+            this.txtSınıf.TabIndex = 39;
+            this.txtSınıf.Text = "4-A";
+            // 
+            // frmKişDüzenle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(626, 364);
+            this.Controls.Add(this.txtSınıf);
             this.Controls.Add(this.cBOkul);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnTelefonMA);
@@ -459,7 +460,6 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtBTelefon);
-            this.Controls.Add(this.cBSınıf);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -473,9 +473,9 @@
             this.Controls.Add(this.rbKurum);
             this.Controls.Add(this.rbKişi);
             this.Controls.Add(this.label1);
-            this.Name = "frmÖğrenciDüzenle";
+            this.Name = "frmKişDüzenle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmÖğrenciDüzenle";
+            this.Text = "frmKişDüzenle";
             this.Load += new System.EventHandler(this.frmÖğrenciDüzenle_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -497,7 +497,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox cBSınıf;
         private System.Windows.Forms.TextBox txtBTelefon;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
@@ -516,5 +515,6 @@
         private System.Windows.Forms.Button btnTelefonMA;
         private System.Windows.Forms.Button button1;
         private CustomTools.DataComboBox cBOkul;
+        private System.Windows.Forms.TextBox txtSınıf;
     }
 }

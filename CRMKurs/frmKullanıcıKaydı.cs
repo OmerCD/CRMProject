@@ -23,24 +23,19 @@ namespace CRMKurs
             foreach (var item in Enum.GetNames(typeof(Status)))
             {
                 cBStatü.Items.Add(item);
-            }
-            
+            } 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (txtŞifre.Text==txtŞifret.Text)
-            {
-                EntityClasses.Staff.Worker calisan = new EntityClasses.Staff.Worker {
+            if (txtŞifre.Text != txtŞifret.Text) return;
+            var calisan = new EntityClasses.Staff.Worker {
                 KullanıcıAdı =txtKullanıcı.Text,
                 Şifre=txtŞifre.Text,
                 
             };
-                DBConnection.dbCon.Workers.Add(calisan);
-                DBConnection.dbCon.SaveChanges();
-
-            }
-           
+            DBConnection.DbCon.Workers.Add(calisan);
+            DBConnection.DbCon.SaveChanges();
         }
     }
 }

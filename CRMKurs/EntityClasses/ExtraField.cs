@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,17 +10,11 @@ namespace CRMKurs.EntityClasses
     class ExtraField : Abstract.EntityIdDefine
     {
         public ExtraField() : base() { }
-        public enum FieldType
-        {
-            Tarih,Yazı,
-            Not,Sayı,
-            Para,Liste,
-            Düğme,Hesaplanan_Sabit,
-            Kurum_Kişi,Saat,
-            Konum,Kullanıcı,
-            İlleri,İlçeler
-        }
+
+        [NotMapped]
+        public static string[] FieldTypes => (new[] {"Tarih","Yazı","Not","Sayı","Para","Liste","Düğme","Hesaplanan/Sabit","Kurum/Kişi","Saat","Saat","Konum","Kullanıcı","İlleri","İlçeler"});
         public string Name { get; set; }
-        public FieldType InputType { get; set; }
+        public string InputType { get; set; }
+        public PersonTypes ShowType { get; set; }
     }
 }

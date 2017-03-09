@@ -16,7 +16,7 @@ namespace CRMKurs
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmKullanıcıGiriş());
+            Application.Run(new MainCRMWindow());
         }
     }
 }

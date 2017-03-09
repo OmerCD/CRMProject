@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CRMKurs.Migrations;
+
 namespace CRMKurs
 {
 
@@ -16,7 +18,7 @@ namespace CRMKurs
         public MainCRMWindow()
         {
             InitializeComponent();
-            DBConnection.dbCon = new ModelBuild();
+            DBConnection.DbCon = new ModelBuild();
         }
 
         private void renkToolStripMenuItem_Click(object sender, EventArgs e)
@@ -47,7 +49,7 @@ namespace CRMKurs
 
         private void öğretimToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Öğrenci.frmÖğrenci frm = new Öğrenci.frmÖğrenci();
+            Kişi.frmKişi frm = new Kişi.frmKişi();
             frm.ShowDialog();
         }
 
@@ -57,8 +59,14 @@ namespace CRMKurs
 
         private void okulToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Okul.frmOkul frm = new Okul.frmOkul();
+            var frm = new Okul.frmOkul();
             frm.ShowDialog();
+        }
+        
+        private void DropButton_Click(object sender, EventArgs e)
+        {
+            //test asd = new test();
+            //asd.Down();
         }
     }
 }

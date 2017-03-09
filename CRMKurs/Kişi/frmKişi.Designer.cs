@@ -1,6 +1,8 @@
-﻿namespace CRMKurs.Öğrenci
+﻿using System.Windows.Forms;
+
+namespace CRMKurs.Kişi
 {
-    partial class frmÖğrenci
+    partial class frmKişi
     {
         /// <summary>
         /// Required designer variable.
@@ -56,14 +58,16 @@
             this.lblÜlke = new System.Windows.Forms.Label();
             this.lblPostaKodu = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lVÖğrenciler = new CRMKurs.CustomTools.ListViewCompare();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lVKişiler = new CRMKurs.CustomTools.ListViewCompare();
+            this.Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.PhoneNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnDüzenle = new System.Windows.Forms.Button();
+            this.btnSil = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnYeni
             // 
-            this.btnYeni.Location = new System.Drawing.Point(684, 327);
+            this.btnYeni.Location = new System.Drawing.Point(728, 327);
             this.btnYeni.Name = "btnYeni";
             this.btnYeni.Size = new System.Drawing.Size(75, 23);
             this.btnYeni.TabIndex = 8;
@@ -310,39 +314,62 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(663, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.Size = new System.Drawing.Size(34, 13);
             this.label1.TabIndex = 50;
-            this.label1.Text = "Öğrenciler";
+            this.label1.Text = "Kişiler";
             // 
-            // lVÖğrenciler
+            // lVKişiler
             // 
-            this.lVÖğrenciler.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2});
-            this.lVÖğrenciler.Location = new System.Drawing.Point(630, 44);
-            this.lVÖğrenciler.Name = "lVÖğrenciler";
-            this.lVÖğrenciler.Size = new System.Drawing.Size(173, 277);
-            this.lVÖğrenciler.TabIndex = 51;
-            this.lVÖğrenciler.UseCompatibleStateImageBehavior = false;
-            this.lVÖğrenciler.View = System.Windows.Forms.View.Details;
-            this.lVÖğrenciler.SelectedIndexChanged += new System.EventHandler(this.lVÖğrenciler_SelectedIndexChanged);
+            this.lVKişiler.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Name,
+            this.PhoneNumber});
+            this.lVKişiler.FullRowSelect = true;
+            this.lVKişiler.Location = new System.Drawing.Point(630, 44);
+            this.lVKişiler.MultiSelect = false;
+            this.lVKişiler.Name = "lVKişiler";
+            this.lVKişiler.Size = new System.Drawing.Size(173, 277);
+            this.lVKişiler.TabIndex = 51;
+            this.lVKişiler.UseCompatibleStateImageBehavior = false;
+            this.lVKişiler.View = System.Windows.Forms.View.Details;
+            this.lVKişiler.SelectedIndexChanged += new System.EventHandler(this.lVÖğrenciler_SelectedIndexChanged);
             // 
-            // columnHeader1
+            // Name
             // 
-            this.columnHeader1.Text = "İsim";
-            this.columnHeader1.Width = 88;
+            this.Name.Text = "İsim";
+            this.Name.Width = 88;
             // 
-            // columnHeader2
+            // PhoneNumber
             // 
-            this.columnHeader2.Text = "Telefon";
-            this.columnHeader2.Width = 79;
+            this.PhoneNumber.Text = "Telefon";
+            this.PhoneNumber.Width = 79;
             // 
-            // frmÖğrenci
+            // btnDüzenle
+            // 
+            this.btnDüzenle.Location = new System.Drawing.Point(647, 328);
+            this.btnDüzenle.Name = "btnDüzenle";
+            this.btnDüzenle.Size = new System.Drawing.Size(75, 23);
+            this.btnDüzenle.TabIndex = 52;
+            this.btnDüzenle.Text = "Düzenle";
+            this.btnDüzenle.UseVisualStyleBackColor = true;
+            this.btnDüzenle.Click += new System.EventHandler(this.btnDüzenle_Click);
+            // 
+            // btnSil
+            // 
+            this.btnSil.Location = new System.Drawing.Point(566, 328);
+            this.btnSil.Name = "btnSil";
+            this.btnSil.Size = new System.Drawing.Size(75, 23);
+            this.btnSil.TabIndex = 53;
+            this.btnSil.Text = "Sil";
+            this.btnSil.UseVisualStyleBackColor = true;
+            // 
+            // frmKişi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(815, 358);
-            this.Controls.Add(this.lVÖğrenciler);
+            this.Controls.Add(this.btnSil);
+            this.Controls.Add(this.btnDüzenle);
+            this.Controls.Add(this.lVKişiler);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblPostaKodu);
             this.Controls.Add(this.lblÜlke);
@@ -371,9 +398,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnYeni);
-            this.Name = "frmÖğrenci";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmÖğrenci";
+            this.Text = "Kişiler";
             this.Load += new System.EventHandler(this.frmÖğrenci_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -409,8 +435,10 @@
         private System.Windows.Forms.Label lblÜlke;
         private System.Windows.Forms.Label lblPostaKodu;
         private System.Windows.Forms.Label label1;
-        private CustomTools.ListViewCompare lVÖğrenciler;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private CustomTools.ListViewCompare lVKişiler;
+        private System.Windows.Forms.ColumnHeader Name;
+        private System.Windows.Forms.ColumnHeader PhoneNumber;
+        private System.Windows.Forms.Button btnDüzenle;
+        private System.Windows.Forms.Button btnSil;
     }
 }

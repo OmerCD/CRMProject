@@ -19,7 +19,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG; __DEMO__  __DEMO_EXPERIMENTAL__.</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -76,6 +76,7 @@
     <Compile Include="Calendar.Designer.cs">
       <DependentUpon>Calendar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cipher.cs" />
     <Compile Include="CustomTools\DataComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -95,17 +96,27 @@
     <Compile Include="EntityClasses\Abstract\MainEntity.cs" />
     <Compile Include="EntityClasses\MainTypes.cs" />
     <Compile Include="EntityClasses\Okul.cs" />
-    <Compile Include="EntityClasses\Abstract\Person.cs" />
+    <Compile Include="EntityClasses\Person.cs" />
     <Compile Include="EntityClasses\Olay.cs" />
+    <Compile Include="EntityClasses\PersonTypes.cs" />
     <Compile Include="EntityClasses\Staff\Worker.cs" />
-    <Compile Include="EntityClasses\Öğrenci.cs" />
-    <Compile Include="EntityClasses\Öğretmen.cs" />
-    <Compile Include="EnumNameAttributes.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBossLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBossLogin.Designer.cs">
+      <DependentUpon>frmBossLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmExtraField.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExtraField.Designer.cs">
+      <DependentUpon>frmExtraField.cs</DependentUpon>
     </Compile>
     <Compile Include="frmKullanıcıGiriş.cs">
       <SubType>Form</SubType>
@@ -126,9 +137,10 @@
       <DependentUpon>frmMultipleAdder.cs</DependentUpon>
     </Compile>
     <Compile Include="ListViewComparer.cs" />
-    <Compile Include="Migrations\201703070912567_test.cs" />
-    <Compile Include="Migrations\201703070912567_test.Designer.cs">
-      <DependentUpon>201703070912567_test.cs</DependentUpon>
+    <Compile Include="EntityClasses\MainBoss.cs" />
+    <Compile Include="Migrations\201703091028523_test.cs" />
+    <Compile Include="Migrations\201703091028523_test.Designer.cs">
+      <DependentUpon>201703091028523_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelBuild.cs" />
@@ -145,37 +157,31 @@
       <DependentUpon>frmOkulDüzenle.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="Öğrenci\frmÖğrenci.cs">
+    <Compile Include="Kişi\frmKişi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Öğrenci\frmÖğrenci.Designer.cs">
-      <DependentUpon>frmÖğrenci.cs</DependentUpon>
+    <Compile Include="Kişi\frmKişi.Designer.cs">
+      <DependentUpon>frmKişi.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Öğrenci\frmÖğrenciDüzenle.cs">
+    <Compile Include="Kişi\frmKişDüzenle.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Öğrenci\frmÖğrenciDüzenle.Designer.cs">
-      <DependentUpon>frmÖğrenciDüzenle.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Öğretmen\frmÖğretmen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Öğretmen\frmÖğretmen.Designer.cs">
-      <DependentUpon>frmÖğretmen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Öğretmen\frmÖğretmenDüzenle.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Öğretmen\frmÖğretmenDüzenle.Designer.cs">
-      <DependentUpon>frmÖğretmenDüzenle.cs</DependentUpon>
+    <Compile Include="Kişi\frmKişDüzenle.Designer.cs">
+      <DependentUpon>frmKişDüzenle.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Calendar.resx">
       <DependentUpon>Calendar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBossLogin.resx">
+      <DependentUpon>frmBossLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExtraField.resx">
+      <DependentUpon>frmExtraField.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmKullanıcıGiriş.resx">
       <DependentUpon>frmKullanıcıGiriş.cs</DependentUpon>
@@ -186,8 +192,8 @@
     <EmbeddedResource Include="frmMultipleAdder.resx">
       <DependentUpon>frmMultipleAdder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703070912567_test.resx">
-      <DependentUpon>201703070912567_test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703091028523_test.resx">
+      <DependentUpon>201703091028523_test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Okul\frmOkul.resx">
       <DependentUpon>frmOkul.cs</DependentUpon>
@@ -195,8 +201,8 @@
     <EmbeddedResource Include="Okul\frmOkulDüzenle.resx">
       <DependentUpon>frmOkulDüzenle.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Öğrenci\frmÖğrenci.resx">
-      <DependentUpon>frmÖğrenci.cs</DependentUpon>
+    <EmbeddedResource Include="Kişi\frmKişi.resx">
+      <DependentUpon>frmKişi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -208,14 +214,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Öğrenci\frmÖğrenciDüzenle.resx">
-      <DependentUpon>frmÖğrenciDüzenle.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Öğretmen\frmÖğretmen.resx">
-      <DependentUpon>frmÖğretmen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Öğretmen\frmÖğretmenDüzenle.resx">
-      <DependentUpon>frmÖğretmenDüzenle.cs</DependentUpon>
+    <EmbeddedResource Include="Kişi\frmKişDüzenle.resx">
+      <DependentUpon>frmKişDüzenle.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
