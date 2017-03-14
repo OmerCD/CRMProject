@@ -17,12 +17,14 @@ namespace CRMKurs
         public frmBossLogin()
         {
             InitializeComponent();
+
         }
 
         private void frmBossLogin_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode==Keys.Enter)
             {
+
                 BossInfo = DBConnection.DbCon.Bosses.FirstOrDefault(x => x.KullanıcıAdı == txtKullanıcıAdı.Text && x.Şifre == txtŞifre.Text);
                 if (BossInfo == null)
                 {
@@ -33,6 +35,15 @@ namespace CRMKurs
                 DialogResult=DialogResult.OK;
                 Close();
             }
+        }
+
+        private void frmBossLogin_Load(object sender, EventArgs e)
+        {
+            //DBConnection.DbCon.Bosses.Add(new MainBoss
+            //{
+            //    KullanıcıAdı = "Ömer",
+            //    Şifre = "12345"
+            //});
         }
     }
 }

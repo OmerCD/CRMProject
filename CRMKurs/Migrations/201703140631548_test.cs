@@ -8,6 +8,17 @@ namespace CRMKurs.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.MainBosses",
+                c => new
+                    {
+                        OwnerId = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
+                        KullanıcıAdı = c.String(nullable: false, maxLength: 25, storeType: "nvarchar"),
+                        Şifre = c.String(nullable: false, maxLength: 25, storeType: "nvarchar"),
+                    })
+                .PrimaryKey(t => t.OwnerId)
+                .Index(t => t.KullanıcıAdı, unique: true);
+            
+            CreateTable(
                 "dbo.ExtraFields",
                 c => new
                     {
@@ -135,6 +146,7 @@ namespace CRMKurs.Migrations
             DropIndex("dbo.People", new[] { "Telefon" });
             DropIndex("dbo.PersonTypes", new[] { "Name" });
             DropIndex("dbo.ExtraFields", new[] { "ShowType_Id" });
+            DropIndex("dbo.MainBosses", new[] { "KullanıcıAdı" });
             DropTable("dbo.Workers");
             DropTable("dbo.Olays");
             DropTable("dbo.MainTypes");
@@ -142,6 +154,7 @@ namespace CRMKurs.Migrations
             DropTable("dbo.People");
             DropTable("dbo.PersonTypes");
             DropTable("dbo.ExtraFields");
+            DropTable("dbo.MainBosses");
         }
     }
 }

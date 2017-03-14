@@ -91,6 +91,7 @@
             this.KeyPreview = true;
             this.Name = "frmKullanıcıGiriş";
             this.Text = "frmKullanıcıGiriş";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmKullanıcıGiriş_FormClosing);
             this.Load += new System.EventHandler(this.frmKullanıcıGiriş_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmKullanıcıGiriş_KeyDown);
             this.ResumeLayout(false);

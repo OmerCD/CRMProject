@@ -91,6 +91,7 @@
             this.KeyPreview = true;
             this.Name = "frmBossLogin";
             this.Text = "frmBossLogin";
+            this.Load += new System.EventHandler(this.frmBossLogin_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmBossLogin_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();

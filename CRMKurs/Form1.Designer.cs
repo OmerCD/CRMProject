@@ -352,6 +352,7 @@
             this.MainMenuStrip = this.StripMenu;
             this.Name = "MainCRMWindow";
             this.Text = "DeleteCRM";
+            this.Load += new System.EventHandler(this.MainCRMWindow_Load);
             this.StripMenu.ResumeLayout(false);
             this.StripMenu.PerformLayout();
             this.ColorPanel.ResumeLayout(false);
