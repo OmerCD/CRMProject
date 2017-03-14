@@ -1,6 +1,6 @@
 ﻿namespace CRMKurs.Okul
 {
-    partial class frmOkul
+    partial class frmKurum
     {
         /// <summary>
         /// Required designer variable.

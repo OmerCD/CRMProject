@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CRMKurs.EntityClasses
 {
-    class Okul: Abstract.MainEntity
+    class Institution: Abstract.MainEntity
     {
-        public Okul() : base() { }
+        public Institution() : base() { }
     }
 }

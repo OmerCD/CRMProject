@@ -65,14 +65,14 @@ namespace CRMKurs.Migrations
                         Type_Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Okuls", t => t.Okul_Id)
+                .ForeignKey("dbo.Institutions", t => t.Okul_Id)
                 .ForeignKey("dbo.PersonTypes", t => t.Type_Id, cascadeDelete: true)
                 .Index(t => t.Telefon, unique: true)
                 .Index(t => t.Okul_Id)
                 .Index(t => t.Type_Id);
             
             CreateTable(
-                "dbo.Okuls",
+                "dbo.Institutions",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
@@ -90,6 +90,20 @@ namespace CRMKurs.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.Telefon, unique: true);
+            
+            CreateTable(
+                "dbo.Logs",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
+                        Date = c.DateTime(nullable: false, precision: 0),
+                        Action = c.String(unicode: false),
+                        OwnerId = c.String(unicode: false),
+                        Person_Id = c.String(maxLength: 128, storeType: "nvarchar"),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.People", t => t.Person_Id)
+                .Index(t => t.Person_Id);
             
             CreateTable(
                 "dbo.MainTypes",
@@ -135,12 +149,14 @@ namespace CRMKurs.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.Workers", "Olay_Id", "dbo.Olays");
+            DropForeignKey("dbo.Logs", "Person_Id", "dbo.People");
             DropForeignKey("dbo.People", "Type_Id", "dbo.PersonTypes");
-            DropForeignKey("dbo.People", "Okul_Id", "dbo.Okuls");
+            DropForeignKey("dbo.People", "Okul_Id", "dbo.Institutions");
             DropForeignKey("dbo.ExtraFields", "ShowType_Id", "dbo.PersonTypes");
             DropIndex("dbo.Workers", new[] { "Olay_Id" });
             DropIndex("dbo.Workers", new[] { "KullanıcıAdı" });
-            DropIndex("dbo.Okuls", new[] { "Telefon" });
+            DropIndex("dbo.Logs", new[] { "Person_Id" });
+            DropIndex("dbo.Institutions", new[] { "Telefon" });
             DropIndex("dbo.People", new[] { "Type_Id" });
             DropIndex("dbo.People", new[] { "Okul_Id" });
             DropIndex("dbo.People", new[] { "Telefon" });
@@ -150,7 +166,8 @@ namespace CRMKurs.Migrations
             DropTable("dbo.Workers");
             DropTable("dbo.Olays");
             DropTable("dbo.MainTypes");
-            DropTable("dbo.Okuls");
+            DropTable("dbo.Logs");
+            DropTable("dbo.Institutions");
             DropTable("dbo.People");
             DropTable("dbo.PersonTypes");
             DropTable("dbo.ExtraFields");

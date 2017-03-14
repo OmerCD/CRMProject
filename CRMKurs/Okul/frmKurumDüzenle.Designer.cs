@@ -1,6 +1,6 @@
 ﻿namespace CRMKurs.Okul
 {
-    partial class frmOkulDüzenle
+    partial class frmKurumDüzenle
     {
         /// <summary>
         /// Required designer variable.
@@ -360,7 +360,7 @@
             this.label1.TabIndex = 38;
             this.label1.Text = "Tipi";
             // 
-            // frmOkulDüzenle
+            // frmKurumDüzenle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -391,9 +391,9 @@
             this.Controls.Add(this.rbKurum);
             this.Controls.Add(this.rbKişi);
             this.Controls.Add(this.label1);
-            this.Name = "frmOkulDüzenle";
-            this.Text = "frmOkulDüzenle";
-            this.Load += new System.EventHandler(this.frmOkulDüzenle_Load);
+            this.Name = "frmKurumDüzenle";
+            this.Text = "frmKurumDüzenle";
+            this.Load += new System.EventHandler(this.frmKurumDüzenle_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

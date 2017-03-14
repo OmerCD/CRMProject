@@ -13,7 +13,7 @@ namespace CRMKurs.EntityClasses.Abstract
     abstract class MainEntity:EntityIdDefine
     {
         public MainEntity() : base() { }
-        public string AdSoyad { get; set; }
+        public string İsim { get; set; }
         public string Tür { get; set; }
         public string EPosta { get; set; }
         [Index(IsUnique = true, Order = 1)]

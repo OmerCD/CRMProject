@@ -115,7 +115,7 @@ namespace CRMKurs
                 var workers = DBConnection.DbCon.Workers;
                 if (workers.Any())
                 {
-                    var worker = DBConnection.DbCon.Workers.First(x => x.KullanıcıAdı == txtKullanıcıAdı.Text && x.Şifre == txtŞifre.Text);
+                    var worker = DBConnection.DbCon.Workers.First(x => x.KullanıcıAdı == txtKullanıcıAdı.Text && x.Şifre == txtŞifre.Text && x.OwnerId == DataBaseConnectionOptions.OwnerUserId);
                     if (worker == null)
                     {
                         MessageBox.Show("Kullanıcı Adı veya Şifre hatalı", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);

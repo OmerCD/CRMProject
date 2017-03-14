@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DesktopAppCRM;
 using static CRMKurs.EntityClasses.Staff.Worker;
 
 namespace CRMKurs
@@ -32,7 +33,7 @@ namespace CRMKurs
             var calisan = new EntityClasses.Staff.Worker {
                 KullanıcıAdı =txtKullanıcı.Text,
                 Şifre=txtŞifre.Text,
-                
+                OwnerId = DataBaseConnectionOptions.OwnerUserId
             };
             DBConnection.DbCon.Workers.Add(calisan);
             DBConnection.DbCon.SaveChanges();

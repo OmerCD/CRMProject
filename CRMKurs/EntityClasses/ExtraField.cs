@@ -12,7 +12,7 @@ namespace CRMKurs.EntityClasses
         public ExtraField() : base() { }
 
         [NotMapped]
-        public static string[] FieldTypes => (new[] {"Tarih","Yazı","Not","Sayı","Para","Liste","Düğme","Hesaplanan/Sabit","Kurum/Kişi","Saat","Saat","Konum","Kullanıcı","İlleri","İlçeler"});
+        public static string[] FieldTypes => (new[] {"Tarih","Yazı","Not","Sayı","Para","Liste","Düğme","Hesaplanan/Sabit","Kurum/Kişi","Saat","Konum","Kullanıcı","İlleri","İlçeler"});
         public string Name { get; set; }
         public string InputType { get; set; }
         public PersonTypes ShowType { get; set; }

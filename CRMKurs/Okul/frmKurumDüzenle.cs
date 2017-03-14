@@ -7,29 +7,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DesktopAppCRM;
 
 namespace CRMKurs.Okul
 {
-    public partial class frmOkulDüzenle : Form
+    public partial class frmKurumDüzenle : Form
     {
         string _okulTelefon;
-        public frmOkulDüzenle(string okulTelefon)
+        public frmKurumDüzenle(string okulTelefon)
         {
             InitializeComponent();
             _okulTelefon = okulTelefon;
         }
 
-        private void frmOkulDüzenle_Load(object sender, EventArgs e)
+        private void frmKurumDüzenle_Load(object sender, EventArgs e)
         {
             rbKurum.Select();
         }
 
         private void btnOnayla_Click(object sender, EventArgs e)
         {
-            EntityClasses.Okul okul = new EntityClasses.Okul
+            EntityClasses.Institution okul = new EntityClasses.Institution
             {
                 Adres = txtBAdres.Text,
-                AdSoyad = txtBAdSoyad.Text,
+                İsim = txtBAdSoyad.Text,
                 Bölge = txtBBölge.Text,
                 EPosta = txtBEposta.Text,
                 Notlar = txtBNotlar.Text,
@@ -37,9 +38,11 @@ namespace CRMKurs.Okul
                 Telefon = txtBTelefon.Text,
                 Tür = txtBTür.Text,
                 Ülke = txtBÜlke.Text,
-                İl = cBİl.SelectedItem.ToString()
+                İl = cBİl.SelectedItem.ToString(),
+                OwnerId = DataBaseConnectionOptions.OwnerUserId
+                
             };
-            DBConnection.DbCon.Okul.Add(okul);
+            DBConnection.DbCon.Institutions.Add(okul);
             DBConnection.DbCon.SaveChanges();
         }
     }

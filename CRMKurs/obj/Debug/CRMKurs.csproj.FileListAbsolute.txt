@@ -31,8 +31,6 @@ C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\bin\Debug\EntityFramework.dll
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\bin\Debug\EntityFramework.xml
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Okul.frmOkul.resources
-C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Okul.frmOkulDüzenle.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.frmKullanıcıGiriş.resources
 C:\Users\ccy-05\Desktop\CRMProject-master\CRMProject-master\CRMKurs\bin\Debug\CRMKurs.exe.config
 C:\Users\ccy-05\Desktop\CRMProject-master\CRMProject-master\CRMKurs\obj\Debug\CRMKurs.exe
@@ -65,4 +63,7 @@ C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.frmExtraField
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Kişi.frmKişi.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Kişi.frmKişDüzenle.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.frmBossLogin.resources
+C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Okul.frmKurum.resources
+C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Okul.frmKurumDüzenle.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Migrations.test.resources
+C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Customer.Customer.resources

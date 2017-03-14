@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DesktopAppCRM;
 
 namespace CRMKurs.Kişi
 {
@@ -34,10 +35,10 @@ namespace CRMKurs.Kişi
 
         private void RefreshPeople()
         {
-            var öğrenciList = DBConnection.DbCon.Kişi.ToList();
+            var öğrenciList = DBConnection.DbCon.People.ToList().Where(x => x.OwnerId == DataBaseConnectionOptions.OwnerUserId);
             foreach (var öğrenci in öğrenciList)
             {
-                var lvItem = new ListViewItem(new [] { öğrenci.AdSoyad, öğrenci.Telefon });
+                var lvItem = new ListViewItem(new [] { öğrenci.İsim, öğrenci.Telefon });
                 lVKişiler.Items.Add(lvItem);
             }
         }
@@ -46,13 +47,13 @@ namespace CRMKurs.Kişi
         {
             if (lVKişiler.SelectedIndices.Count == 0) return;
             string selectedPhone = lVKişiler.Items[lVKişiler.SelectedIndices[0]].SubItems[1].Text;
-            var öğrenci=DBConnection.DbCon.Kişi.First(x => x.Telefon == selectedPhone);
+            var öğrenci=DBConnection.DbCon.People.First(x => x.Telefon == selectedPhone && x.OwnerId == DataBaseConnectionOptions.OwnerUserId);
 
-            lblAdSoyad.Text = öğrenci.AdSoyad;
+            lblAdSoyad.Text = öğrenci.İsim;
             lblBölge.Text = öğrenci.Bölge;
             lblEposta.Text = öğrenci.EPosta;
             lblHitap.Text = öğrenci.Hitap;
-            lblOkul.Text = öğrenci.Okul.AdSoyad;
+            lblOkul.Text = öğrenci.Okul.İsim;
             lblPostaKodu.Text = öğrenci.PostaKodu;
             lblTelefon.Text = öğrenci.Telefon;
             lblSınıf.Text = öğrenci.Sınıf;
@@ -61,6 +62,7 @@ namespace CRMKurs.Kişi
             lblİl.Text = öğrenci.İl;
             txtBAdres.Text = öğrenci.Adres;
             txtBNotlar.Text = öğrenci.Notlar;
+
         }
 
         private void btnDüzenle_Click(object sender, EventArgs e)

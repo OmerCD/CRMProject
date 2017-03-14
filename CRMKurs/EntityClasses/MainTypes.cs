@@ -10,5 +10,6 @@ namespace CRMKurs.EntityClasses
     {
         public MainTypes() : base() { }
         public string Name { get; set; }
+        public string ClassName { get; set; }
     }
 }

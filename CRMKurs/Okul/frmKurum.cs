@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace CRMKurs.Okul
 {
-    public partial class frmOkul : Form
+    public partial class frmKurum : Form
     {
-        public frmOkul()
+        public frmKurum()
         {
             InitializeComponent();
         }
 
         private void btnYeni_Click(object sender, EventArgs e)
         {
-            frmOkulDüzenle frm = new frmOkulDüzenle("-1");
+            frmKurumDüzenle frm = new frmKurumDüzenle("-1");
             frm.ShowDialog();
         }
 
@@ -29,10 +29,10 @@ namespace CRMKurs.Okul
         }
         void RefreshSchools()
         {
-            List<EntityClasses.Okul> okulList = DBConnection.DbCon.Okul.ToList();
+            List<EntityClasses.Institution> okulList = DBConnection.DbCon.Institutions.ToList();
             foreach (var okul in okulList)
             {
-                ListViewItem lvItem = new ListViewItem(new string[] { okul.AdSoyad, okul.Telefon });
+                ListViewItem lvItem = new ListViewItem(new string[] { okul.İsim, okul.Telefon });
                 lVOkullar.Items.Add(lvItem);
             }
         }
@@ -41,8 +41,8 @@ namespace CRMKurs.Okul
         {
             if (lVOkullar.SelectedIndices.Count == 0) return;
             string selectedPhone = lVOkullar.Items[lVOkullar.SelectedIndices[0]].SubItems[1].Text;
-            EntityClasses.Okul okul = DBConnection.DbCon.Okul.ToList().First(x => x.Telefon == selectedPhone);
-            lblAdSoyad.Text = okul.AdSoyad;
+            EntityClasses.Institution okul = DBConnection.DbCon.Institutions.ToList().First(x => x.Telefon == selectedPhone);
+            lblAdSoyad.Text = okul.İsim;
             lblBölge.Text = okul.Bölge;
             lblEposta.Text = okul.EPosta;
             lblPostaKodu.Text = okul.PostaKodu;
