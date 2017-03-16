@@ -8,11 +8,17 @@ using System.Threading.Tasks;
 
 namespace CRMKurs.EntityClasses.Staff
 {
-    class Worker:Abstract.EntityIdDefine
+    public class Worker:Abstract.EntityIdDefine
     {
+        /// <summary>
+        /// Çalışanların kullanıcı adı.
+        /// </summary>
         [Index(IsUnique = true,Order = 1)]
         [MaxLength(25)]
         public string KullanıcıAdı { get; set; }
+        /// <summary>
+        /// Çalışanların kullanıcı şifresi
+        /// </summary>
             public string Şifre { get; set; }
         public enum Status
         {
@@ -20,7 +26,13 @@ namespace CRMKurs.EntityClasses.Staff
             Kullanıcı
 
         }
+        /// <summary>
+        /// Çalışanın yönetici, kullanıcı gibi gruplara ayrılması
+        /// </summary>
         public Status Statü { get; set; }
+        /// <summary>
+        /// Çalışanın e-posta bilgisi
+        /// </summary>
         public string EMail { get; set; }
     }
 }

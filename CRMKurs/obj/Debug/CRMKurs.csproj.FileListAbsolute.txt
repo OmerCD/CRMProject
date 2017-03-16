@@ -65,5 +65,6 @@ C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Kişi.frmKiş
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.frmBossLogin.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Okul.frmKurum.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Okul.frmKurumDüzenle.resources
-C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Migrations.test.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Customer.Customer.resources
+C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.CustomTools.LogLabel.resources
+C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.DebugForms.AddDebugForm.resources

@@ -12,9 +12,15 @@ namespace CRMKurs.EntityClasses
         public ExtraField() : base() { }
 
         [NotMapped]
-        public static string[] FieldTypes => (new[] {"Tarih","Yazı","Not","Sayı","Para","Liste","Düğme","Hesaplanan/Sabit","Kurum/Kişi","Saat","Konum","Kullanıcı","İlleri","İlçeler"});
-        public string Name { get; set; }
-        public string InputType { get; set; }
+        public static string[] FieldTypes => (new[] {"Tarih","Yazı","Not","Sayı","Para","Liste","Düğme","Hesaplanan/Sabit","Kurum/Kişi","Saat","Konum","Kullanıcı","İlleri","İlçeler"}); // Seçilebilecek Ekstra alan türleri
+        public string ExtraName { get; set; }
+        /// <summary>
+        /// FieldTypes'dan alınacak türün saklanacığı yer.
+        /// </summary>
+        public string InputType { get; set; } 
+        /// <summary>
+        /// kullanıcı/kurum veya kişi gibi kişi türleri arasından hangisine gösterileceğini seçmek
+        /// </summary>
         public PersonTypes ShowType { get; set; }
     }
 }

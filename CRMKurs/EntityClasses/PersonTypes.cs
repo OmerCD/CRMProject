@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace CRMKurs.EntityClasses
 {
-    class PersonTypes : CRMKurs.EntityClasses.Abstract.EntityIdDefine
+    public class PersonTypes : CRMKurs.EntityClasses.Abstract.EntityIdDefine
     {
         [Index(IsUnique =  true)]
         [MaxLength(25)]
-        public string Name { get; set; }
+        public string TypeName { get; set; }
     }
 }

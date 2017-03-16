@@ -89,6 +89,12 @@
     <Compile Include="CustomTools\ListViewCompare.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CustomTools\LogLabel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomTools\LogLabel.Designer.cs">
+      <DependentUpon>LogLabel.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomTools\PhoneTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -97,6 +103,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DBConnection.cs" />
+    <Compile Include="DebugForms\AddDebugForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DebugForms\AddDebugForm.Designer.cs">
+      <DependentUpon>AddDebugForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EntityClasses\Abstract\EntityIdDefine.cs" />
     <Compile Include="EntityClasses\ExtraField.cs" />
     <Compile Include="EntityClasses\Abstract\MainEntity.cs" />
@@ -109,11 +121,13 @@
     <Compile Include="EntityClasses\PersonTypes.cs" />
     <Compile Include="EntityClasses\Sheep.cs" />
     <Compile Include="EntityClasses\Staff\Worker.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="ExtraFieldInfo.cs" />
+    <Compile Include="LogControl.cs" />
+    <Compile Include="MainCRMWindows.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MainCRMWindows.Designer.cs">
+      <DependentUpon>MainCRMWindows.cs</DependentUpon>
     </Compile>
     <Compile Include="frmBossLogin.cs">
       <SubType>Form</SubType>
@@ -147,10 +161,6 @@
     </Compile>
     <Compile Include="ListViewComparer.cs" />
     <Compile Include="EntityClasses\MainBoss.cs" />
-    <Compile Include="Migrations\201703141017244_test.cs" />
-    <Compile Include="Migrations\201703141017244_test.Designer.cs">
-      <DependentUpon>201703141017244_test.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelBuild.cs" />
     <Compile Include="Okul\frmKurum.cs">
@@ -186,8 +196,14 @@
     <EmbeddedResource Include="Customer\Customer.resx">
       <DependentUpon>Customer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="CustomTools\LogLabel.resx">
+      <DependentUpon>LogLabel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DebugForms\AddDebugForm.resx">
+      <DependentUpon>AddDebugForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainCRMWindows.resx">
+      <DependentUpon>MainCRMWindows.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBossLogin.resx">
       <DependentUpon>frmBossLogin.cs</DependentUpon>
@@ -203,9 +219,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMultipleAdder.resx">
       <DependentUpon>frmMultipleAdder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703141017244_test.resx">
-      <DependentUpon>201703141017244_test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Okul\frmKurum.resx">
       <DependentUpon>frmKurum.cs</DependentUpon>

@@ -10,7 +10,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CRMKurs;
+using CRMKurs.CustomTools;
 using CRMKurs.EntityClasses;
+using CRMKurs.EntityClasses.Staff;
 using CRMKurs.Migrations;
 
 namespace CRMKurs
@@ -108,17 +110,52 @@ namespace CRMKurs
 
         private void MainCRMWindow_Load(object sender, EventArgs e)
         {
-            //var frm = new frmKullanıcıGiriş();
-            //DialogResult dR = frm.ShowDialog();
-            //switch (dR)
-            //{
-            //    case DialogResult.Yes:
-            //        WriteCipher(frm._bossInformation);
-            //        break;
-            //    case DialogResult.Cancel:
-            //        Application.Exit();
-            //        break;
-            //}
+            var frm = new frmKullanıcıGiriş();
+            DialogResult dR = frm.ShowDialog();
+            switch (dR)
+            {
+                case DialogResult.Yes:
+                    WriteCipher(frm._bossInformation);
+                    break;
+                case DialogResult.Cancel:
+                    Application.Exit();
+                    break;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                var logTest = new Log
+                {
+                    Action = "Test " + i,
+                    Worker = new Worker
+                    {
+                        EMail = "asd" + i + "@asd.com",
+                        KullanıcıAdı = "KAd" + i,
+                        Statü = Worker.Status.Kullanıcı,
+                        Şifre = "testPass" + i
+                    }
+                };
+                DBConnection.DbCon.Logs.Add(logTest);
+            }
+            DBConnection.DbCon.SaveChanges();
+            LoadLogs();
+        }
+
+        void LoadLogs()
+        {
+            var logs = new LogControl().GetLast(20);
+            if (logs == null) return;
+            foreach (var log in logs)
+            {
+                PanelLogs.Controls.Add(new LogLabel(log));
+            }
+        }
+        void CreateLogControls(Log[] arr)
+        {
+            
+        }
+        private void ColorPanel_LostFocus(object sender, EventArgs e)
+        {
+            ColorPanel.Hide();
         }
     }
 }

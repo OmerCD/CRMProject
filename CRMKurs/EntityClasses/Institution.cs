@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRMKurs.EntityClasses
 {
-    class Institution: Abstract.MainEntity
+    public class Institution: Abstract.MainEntity
     {
         public Institution() : base() { }
     }

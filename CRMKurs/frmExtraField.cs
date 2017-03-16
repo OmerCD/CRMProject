@@ -22,21 +22,21 @@ namespace CRMKurs
         private void frmExtraField_Load(object sender, EventArgs e)
         {
             cbTür.Items.AddRange(ExtraField.FieldTypes);
-            var types = (from x in DBConnection.DbCon.PersonTypes where x.OwnerId == DataBaseConnectionOptions.OwnerUserId select x.Name).ToArray();
+            var types = (from x in DBConnection.DbCon.PersonTypes where x.OwnerId == DataBaseConnectionOptions.OwnerUserId select x.TypeName).ToArray();
             cbAlan.Items.AddRange(types);
             cbTür.SelectedIndex = cbAlan.SelectedIndex = 0;
         }
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
-            PersonTypes pType = (from x in DBConnection.DbCon.PersonTypes where  x.OwnerId == DataBaseConnectionOptions.OwnerUserId && x.Name==cbAlan.SelectedItem.ToString() select x).First();
+            PersonTypes pType = (from x in DBConnection.DbCon.PersonTypes where  x.OwnerId == DataBaseConnectionOptions.OwnerUserId && x.TypeName==cbAlan.SelectedItem.ToString() select x).First();
             if (pType == null)
             {
                 return;
             }
             var eField = new ExtraField
             {
-                Name = txtİsim.Text,
+                ExtraName = txtİsim.Text,
                 InputType = cbTür.SelectedItem.ToString(),
                 ShowType = pType
             };

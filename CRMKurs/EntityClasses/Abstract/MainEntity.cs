@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CRMKurs.EntityClasses.Abstract
 {
-    abstract class MainEntity:EntityIdDefine
+    public abstract class MainEntity:EntityIdDefine
     {
         public MainEntity() : base() { }
         public string İsim { get; set; }

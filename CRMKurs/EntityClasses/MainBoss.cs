@@ -11,7 +11,7 @@ namespace CRMKurs.EntityClasses
     public class MainBoss
     {
         [Key]
-        public virtual string OwnerId { get; set; }
+        public string OwnerId { get; set; }
         [Required]
         [Index(IsUnique = true)]
         [MaxLength(25)]

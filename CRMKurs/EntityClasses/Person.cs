@@ -8,7 +8,7 @@ using CRMKurs.EntityClasses.Abstract;
 
 namespace CRMKurs.EntityClasses
 {
-    class Person : MainEntity
+    public class Person : MainEntity
     {
         public string Hitap { get; set; }
         public virtual Institution Okul { get; set; }
