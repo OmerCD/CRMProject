@@ -15,16 +15,24 @@ namespace CRMKurs.EntityClasses.Abstract
         public MainEntity() : base() { }
         [PropertyMVC(ControlEnum.TextBox)]
         public string İsim { get; set; }
+        [PropertyMVC(ControlEnum.TextBox)]
         public string Tür { get; set; }
+        [PropertyMVC(ControlEnum.TextBox)]
         public string EPosta { get; set; }
         [Index(IsUnique = true, Order = 1)]
         [MaxLength(11)]
+        [PropertyMVC(ControlEnum.TextBox)]
         public string Telefon { get; set; }
         public string Adres { get; set; }
+        [PropertyMVC(ControlEnum.Combobox)]
         public string İl { get; set; }
+        [PropertyMVC(ControlEnum.Combobox)]
         public string Bölge { get; set; }
+        [PropertyMVC(ControlEnum.Combobox)]
         public string Ülke { get; set; }
+        [PropertyMVC(ControlEnum.TextBox)]
         public string PostaKodu { get; set; }
+        [PropertyMVC(ControlEnum.TextBox)]
         public string Notlar { get; set; }
     }
 }

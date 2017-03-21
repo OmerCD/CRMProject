@@ -10,7 +10,7 @@ namespace CRMKurs
 {
     class DBConnection
     {
-        private static MySqlConnection QueryConnection;
+        public static MySqlConnection QueryConnection;
         public static ModelBuild DbCon;
         public DBConnection()
         {

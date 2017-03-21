@@ -136,25 +136,25 @@ namespace CRMKurs.Migrations
                         Notlar = c.String(unicode: false),
                         OwnerId = c.String(unicode: false),
                         Okul_Id = c.String(maxLength: 128, storeType: "nvarchar"),
-                        Type_Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
+                        PersonTypes_Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Institution", t => t.Okul_Id)
-                .ForeignKey("dbo.PersonTypes", t => t.Type_Id, cascadeDelete: true)
+                .ForeignKey("dbo.PersonTypes", t => t.PersonTypes_Id, cascadeDelete: true)
                 .Index(t => t.Telefon, unique: true)
                 .Index(t => t.Okul_Id)
-                .Index(t => t.Type_Id);
+                .Index(t => t.PersonTypes_Id);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Person", "Type_Id", "dbo.PersonTypes");
+            DropForeignKey("dbo.Person", "PersonTypes_Id", "dbo.PersonTypes");
             DropForeignKey("dbo.Person", "Okul_Id", "dbo.Institution");
             DropForeignKey("dbo.Worker", "Olay_Id", "dbo.Olay");
             DropForeignKey("dbo.Log", "Worker_Id", "dbo.Worker");
             DropForeignKey("dbo.ExtraField", "ShowType_Id", "dbo.PersonTypes");
-            DropIndex("dbo.Person", new[] { "Type_Id" });
+            DropIndex("dbo.Person", new[] { "PersonTypes_Id" });
             DropIndex("dbo.Person", new[] { "Okul_Id" });
             DropIndex("dbo.Person", new[] { "Telefon" });
             DropIndex("dbo.MainBoss", new[] { "KullanıcıAdı" });

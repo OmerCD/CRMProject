@@ -10,12 +10,15 @@ namespace CRMKurs.EntityClasses
 {
     public class Person : MainEntity
     {
+        [PropertyMVC(ControlEnum.Combobox,"Bay","Bayan")]
         public string Hitap { get; set; }
+        [PropertyMVC(ControlEnum.Entity)]
         public virtual Institution Okul { get; set; }
+        [PropertyMVC(ControlEnum.TextBox)]
         public virtual string Sınıf { get; set; }
         [Required]
         [PropertyMVC(ControlEnum.Entity)]
-        public PersonTypes Type { get; set; }
+        public PersonTypes PersonTypes { get; set; }
         public Person() : base() { }
     }
 }

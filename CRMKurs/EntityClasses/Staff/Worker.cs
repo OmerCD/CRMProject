@@ -15,11 +15,13 @@ namespace CRMKurs.EntityClasses.Staff
         /// </summary>
         [Index(IsUnique = true,Order = 1)]
         [MaxLength(25)]
+        [PropertyMVC(ControlEnum.TextBox)]
         public string KullanıcıAdı { get; set; }
         /// <summary>
         /// Çalışanların kullanıcı şifresi
         /// </summary>
-            public string Şifre { get; set; }
+        [PropertyMVC(ControlEnum.TextBox)]
+        public string Şifre { get; set; }
         public enum Status
         {
             Yönetici,
@@ -29,10 +31,12 @@ namespace CRMKurs.EntityClasses.Staff
         /// <summary>
         /// Çalışanın yönetici, kullanıcı gibi gruplara ayrılması
         /// </summary>
+        [PropertyMVC(ControlEnum.Combobox,"Yönetici","Kullanıcı")]
         public Status Statü { get; set; }
         /// <summary>
         /// Çalışanın e-posta bilgisi
         /// </summary>
+        [PropertyMVC(ControlEnum.TextBox)]
         public string EMail { get; set; }
     }
 }

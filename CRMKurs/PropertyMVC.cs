@@ -11,10 +11,16 @@ namespace CRMKurs
     class PropertyMVC : Attribute
     {
         public ControlEnum DesiredControl { get; set; }
+        public object[] Source { get; set; }
 
         public PropertyMVC(ControlEnum desiredControl)
         {
             DesiredControl = desiredControl;
+        }
+        public PropertyMVC(ControlEnum desiredControl,params object[] source)
+        {
+            DesiredControl = desiredControl;
+            Source = source;
         }
 
     }
@@ -25,6 +31,7 @@ namespace CRMKurs
         Combobox,
         MultipleAdder,
         Entity,
-        NumericUpDown
+        NumericUpDown,
+        DateTime
     }
 }

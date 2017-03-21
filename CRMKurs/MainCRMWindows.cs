@@ -111,7 +111,11 @@ namespace CRMKurs
         private void MainCRMWindow_Load(object sender, EventArgs e)
         {
             new DBConnection();
-            Controls.Add(new PropertyGridMVC(new Person()));
+            var testGrid = new PropertyGridMVC(new Person());
+            testGrid.Size= new Size(250,250);
+            testGrid.Location=new Point(10,10);
+            Controls.Add(testGrid);
+            testGrid.BringToFront();
             //var frm = new frmKullanıcıGiriş();
             //DialogResult dR = frm.ShowDialog();
             //switch (dR)

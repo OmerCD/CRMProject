@@ -8,8 +8,11 @@ namespace CRMKurs.EntityClasses
 {
     class Olay:Abstract.EntityIdDefine
     {
+        [PropertyMVC(ControlEnum.DateTime)]
         public DateTime Tarih { get; set; }
+        [PropertyMVC(ControlEnum.TextBox)]
         public string OlayAdı{ get; set; }
+        [PropertyMVC(ControlEnum.TextBox)]
         public string OlayBilgi { get; set; }
         public List<EntityClasses.Staff.Worker> Çalışan { get; set; }
 
