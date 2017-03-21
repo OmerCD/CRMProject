@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace CRMKurs
 {
@@ -16,15 +17,22 @@ namespace CRMKurs
         {
             DbConfiguration.SetConfiguration(new MySql.Data.Entity.MySqlEFConfiguration());
         }
-        public virtual DbSet<EntityClasses.Person> People { get; set; }
-        public virtual DbSet<EntityClasses.Institution> Institutions { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
+
+        public virtual DbSet<EntityClasses.Person> Person { get; set; }
+        public virtual DbSet<EntityClasses.Institution> Institution { get; set; }
         public virtual DbSet<EntityClasses.ExtraField> ExtraField {get;set;}
         public virtual DbSet<EntityClasses.MainTypes> MainTypes { get; set; }
-        public virtual DbSet<EntityClasses.Olay> Olaylar { get; set; }
-        public virtual DbSet<EntityClasses.MainBoss> Bosses { get; set; }
-        public virtual DbSet<EntityClasses.Staff.Worker> Workers { get; set; }
+        public virtual DbSet<EntityClasses.Olay> Olay { get; set; }
+        public virtual DbSet<EntityClasses.MainBoss> MainBoss { get; set; }
+        public virtual DbSet<EntityClasses.Staff.Worker> Worker { get; set; }
         public virtual DbSet<EntityClasses.PersonTypes> PersonTypes { get; set; }
-        public virtual DbSet<EntityClasses.Log> Logs { get; set; }
+        public virtual DbSet<EntityClasses.Log> Log { get; set; }
 
     }
 }

@@ -110,34 +110,36 @@ namespace CRMKurs
 
         private void MainCRMWindow_Load(object sender, EventArgs e)
         {
-            var frm = new frmKullanıcıGiriş();
-            DialogResult dR = frm.ShowDialog();
-            switch (dR)
-            {
-                case DialogResult.Yes:
-                    WriteCipher(frm._bossInformation);
-                    break;
-                case DialogResult.Cancel:
-                    Application.Exit();
-                    break;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                var logTest = new Log
-                {
-                    Action = "Test " + i,
-                    Worker = new Worker
-                    {
-                        EMail = "asd" + i + "@asd.com",
-                        KullanıcıAdı = "KAd" + i,
-                        Statü = Worker.Status.Kullanıcı,
-                        Şifre = "testPass" + i
-                    }
-                };
-                DBConnection.DbCon.Logs.Add(logTest);
-            }
-            DBConnection.DbCon.SaveChanges();
-            LoadLogs();
+            new DBConnection();
+            Controls.Add(new PropertyGridMVC(new Person()));
+            //var frm = new frmKullanıcıGiriş();
+            //DialogResult dR = frm.ShowDialog();
+            //switch (dR)
+            //{
+            //    case DialogResult.Yes:
+            //        WriteCipher(frm._bossInformation);
+            //        break;
+            //    case DialogResult.Cancel:
+            //        Application.Exit();
+            //        break;
+            //}
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    var logTest = new Log
+            //    {
+            //        Action = "Test " + i,
+            //        Worker = new Worker
+            //        {
+            //            EMail = "asd" + i + "@asd.com",
+            //            KullanıcıAdı = "KAd" + i,
+            //            Statü = Worker.Status.Kullanıcı,
+            //            Şifre = "testPass" + i
+            //        }
+            //    };
+            //    DBConnection.DbCon.Logs.Add(logTest);
+            //}
+            //DBConnection.DbCon.SaveChanges();
+            //LoadLogs();
         }
 
         void LoadLogs()

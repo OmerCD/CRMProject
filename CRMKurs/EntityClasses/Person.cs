@@ -14,6 +14,7 @@ namespace CRMKurs.EntityClasses
         public virtual Institution Okul { get; set; }
         public virtual string Sınıf { get; set; }
         [Required]
+        [PropertyMVC(ControlEnum.Entity)]
         public PersonTypes Type { get; set; }
         public Person() : base() { }
     }

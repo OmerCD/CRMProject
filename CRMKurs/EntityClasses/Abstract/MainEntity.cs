@@ -13,6 +13,7 @@ namespace CRMKurs.EntityClasses.Abstract
     public abstract class MainEntity:EntityIdDefine
     {
         public MainEntity() : base() { }
+        [PropertyMVC(ControlEnum.TextBox)]
         public string İsim { get; set; }
         public string Tür { get; set; }
         public string EPosta { get; set; }

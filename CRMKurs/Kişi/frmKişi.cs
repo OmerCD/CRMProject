@@ -35,7 +35,7 @@ namespace CRMKurs.Kişi
 
         private void RefreshPeople()
         {
-            var öğrenciList = DBConnection.DbCon.People.ToList().Where(x => x.OwnerId == DataBaseConnectionOptions.OwnerUserId);
+            var öğrenciList = DBConnection.DbCon.Person.ToList().Where(x => x.OwnerId == DataBaseConnectionOptions.OwnerUserId);
             foreach (var öğrenci in öğrenciList)
             {
                 var lvItem = new ListViewItem(new [] { öğrenci.İsim, öğrenci.Telefon });
@@ -47,7 +47,7 @@ namespace CRMKurs.Kişi
         {
             if (lVKişiler.SelectedIndices.Count == 0) return;
             string selectedPhone = lVKişiler.Items[lVKişiler.SelectedIndices[0]].SubItems[1].Text;
-            var öğrenci=DBConnection.DbCon.People.First(x => x.Telefon == selectedPhone && x.OwnerId == DataBaseConnectionOptions.OwnerUserId);
+            var öğrenci=DBConnection.DbCon.Person.First(x => x.Telefon == selectedPhone && x.OwnerId == DataBaseConnectionOptions.OwnerUserId);
 
             lblAdSoyad.Text = öğrenci.İsim;
             lblBölge.Text = öğrenci.Bölge;

@@ -35,7 +35,7 @@ namespace CRMKurs
                 Şifre=txtŞifre.Text,
                 OwnerId = DataBaseConnectionOptions.OwnerUserId
             };
-            DBConnection.DbCon.Workers.Add(calisan);
+            DBConnection.DbCon.Worker.Add(calisan);
             DBConnection.DbCon.SaveChanges();
         }
     }

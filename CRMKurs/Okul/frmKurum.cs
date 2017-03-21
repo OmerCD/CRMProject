@@ -29,7 +29,7 @@ namespace CRMKurs.Okul
         }
         void RefreshSchools()
         {
-            List<EntityClasses.Institution> okulList = DBConnection.DbCon.Institutions.ToList();
+            List<EntityClasses.Institution> okulList = DBConnection.DbCon.Institution.ToList();
             foreach (var okul in okulList)
             {
                 ListViewItem lvItem = new ListViewItem(new string[] { okul.İsim, okul.Telefon });
@@ -41,7 +41,7 @@ namespace CRMKurs.Okul
         {
             if (lVOkullar.SelectedIndices.Count == 0) return;
             string selectedPhone = lVOkullar.Items[lVOkullar.SelectedIndices[0]].SubItems[1].Text;
-            EntityClasses.Institution okul = DBConnection.DbCon.Institutions.ToList().First(x => x.Telefon == selectedPhone);
+            EntityClasses.Institution okul = DBConnection.DbCon.Institution.ToList().First(x => x.Telefon == selectedPhone);
             lblAdSoyad.Text = okul.İsim;
             lblBölge.Text = okul.Bölge;
             lblEposta.Text = okul.EPosta;

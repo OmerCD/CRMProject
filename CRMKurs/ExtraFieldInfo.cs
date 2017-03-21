@@ -27,6 +27,7 @@ namespace CRMKurs
         public ExtraInfo(string wholeInfo)
         {
             Infos= new Dictionary<string, string>();
+            
             SeperateInfo(wholeInfo);
         }
 

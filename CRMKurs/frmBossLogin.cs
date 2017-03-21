@@ -25,7 +25,7 @@ namespace CRMKurs
             if (e.KeyCode==Keys.Enter)
             {
 
-                BossInfo = DBConnection.DbCon.Bosses.FirstOrDefault(x => x.KullanıcıAdı == txtKullanıcıAdı.Text && x.Şifre == txtŞifre.Text);
+                BossInfo = DBConnection.DbCon.MainBoss.FirstOrDefault(x => x.KullanıcıAdı == txtKullanıcıAdı.Text && x.Şifre == txtŞifre.Text);
                 if (BossInfo == null)
                 {
                     MessageBox.Show("Yanlış Kullanıcı Adı veya Şifre", "Hata", MessageBoxButtons.OK,

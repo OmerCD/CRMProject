@@ -98,6 +98,12 @@
     <Compile Include="CustomTools\PhoneTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CustomTools\PropertyGridMVC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomTools\PropertyGridMVC.Designer.cs">
+      <DependentUpon>PropertyGridMVC.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataBaseConnectionOptions.cs" />
     <Compile Include="CustomTools\EmailTextBox.cs">
       <SubType>Component</SubType>
@@ -161,6 +167,10 @@
     </Compile>
     <Compile Include="ListViewComparer.cs" />
     <Compile Include="EntityClasses\MainBoss.cs" />
+    <Compile Include="Migrations\201703171514305_test.cs" />
+    <Compile Include="Migrations\201703171514305_test.Designer.cs">
+      <DependentUpon>201703171514305_test.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelBuild.cs" />
     <Compile Include="Okul\frmKurum.cs">
@@ -175,6 +185,7 @@
     <Compile Include="Okul\frmKurumDüzenle.Designer.cs">
       <DependentUpon>frmKurumDüzenle.cs</DependentUpon>
     </Compile>
+    <Compile Include="PropertyMVC.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Kişi\frmKişi.cs">
       <SubType>Form</SubType>
@@ -199,6 +210,9 @@
     <EmbeddedResource Include="CustomTools\LogLabel.resx">
       <DependentUpon>LogLabel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomTools\PropertyGridMVC.resx">
+      <DependentUpon>PropertyGridMVC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DebugForms\AddDebugForm.resx">
       <DependentUpon>AddDebugForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -219,6 +233,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMultipleAdder.resx">
       <DependentUpon>frmMultipleAdder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703171514305_test.resx">
+      <DependentUpon>201703171514305_test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Okul\frmKurum.resx">
       <DependentUpon>frmKurum.cs</DependentUpon>

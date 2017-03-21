@@ -42,7 +42,7 @@ namespace CRMKurs.Okul
                 OwnerId = DataBaseConnectionOptions.OwnerUserId
                 
             };
-            DBConnection.DbCon.Institutions.Add(okul);
+            DBConnection.DbCon.Institution.Add(okul);
             DBConnection.DbCon.SaveChanges();
         }
     }

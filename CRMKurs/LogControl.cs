@@ -14,7 +14,7 @@ namespace CRMKurs
         private Log[] _logs;
         public LogControl()
         {
-            _logs = DBConnection.DbCon.Logs.Where(x => x.OwnerId == DataBaseConnectionOptions.OwnerUserId).ToArray();
+            _logs = DBConnection.DbCon.Log.Where(x => x.OwnerId == DataBaseConnectionOptions.OwnerUserId).ToArray();
         }
         /// <summary>
         /// Verilen adette log sayısını son eklenenler arasından verir. 

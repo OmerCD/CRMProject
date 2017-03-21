@@ -22,7 +22,7 @@ namespace CRMKurs.Kişi
 
         void LoadFromPhone(string pNumb)
         {
-            var person = DBConnection.DbCon.People.First(x => x.Telefon == pNumb  && x.OwnerId == DataBaseConnectionOptions.OwnerUserId);
+            var person = DBConnection.DbCon.Person.First(x => x.Telefon == pNumb  && x.OwnerId == DataBaseConnectionOptions.OwnerUserId);
             if (person!=null)
             {
                 txtSınıf.Text = person.Sınıf;
@@ -40,7 +40,7 @@ namespace CRMKurs.Kişi
         private void frmÖğrenciDüzenle_Load(object sender, EventArgs e)
         {
             cBİl.SelectedIndex= cBHitap.SelectedIndex = 0;
-            var okullar = DBConnection.DbCon.Institutions.Where(x => x.OwnerId == DataBaseConnectionOptions.OwnerUserId).ToArray();
+            var okullar = DBConnection.DbCon.Institution.Where(x => x.OwnerId == DataBaseConnectionOptions.OwnerUserId).ToArray();
             foreach (var okul in okullar)
             {
                 cBOkul.Items.Add(okul.İsim);
@@ -96,7 +96,7 @@ namespace CRMKurs.Kişi
                 EPosta = txtBEposta.Text,
                 Hitap = cBHitap.SelectedItem.ToString(),
                 Notlar = txtBNotlar.Text,
-                Okul = DBConnection.DbCon.Institutions.First(x => x.Id == cBOkul.GetSelectedValue && x.OwnerId == DataBaseConnectionOptions.OwnerUserId),
+                Okul = DBConnection.DbCon.Institution.First(x => x.Id == cBOkul.GetSelectedValue && x.OwnerId == DataBaseConnectionOptions.OwnerUserId),
                 PostaKodu = txtBPostaKodu.Text,
                 Sınıf = txtSınıf.Text,
                 Telefon = txtBTelefon.Text,
@@ -106,7 +106,7 @@ namespace CRMKurs.Kişi
                 OwnerId = DataBaseConnectionOptions.OwnerUserId
                 
             };
-            DBConnection.DbCon.People.Add(kişi);
+            DBConnection.DbCon.Person.Add(kişi);
             DBConnection.DbCon.SaveChanges();
         }
     }
