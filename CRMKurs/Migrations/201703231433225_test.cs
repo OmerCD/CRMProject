@@ -37,14 +37,14 @@ namespace CRMKurs.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
-                        İsim = c.String(unicode: false),
-                        Tür = c.String(unicode: false),
+                        Isim = c.String(unicode: false),
+                        Tur = c.String(unicode: false),
                         EPosta = c.String(unicode: false),
                         Telefon = c.String(maxLength: 11, storeType: "nvarchar"),
                         Adres = c.String(unicode: false),
-                        İl = c.String(unicode: false),
-                        Bölge = c.String(unicode: false),
-                        Ülke = c.String(unicode: false),
+                        Il = c.String(unicode: false),
+                        Bolge = c.String(unicode: false),
+                        Ulke = c.String(unicode: false),
                         PostaKodu = c.String(unicode: false),
                         Notlar = c.String(unicode: false),
                         OwnerId = c.String(unicode: false),
@@ -71,16 +71,16 @@ namespace CRMKurs.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
-                        KullanıcıAdı = c.String(maxLength: 25, storeType: "nvarchar"),
+                        KullaniciAdi = c.String(maxLength: 25, storeType: "nvarchar"),
                         Şifre = c.String(unicode: false),
-                        Statü = c.Int(nullable: false),
+                        Statu = c.Int(nullable: false),
                         EMail = c.String(unicode: false),
                         OwnerId = c.String(unicode: false),
                         Olay_Id = c.String(maxLength: 128, storeType: "nvarchar"),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Olay", t => t.Olay_Id)
-                .Index(t => t.KullanıcıAdı, unique: true)
+                .Index(t => t.KullaniciAdi, unique: true)
                 .Index(t => t.Olay_Id);
             
             CreateTable(
@@ -88,11 +88,11 @@ namespace CRMKurs.Migrations
                 c => new
                     {
                         OwnerId = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
-                        KullanıcıAdı = c.String(nullable: false, maxLength: 25, storeType: "nvarchar"),
-                        Şifre = c.String(nullable: false, maxLength: 25, storeType: "nvarchar"),
+                        KullaniciAdi = c.String(nullable: false, maxLength: 25, storeType: "nvarchar"),
+                        Sifre = c.String(nullable: false, maxLength: 25, storeType: "nvarchar"),
                     })
                 .PrimaryKey(t => t.OwnerId)
-                .Index(t => t.KullanıcıAdı, unique: true);
+                .Index(t => t.KullaniciAdi, unique: true);
             
             CreateTable(
                 "dbo.MainTypes",
@@ -111,7 +111,7 @@ namespace CRMKurs.Migrations
                     {
                         Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
                         Tarih = c.DateTime(nullable: false, precision: 0),
-                        OlayAdı = c.String(unicode: false),
+                        OlayAdi = c.String(unicode: false),
                         OlayBilgi = c.String(unicode: false),
                         OwnerId = c.String(unicode: false),
                     })
@@ -123,15 +123,15 @@ namespace CRMKurs.Migrations
                     {
                         Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
                         Hitap = c.String(unicode: false),
-                        Sınıf = c.String(unicode: false),
-                        İsim = c.String(unicode: false),
-                        Tür = c.String(unicode: false),
+                        Sinif = c.String(unicode: false),
+                        Isim = c.String(unicode: false),
+                        Tur = c.String(unicode: false),
                         EPosta = c.String(unicode: false),
                         Telefon = c.String(maxLength: 11, storeType: "nvarchar"),
                         Adres = c.String(unicode: false),
-                        İl = c.String(unicode: false),
-                        Bölge = c.String(unicode: false),
-                        Ülke = c.String(unicode: false),
+                        Il = c.String(unicode: false),
+                        Bolge = c.String(unicode: false),
+                        Ulke = c.String(unicode: false),
                         PostaKodu = c.String(unicode: false),
                         Notlar = c.String(unicode: false),
                         OwnerId = c.String(unicode: false),
@@ -157,9 +157,9 @@ namespace CRMKurs.Migrations
             DropIndex("dbo.Person", new[] { "PersonTypes_Id" });
             DropIndex("dbo.Person", new[] { "Institution_Id" });
             DropIndex("dbo.Person", new[] { "Telefon" });
-            DropIndex("dbo.MainBoss", new[] { "KullanıcıAdı" });
+            DropIndex("dbo.MainBoss", new[] { "KullaniciAdi" });
             DropIndex("dbo.Worker", new[] { "Olay_Id" });
-            DropIndex("dbo.Worker", new[] { "KullanıcıAdı" });
+            DropIndex("dbo.Worker", new[] { "KullaniciAdi" });
             DropIndex("dbo.Log", new[] { "Worker_Id" });
             DropIndex("dbo.Institution", new[] { "Telefon" });
             DropIndex("dbo.PersonTypes", new[] { "TypeName" });

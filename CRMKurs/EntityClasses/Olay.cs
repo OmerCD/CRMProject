@@ -11,10 +11,10 @@ namespace CRMKurs.EntityClasses
         [PropertyMVC(ControlEnum.DateTime)]
         public DateTime Tarih { get; set; }
         [PropertyMVC(ControlEnum.TextBox)]
-        public string OlayAdı{ get; set; }
+        public string OlayAdi{ get; set; }
         [PropertyMVC(ControlEnum.TextBox)]
         public string OlayBilgi { get; set; }
-        public List<EntityClasses.Staff.Worker> Çalışan { get; set; }
+        public List<EntityClasses.Staff.Worker> Calisan { get; set; }
 
     } 
 }

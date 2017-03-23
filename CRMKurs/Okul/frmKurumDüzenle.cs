@@ -30,15 +30,15 @@ namespace CRMKurs.Okul
             EntityClasses.Institution okul = new EntityClasses.Institution
             {
                 Adres = txtBAdres.Text,
-                İsim = txtBAdSoyad.Text,
-                Bölge = txtBBölge.Text,
+                Isim = txtBAdSoyad.Text,
+                Bolge = txtBBölge.Text,
                 EPosta = txtBEposta.Text,
                 Notlar = txtBNotlar.Text,
                 PostaKodu = txtBPostaKodu.Text,
                 Telefon = txtBTelefon.Text,
-                Tür = txtBTür.Text,
-                Ülke = txtBÜlke.Text,
-                İl = cBİl.SelectedItem.ToString(),
+                Tur = txtBTür.Text,
+                Ulke = txtBÜlke.Text,
+                Il = cBİl.SelectedItem.ToString(),
                 OwnerId = DataBaseConnectionOptions.OwnerUserId
                 
             };

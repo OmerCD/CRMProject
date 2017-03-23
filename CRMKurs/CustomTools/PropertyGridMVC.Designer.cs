@@ -28,20 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnSave = new System.Windows.Forms.Button();
             this.panelPropArea = new System.Windows.Forms.Panel();
             this.SuspendLayout();
-            // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(358, 143);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 0;
-            this.btnSave.Text = "Kaydet";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // panelPropArea
             // 
@@ -61,16 +49,13 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Red;
             this.Controls.Add(this.panelPropArea);
-            this.Controls.Add(this.btnSave);
             this.Name = "PropertyGridMVC";
-            this.Size = new System.Drawing.Size(436, 169);
+            this.Size = new System.Drawing.Size(359, 169);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Panel panelPropArea;
     }
 }

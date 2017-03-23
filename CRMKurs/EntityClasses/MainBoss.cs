@@ -15,9 +15,9 @@ namespace CRMKurs.EntityClasses
         [Required]
         [Index(IsUnique = true)]
         [MaxLength(25)]
-        public string KullanıcıAdı { get; set; }
+        public string KullaniciAdi { get; set; }
         [Required]
         [MaxLength(25)]
-        public virtual string Şifre { get; set; }
+        public virtual string Sifre { get; set; }
     }
 }

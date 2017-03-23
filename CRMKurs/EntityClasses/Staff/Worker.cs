@@ -16,7 +16,7 @@ namespace CRMKurs.EntityClasses.Staff
         [Index(IsUnique = true,Order = 1)]
         [MaxLength(25)]
         [PropertyMVC(ControlEnum.TextBox)]
-        public string KullanıcıAdı { get; set; }
+        public string KullaniciAdi { get; set; }
         /// <summary>
         /// Çalışanların kullanıcı şifresi
         /// </summary>
@@ -32,7 +32,7 @@ namespace CRMKurs.EntityClasses.Staff
         /// Çalışanın yönetici, kullanıcı gibi gruplara ayrılması
         /// </summary>
         [PropertyMVC(ControlEnum.Combobox,typeof(Status))]
-        public Status Statü { get; set; }
+        public Status Statu { get; set; }
         /// <summary>
         /// Çalışanın e-posta bilgisi
         /// </summary>

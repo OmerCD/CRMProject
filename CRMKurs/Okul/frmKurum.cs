@@ -34,7 +34,7 @@ namespace CRMKurs.Okul
             List<EntityClasses.Institution> okulList = DBConnection.DbCon.Institution.ToList();
             foreach (var okul in okulList)
             {
-                ListViewItem lvItem = new ListViewItem(new string[] { okul.İsim, okul.Telefon });
+                ListViewItem lvItem = new ListViewItem(new string[] { okul.Isim, okul.Telefon });
                 lVOkullar.Items.Add(lvItem);
             }
         }
@@ -44,16 +44,21 @@ namespace CRMKurs.Okul
             if (lVOkullar.SelectedIndices.Count == 0) return;
             string selectedPhone = lVOkullar.Items[lVOkullar.SelectedIndices[0]].SubItems[1].Text;
             EntityClasses.Institution okul = DBConnection.DbCon.Institution.ToList().First(x => x.Telefon == selectedPhone);
-            lblAdSoyad.Text = okul.İsim;
-            lblBölge.Text = okul.Bölge;
+            lblAdSoyad.Text = okul.Isim;
+            lblBölge.Text = okul.Bolge;
             lblEposta.Text = okul.EPosta;
             lblPostaKodu.Text = okul.PostaKodu;
-            lblTür.Text = okul.Tür;
-            lblÜlke.Text = okul.Ülke;
-            lblİl.Text = okul.İl;
+            lblTür.Text = okul.Tur;
+            lblÜlke.Text = okul.Ulke;
+            lblİl.Text = okul.Il;
             lblTelefon.Text = okul.Telefon;
             txtBAdres.Text = okul.Adres;
             txtBNotlar.Text = okul.Notlar;
+        }
+
+        private void propGrid_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

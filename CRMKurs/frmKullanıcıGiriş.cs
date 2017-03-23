@@ -42,7 +42,7 @@ namespace CRMKurs
                 var KullanıcıAdı = parts[0];
                 var Id = parts[1];
                 Id=Id.Substring(0, Id.IndexOf("\0"));
-                var boss = DBConnection.DbCon.MainBoss.FirstOrDefault(x => x.KullanıcıAdı == KullanıcıAdı && x.OwnerId == Id);
+                var boss = DBConnection.DbCon.MainBoss.FirstOrDefault(x => x.KullaniciAdi == KullanıcıAdı && x.OwnerId == Id);
                 MessageBox.Show(uText);
                 return boss;
             }
@@ -115,7 +115,7 @@ namespace CRMKurs
                 var workers = DBConnection.DbCon.Worker;
                 if (workers.Any())
                 {
-                    var worker = DBConnection.DbCon.Worker.FirstOrDefault(x => x.KullanıcıAdı == txtKullanıcıAdı.Text && x.Şifre == txtŞifre.Text && x.OwnerId == DataBaseConnectionOptions.OwnerUserId);
+                    var worker = DBConnection.DbCon.Worker.FirstOrDefault(x => x.KullaniciAdi == txtKullanıcıAdı.Text && x.Şifre == txtŞifre.Text && x.OwnerId == DataBaseConnectionOptions.OwnerUserId);
                     if (worker == null)
                     {
                         MessageBox.Show("Kullanıcı Adı veya Şifre hatalı", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);

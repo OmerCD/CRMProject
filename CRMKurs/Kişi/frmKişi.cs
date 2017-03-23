@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CRMKurs.EntityClasses;
 using DesktopAppCRM;
 
 namespace CRMKurs.Kişi
@@ -31,6 +32,7 @@ namespace CRMKurs.Kişi
         private void frmÖğrenci_Load(object sender, EventArgs e)
         {
             RefreshPeople();
+            propGrid.SelectedObject = new Person();
         }
 
         private void RefreshPeople()
@@ -38,7 +40,7 @@ namespace CRMKurs.Kişi
             var öğrenciList = DBConnection.DbCon.Person.ToList().Where(x => x.OwnerId == DataBaseConnectionOptions.OwnerUserId);
             foreach (var öğrenci in öğrenciList)
             {
-                var lvItem = new ListViewItem(new [] { öğrenci.İsim, öğrenci.Telefon });
+                var lvItem = new ListViewItem(new [] { öğrenci.Isim, öğrenci.Telefon });
                 lVKişiler.Items.Add(lvItem);
             }
         }
@@ -48,18 +50,18 @@ namespace CRMKurs.Kişi
             if (lVKişiler.SelectedIndices.Count == 0) return;
             string selectedPhone = lVKişiler.Items[lVKişiler.SelectedIndices[0]].SubItems[1].Text;
             var öğrenci=DBConnection.DbCon.Person.First(x => x.Telefon == selectedPhone && x.OwnerId == DataBaseConnectionOptions.OwnerUserId);
-
-            lblAdSoyad.Text = öğrenci.İsim;
-            lblBölge.Text = öğrenci.Bölge;
+            propGrid.SelectedObject = öğrenci;
+            lblAdSoyad.Text = öğrenci.Isim;
+            lblBölge.Text = öğrenci.Bolge;
             lblEposta.Text = öğrenci.EPosta;
             lblHitap.Text = öğrenci.Hitap;
-            lblOkul.Text = öğrenci.Institution.İsim;
+            lblOkul.Text = öğrenci.Institution.Isim;
             lblPostaKodu.Text = öğrenci.PostaKodu;
             lblTelefon.Text = öğrenci.Telefon;
-            lblSınıf.Text = öğrenci.Sınıf;
-            lblTür.Text = öğrenci.Tür;
-            lblÜlke.Text = öğrenci.Ülke;
-            lblİl.Text = öğrenci.İl;
+            lblSınıf.Text = öğrenci.Sinif;
+            lblTür.Text = öğrenci.Tur;
+            lblÜlke.Text = öğrenci.Ulke;
+            lblİl.Text = öğrenci.Il;
             txtBAdres.Text = öğrenci.Adres;
             txtBNotlar.Text = öğrenci.Notlar;
 

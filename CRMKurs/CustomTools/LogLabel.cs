@@ -29,7 +29,7 @@ namespace CRMKurs.CustomTools
 
         private void LogLabel_Load(object sender, EventArgs e)
         {
-            LabelName.Text = _log.Worker.KullanıcıAdı;
+            LabelName.Text = _log.Worker.KullaniciAdi;
             txtBAction.Text = _log.Action;
             LabelDate.Text = _log.Date.ToLongDateString();
         }

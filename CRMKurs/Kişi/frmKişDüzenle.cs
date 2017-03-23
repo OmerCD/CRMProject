@@ -25,16 +25,16 @@ namespace CRMKurs.Kişi
             var person = DBConnection.DbCon.Person.First(x => x.Telefon == pNumb  && x.OwnerId == DataBaseConnectionOptions.OwnerUserId);
             if (person!=null)
             {
-                txtSınıf.Text = person.Sınıf;
-                txtBAdSoyad.Text = person.İsim;
+                txtSınıf.Text = person.Sinif;
+                txtBAdSoyad.Text = person.Isim;
                 txtBAdres.Text = person.Adres;
-                txtBBölge.Text = person.Bölge;
+                txtBBölge.Text = person.Bolge;
                 txtBEposta.Text = person.EPosta;
                 txtBNotlar.Text = person.Notlar;
                 txtBPostaKodu.Text = person.PostaKodu;
                 txtBTelefon.Text = pNumb;
-                txtBTür.Text = person.Tür;
-                txtBÜlke.Text = person.Ülke;
+                txtBTür.Text = person.Tur;
+                txtBÜlke.Text = person.Ulke;
             }
         }
         private void frmÖğrenciDüzenle_Load(object sender, EventArgs e)
@@ -43,7 +43,7 @@ namespace CRMKurs.Kişi
             var okullar = DBConnection.DbCon.Institution.Where(x => x.OwnerId == DataBaseConnectionOptions.OwnerUserId).ToArray();
             foreach (var okul in okullar)
             {
-                cBOkul.Items.Add(okul.İsim);
+                cBOkul.Items.Add(okul.Isim);
                 cBOkul.RealValues.Add(okul.Id);
             }
             cBOkul.SelectedIndex = 0;
@@ -91,18 +91,18 @@ namespace CRMKurs.Kişi
             var kişi = new EntityClasses.Person
             {
                 Adres = txtBAdres.Text,
-                İsim = txtBAdSoyad.Text,
-                Bölge = txtBBölge.Text,
+                Isim = txtBAdSoyad.Text,
+                Bolge = txtBBölge.Text,
                 EPosta = txtBEposta.Text,
                 Hitap = cBHitap.SelectedItem.ToString(),
                 Notlar = txtBNotlar.Text,
                 Institution = DBConnection.DbCon.Institution.First(x => x.Id == cBOkul.GetSelectedValue && x.OwnerId == DataBaseConnectionOptions.OwnerUserId),
                 PostaKodu = txtBPostaKodu.Text,
-                Sınıf = txtSınıf.Text,
+                Sinif = txtSınıf.Text,
                 Telefon = txtBTelefon.Text,
-                Tür = txtBTür.Text,
-                Ülke = txtBÜlke.Text,
-                İl = cBİl.SelectedItem.ToString(),
+                Tur = txtBTür.Text,
+                Ulke = txtBÜlke.Text,
+                Il = cBİl.SelectedItem.ToString(),
                 OwnerId = DataBaseConnectionOptions.OwnerUserId
                 
             };

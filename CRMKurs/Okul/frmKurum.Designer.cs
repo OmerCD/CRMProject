@@ -283,13 +283,10 @@
             // propGrid
             // 
             this.propGrid.AutoScroll = true;
-            this.propGrid.AutoSize = true;
             this.propGrid.BackColor = System.Drawing.Color.Red;
             this.propGrid.Location = new System.Drawing.Point(12, 15);
-            this.propGrid.MaximumSize = new System.Drawing.Size(0, 320);
             this.propGrid.Name = "propGrid";
-            this.propGrid.SelectedObject = null;
-            this.propGrid.Size = new System.Drawing.Size(450, 153);
+            this.propGrid.Size = new System.Drawing.Size(436, 313);
             this.propGrid.TabIndex = 81;
             // 
             // frmKurum

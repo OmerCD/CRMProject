@@ -42,7 +42,7 @@ namespace CRMKurs
                         for (int i = 0; i <= NumberOfRetries; i++)
                         {
 
-                            sw.Write(Cipher.Encrypt("$" + boss.KullanıcıAdı + "ô" + boss.OwnerId + "$",
+                            sw.Write(Cipher.Encrypt("$" + boss.KullaniciAdi + "ô" + boss.OwnerId + "$",
                                 "Mr. Poopybutthole"));
                             
 
@@ -114,22 +114,23 @@ namespace CRMKurs
             var testGrid = new PropertyGridMVC
             {
                 Size = new Size(250, 250),
-                Location = new Point(10, 10),
-                SelectedObject = new Person()
+                Location = new Point(10, 60),
+                SelectedObject = new Person { Isim = "Ömer" }
             };
             Controls.Add(testGrid);
             testGrid.BringToFront();
-            //var frm = new frmKullanıcıGiriş();
-            //DialogResult dR = frm.ShowDialog();
-            //switch (dR)
-            //{
-            //    case DialogResult.Yes:
-            //        WriteCipher(frm._bossInformation);
-            //        break;
-            //    case DialogResult.Cancel:
-            //        Application.Exit();
-            //        break;
-            //}
+
+            var frm = new frmKullanıcıGiriş();
+            DialogResult dR = frm.ShowDialog();
+            switch (dR)
+            {
+                case DialogResult.Yes:
+                    WriteCipher(frm._bossInformation);
+                    break;
+                case DialogResult.Cancel:
+                    Application.Exit();
+                    break;
+            }
             //for (int i = 0; i < 5; i++)
             //{
             //    var logTest = new Log
@@ -138,15 +139,15 @@ namespace CRMKurs
             //        Worker = new Worker
             //        {
             //            EMail = "asd" + i + "@asd.com",
-            //            KullanıcıAdı = "KAd" + i,
-            //            Statü = Worker.Status.Kullanıcı,
+            //            KullaniciAdi = "KAd" + i,
+            //            Statu = Worker.Status.Kullanıcı,
             //            Şifre = "testPass" + i
             //        }
             //    };
             //    DBConnection.DbCon.Logs.Add(logTest);
             //}
-            //DBConnection.DbCon.SaveChanges();
-            //LoadLogs();
+            DBConnection.DbCon.SaveChanges();
+            LoadLogs();
         }
 
         void LoadLogs()

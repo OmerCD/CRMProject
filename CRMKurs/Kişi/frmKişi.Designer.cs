@@ -58,11 +58,12 @@ namespace CRMKurs.Kişi
             this.lblÜlke = new System.Windows.Forms.Label();
             this.lblPostaKodu = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lVKişiler = new CRMKurs.CustomTools.ListViewCompare();
-            this.Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.PhoneNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnDüzenle = new System.Windows.Forms.Button();
             this.btnSil = new System.Windows.Forms.Button();
+            this.propGrid = new CRMKurs.CustomTools.PropertyGridMVC();
+            this.lVKişiler = new CRMKurs.CustomTools.ListViewCompare();
+            this.PersonName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.PhoneNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnYeni
@@ -318,31 +319,6 @@ namespace CRMKurs.Kişi
             this.label1.TabIndex = 50;
             this.label1.Text = "Kişiler";
             // 
-            // lVKişiler
-            // 
-            this.lVKişiler.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Name,
-            this.PhoneNumber});
-            this.lVKişiler.FullRowSelect = true;
-            this.lVKişiler.Location = new System.Drawing.Point(630, 44);
-            this.lVKişiler.MultiSelect = false;
-            this.lVKişiler.Name = "lVKişiler";
-            this.lVKişiler.Size = new System.Drawing.Size(173, 277);
-            this.lVKişiler.TabIndex = 51;
-            this.lVKişiler.UseCompatibleStateImageBehavior = false;
-            this.lVKişiler.View = System.Windows.Forms.View.Details;
-            this.lVKişiler.SelectedIndexChanged += new System.EventHandler(this.lVÖğrenciler_SelectedIndexChanged);
-            // 
-            // Name
-            // 
-            this.Name.Text = "İsim";
-            this.Name.Width = 88;
-            // 
-            // PhoneNumber
-            // 
-            this.PhoneNumber.Text = "Telefon";
-            this.PhoneNumber.Width = 79;
-            // 
             // btnDüzenle
             // 
             this.btnDüzenle.Location = new System.Drawing.Point(647, 328);
@@ -362,11 +338,48 @@ namespace CRMKurs.Kişi
             this.btnSil.Text = "Sil";
             this.btnSil.UseVisualStyleBackColor = true;
             // 
+            // propGrid
+            // 
+            this.propGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.propGrid.AutoScroll = true;
+            this.propGrid.BackColor = System.Drawing.Color.Red;
+            this.propGrid.Location = new System.Drawing.Point(12, 12);
+            this.propGrid.Name = "propGrid";
+            this.propGrid.Size = new System.Drawing.Size(356, 334);
+            this.propGrid.TabIndex = 54;
+            // 
+            // lVKişiler
+            // 
+            this.lVKişiler.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.PersonName,
+            this.PhoneNumber});
+            this.lVKişiler.FullRowSelect = true;
+            this.lVKişiler.Location = new System.Drawing.Point(630, 44);
+            this.lVKişiler.MultiSelect = false;
+            this.lVKişiler.Name = "lVKişiler";
+            this.lVKişiler.Size = new System.Drawing.Size(173, 277);
+            this.lVKişiler.TabIndex = 51;
+            this.lVKişiler.UseCompatibleStateImageBehavior = false;
+            this.lVKişiler.View = System.Windows.Forms.View.Details;
+            this.lVKişiler.SelectedIndexChanged += new System.EventHandler(this.lVÖğrenciler_SelectedIndexChanged);
+            // 
+            // PersonName
+            // 
+            this.PersonName.Text = "İsim";
+            this.PersonName.Width = 88;
+            // 
+            // PhoneNumber
+            // 
+            this.PhoneNumber.Text = "Telefon";
+            this.PhoneNumber.Width = 79;
+            // 
             // frmKişi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(815, 358);
+            this.Controls.Add(this.propGrid);
             this.Controls.Add(this.btnSil);
             this.Controls.Add(this.btnDüzenle);
             this.Controls.Add(this.lVKişiler);
@@ -398,6 +411,7 @@ namespace CRMKurs.Kişi
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnYeni);
+            this.Name = "frmKişi";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Kişiler";
             this.Load += new System.EventHandler(this.frmÖğrenci_Load);
@@ -436,9 +450,10 @@ namespace CRMKurs.Kişi
         private System.Windows.Forms.Label lblPostaKodu;
         private System.Windows.Forms.Label label1;
         private CustomTools.ListViewCompare lVKişiler;
-        private System.Windows.Forms.ColumnHeader Name;
+        private System.Windows.Forms.ColumnHeader PersonName;
         private System.Windows.Forms.ColumnHeader PhoneNumber;
         private System.Windows.Forms.Button btnDüzenle;
         private System.Windows.Forms.Button btnSil;
+        private CustomTools.PropertyGridMVC propGrid;
     }
 }

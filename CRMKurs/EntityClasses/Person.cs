@@ -22,7 +22,7 @@ namespace CRMKurs.EntityClasses
         [PropertyMVC(ControlEnum.Entity)]
         public virtual Institution Institution { get; set; }
         [PropertyMVC(ControlEnum.TextBox)]
-        public virtual string Sınıf { get; set; }
+        public virtual string Sinif { get; set; }
         [Required]
         [PropertyMVC(ControlEnum.Entity)]
         public PersonTypes PersonTypes { get; set; }
