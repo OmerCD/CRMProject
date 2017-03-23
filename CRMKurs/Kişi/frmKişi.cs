@@ -53,7 +53,7 @@ namespace CRMKurs.Kişi
             lblBölge.Text = öğrenci.Bölge;
             lblEposta.Text = öğrenci.EPosta;
             lblHitap.Text = öğrenci.Hitap;
-            lblOkul.Text = öğrenci.Okul.İsim;
+            lblOkul.Text = öğrenci.Institution.İsim;
             lblPostaKodu.Text = öğrenci.PostaKodu;
             lblTelefon.Text = öğrenci.Telefon;
             lblSınıf.Text = öğrenci.Sınıf;

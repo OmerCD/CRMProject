@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CRMKurs.EntityClasses;
 
 namespace CRMKurs.Okul
 {
@@ -26,6 +27,7 @@ namespace CRMKurs.Okul
         private void frmOkul_Load(object sender, EventArgs e)
         {
             RefreshSchools();
+            propGrid.SelectedObject= new Institution();
         }
         void RefreshSchools()
         {

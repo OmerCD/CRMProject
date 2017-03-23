@@ -96,7 +96,7 @@ namespace CRMKurs.Kişi
                 EPosta = txtBEposta.Text,
                 Hitap = cBHitap.SelectedItem.ToString(),
                 Notlar = txtBNotlar.Text,
-                Okul = DBConnection.DbCon.Institution.First(x => x.Id == cBOkul.GetSelectedValue && x.OwnerId == DataBaseConnectionOptions.OwnerUserId),
+                Institution = DBConnection.DbCon.Institution.First(x => x.Id == cBOkul.GetSelectedValue && x.OwnerId == DataBaseConnectionOptions.OwnerUserId),
                 PostaKodu = txtBPostaKodu.Text,
                 Sınıf = txtSınıf.Text,
                 Telefon = txtBTelefon.Text,

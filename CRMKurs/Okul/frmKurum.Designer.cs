@@ -53,6 +53,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnYeni = new System.Windows.Forms.Button();
+            this.propGrid = new CRMKurs.CustomTools.PropertyGridMVC();
             this.SuspendLayout();
             // 
             // lVOkullar
@@ -279,11 +280,24 @@
             this.btnYeni.UseVisualStyleBackColor = true;
             this.btnYeni.Click += new System.EventHandler(this.btnYeni_Click);
             // 
-            // frmOkul
+            // propGrid
+            // 
+            this.propGrid.AutoScroll = true;
+            this.propGrid.AutoSize = true;
+            this.propGrid.BackColor = System.Drawing.Color.Red;
+            this.propGrid.Location = new System.Drawing.Point(12, 15);
+            this.propGrid.MaximumSize = new System.Drawing.Size(0, 320);
+            this.propGrid.Name = "propGrid";
+            this.propGrid.SelectedObject = null;
+            this.propGrid.Size = new System.Drawing.Size(450, 153);
+            this.propGrid.TabIndex = 81;
+            // 
+            // frmKurum
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(809, 350);
+            this.Controls.Add(this.propGrid);
             this.Controls.Add(this.lVOkullar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblPostaKodu);
@@ -307,7 +321,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnYeni);
-            this.Name = "frmOkul";
+            this.Name = "frmKurum";
             this.Text = "frmOkul";
             this.Load += new System.EventHandler(this.frmOkul_Load);
             this.ResumeLayout(false);
@@ -342,5 +356,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnYeni;
+        private CustomTools.PropertyGridMVC propGrid;
     }
 }

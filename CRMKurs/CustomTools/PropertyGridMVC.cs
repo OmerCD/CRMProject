@@ -17,12 +17,32 @@ namespace CRMKurs.CustomTools
 
     public partial class PropertyGridMVC : UserControl
     {
-        public object SelectedObject { get; set; }
-        public PropertyGridMVC(object Object)
+        private object _selectedObject;
+        public object SelectedObject
+        {
+            get
+            {
+                AssignValues();
+                return _selectedObject;
+            }
+            set
+            {
+                _selectedObject = value;
+                if (value!=null)
+                {
+                    Test();
+                }
+            }
+        }
+
+        private void AssignValues()
+        {
+            throw new NotImplementedException();
+        }
+
+        public PropertyGridMVC()
         {
             InitializeComponent();
-            SelectedObject = Object;
-            Test();
         }
         string[] TakeFieldNames(string query)
         {
@@ -40,17 +60,19 @@ namespace CRMKurs.CustomTools
         }
         void Test()
         {
-            Type objType = SelectedObject.GetType();
+            Type objType = _selectedObject.GetType();
             var props = objType.GetProperties();
-            int x=30, y=5;
-            int difference=30;
-            var tableQuery = GetPropValue(DBConnection.DbCon, objType.Name).ToString(); //  verilen tabloyu almak için query'i veriyor
+            int x = 45, y = 5;
+            int difference = 30;
+            //var tableQuery = GetPropValue(DBConnection.DbCon, objType.Name).ToString(); //  verilen tabloyu almak için query'i veriyor
 
             foreach (var prop in props)
             {
                 var attr = prop.GetCustomAttributes(typeof(PropertyMVC), false);
                 if (attr.Length != 0)
                 {
+                    Control requiredControl = null;
+
                     var attribute = (PropertyMVC)attr[0];
                     switch (attribute.DesiredControl)
                     {
@@ -58,53 +80,67 @@ namespace CRMKurs.CustomTools
 
                             break;
                         case ControlEnum.Entity:
-                            //var propQuery = GetPropValue(DBConnection.DbCon, prop.Name).ToString();
-                            //var fieldNames = TakeFieldNames(propQuery);
-
+                            var propQuery = GetPropValue(DBConnection.DbCon, prop.PropertyType.Name).ToString();
+                            var fieldNames = TakeFieldNames(propQuery);
+                            DataComboBox cbx = new DataComboBox();
                             #region Düzenleme için bilgi getirme kodu
-                            //Dictionary<string, string> valueList = new Dictionary<string, string>();
-                            //DBConnection.QueryConnection.Open();
-                            //using (MySqlCommand cmd = new MySqlCommand(propQuery, DBConnection.QueryConnection))
-                            //{
-                            //    using (MySqlDataReader rd = cmd.ExecuteReader())
-                            //    {
-                            //        string values = "";
-                            //        while (rd.Read())
-                            //        {
-                            //            for (int i = 0; i < rd.FieldCount; i++)
-                            //            {
-                            //                valueList[fieldNames[i]]= rd[i].ToString();
-                            //            }
+                            Dictionary<string, string> valueList = new Dictionary<string, string>();
+                            DBConnection.QueryConnection.Open();
+                            using (MySqlCommand cmd = new MySqlCommand(propQuery, DBConnection.QueryConnection))
+                            {
+                                using (MySqlDataReader rd = cmd.ExecuteReader())
+                                {
+                                    string values = "";
+                                    while (rd.Read())
+                                    {
+                                        if (rd.HasRows)
+                                        {
 
-                            //        }
-                            //    }
-                            //}
-                            //DBConnection.QueryConnection.Close();
+                                            cbx.Items.Add(rd[1]);
+                                            cbx.RealValues.Add(rd[0].ToString());
+                                            //for (int i = 0; i < fieldNames.Length; i++)
+                                            //{
+                                            //    valueList.Add(fieldNames[i],rd[i].ToString());
 
+                                            //}
+                                        }
+                                    }
+                                }
+                            }
+                            DBConnection.QueryConnection.Close();
+                            if (cbx.Items.Count!=0)
+                            {
+                                cbx.SelectedIndex = 0;
+                            }
+                            requiredControl = cbx;
                             #endregion
                             // Property adlarını ayırıp, Ayrı ayrı çalıştırmak gerekiyor
                             //DBConnection.DbCon
                             break;
                         default:
-                            string propName = prop.Name;
-                            prop.SetValue(SelectedObject,"Test");
-                            var propValue = prop.GetValue(SelectedObject);
-                            var lbl = new System.Windows.Forms.Label
-                            {
-                                Text = propName,
-                                Location = new Point(0, y),
-                                AutoSize = true
-                            };
-                            var tempControl = GetControl(attribute.DesiredControl,attribute.Source);
-                            tempControl.Size= new Size(150,25);
-                            tempControl.Location= new Point(x,y);
-                            tempControl.Text = propValue.ToString();
-                            y += difference;
-                            Controls.Add(lbl);
-                            Controls.Add(tempControl);
+
+                            requiredControl = GetControl(attribute.DesiredControl, attribute.Source);
+
                             break;
                     }
-
+                    if (requiredControl != null)
+                    {
+                        string propName = prop.Name;
+                        //prop.SetValue(SelectedObject, "Test");
+                        //var propValue = prop.GetValue(SelectedObject);
+                        var lbl = new System.Windows.Forms.Label
+                        {
+                            Text = propName,
+                            Location = new Point(0, y),
+                            AutoSize = true
+                        };
+                        requiredControl.Size = new Size(150, 25);
+                        requiredControl.Location = new Point(x, y);
+                        //requiredControl.Text = propValue.ToString();
+                        y += difference;
+                        panelPropArea.Controls.Add(lbl);
+                        panelPropArea.Controls.Add(requiredControl);
+                    }
                 }
             }
         }
@@ -120,9 +156,11 @@ namespace CRMKurs.CustomTools
                     return new TextBox();
                 case ControlEnum.Combobox:
                     var tempC = new ComboBox();
-                    if (sourceObjects.Length>0)
+
+                    if (sourceObjects != null && sourceObjects.Length > 0)
                     {
                         tempC.Items.AddRange(sourceObjects);
+                        tempC.SelectedIndex = 0;
                     }
                     return tempC;
                 case ControlEnum.NumericUpDown:
@@ -130,9 +168,9 @@ namespace CRMKurs.CustomTools
             }
             return null;
         }
-        public PropertyGridMVC()
+        private void btnSave_Click(object sender, EventArgs e)
         {
-            InitializeComponent();
+
         }
     }
 }

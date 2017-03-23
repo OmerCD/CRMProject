@@ -31,7 +31,7 @@ namespace CRMKurs.EntityClasses.Staff
         /// <summary>
         /// Çalışanın yönetici, kullanıcı gibi gruplara ayrılması
         /// </summary>
-        [PropertyMVC(ControlEnum.Combobox,"Yönetici","Kullanıcı")]
+        [PropertyMVC(ControlEnum.Combobox,typeof(Status))]
         public Status Statü { get; set; }
         /// <summary>
         /// Çalışanın e-posta bilgisi

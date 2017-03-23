@@ -22,6 +22,16 @@ namespace CRMKurs
             DesiredControl = desiredControl;
             Source = source;
         }
+        /// <summary>
+        /// Enum türünde veriler girmek için
+        /// </summary>
+        /// <param name="desiredControl"></param>
+        /// <param name="sourceType"></param>
+        public PropertyMVC(ControlEnum desiredControl,Type sourceType)
+        {
+            DesiredControl = desiredControl;
+            Source = Enum.GetNames(sourceType);
+        }
 
     }
 
@@ -32,6 +42,7 @@ namespace CRMKurs
         MultipleAdder,
         Entity,
         NumericUpDown,
-        DateTime
+        DateTime,
+        MultilineTextBox
     }
 }

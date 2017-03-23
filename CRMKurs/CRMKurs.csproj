@@ -167,9 +167,9 @@
     </Compile>
     <Compile Include="ListViewComparer.cs" />
     <Compile Include="EntityClasses\MainBoss.cs" />
-    <Compile Include="Migrations\201703211109474_test.cs" />
-    <Compile Include="Migrations\201703211109474_test.Designer.cs">
-      <DependentUpon>201703211109474_test.cs</DependentUpon>
+    <Compile Include="Migrations\201703230706215_test.cs" />
+    <Compile Include="Migrations\201703230706215_test.Designer.cs">
+      <DependentUpon>201703230706215_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelBuild.cs" />
@@ -234,8 +234,8 @@
     <EmbeddedResource Include="frmMultipleAdder.resx">
       <DependentUpon>frmMultipleAdder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703211109474_test.resx">
-      <DependentUpon>201703211109474_test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703230706215_test.resx">
+      <DependentUpon>201703230706215_test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Okul\frmKurum.resx">
       <DependentUpon>frmKurum.cs</DependentUpon>
