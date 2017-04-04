@@ -12,9 +12,9 @@ namespace CRMKurs.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
-                        ExtraName = c.String(unicode: false),
-                        InputType = c.String(unicode: false),
-                        OwnerId = c.String(unicode: false),
+                        ExtraName = c.String(unicode: true),
+                        InputType = c.String(unicode: true),
+                        OwnerId = c.String(unicode: true),
                         ShowType_Id = c.String(maxLength: 128, storeType: "nvarchar"),
                     })
                 .PrimaryKey(t => t.Id)
@@ -72,7 +72,7 @@ namespace CRMKurs.Migrations
                     {
                         Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
                         KullaniciAdi = c.String(maxLength: 25, storeType: "nvarchar"),
-                        Şifre = c.String(unicode: false),
+                        Sifre = c.String(unicode: false),
                         Statu = c.Int(nullable: false),
                         EMail = c.String(unicode: false),
                         OwnerId = c.String(unicode: false),

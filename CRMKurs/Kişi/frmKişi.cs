@@ -21,10 +21,13 @@ namespace CRMKurs.Kişi
 
         private void btnYeni_Click(object sender, EventArgs e)
         {
-            using (var frm = new frmKişDüzenle("-1"))
-            {
-                if(frm.ShowDialog()==DialogResult.OK) RefreshPeople();
-            }
+            var newEntity = (Person)propGrid.SelectedObject;
+            DBConnection.DbCon.Person.Add(newEntity);
+            DBConnection.DbCon.SaveChanges();
+            //using (var frm = new frmKişDüzenle("-1"))
+            //{
+            //    if(frm.ShowDialog()==DialogResult.OK) RefreshPeople();
+            //}
             //var frm = new frmKişDüzenle("-1"); 
             //frm.ShowDialog();
         }
@@ -32,7 +35,20 @@ namespace CRMKurs.Kişi
         private void frmÖğrenci_Load(object sender, EventArgs e)
         {
             RefreshPeople();
-            propGrid.SelectedObject = new Person();
+            propGrid.SelectedObject = new Person
+            {
+                Adres = "Yok",
+                Bolge = "Yok",
+                EPosta = "asdasd@asdasd.com",
+                Il = "İstanbul",
+                Isim = "Test",
+                Notlar = "Yok",
+                PostaKodu = "34303",
+                Telefon = "05468963589",
+                Ulke = "Türkiye",
+                Tur = "Yok",
+                Sinif = "Yok"
+            };
         }
 
         private void RefreshPeople()

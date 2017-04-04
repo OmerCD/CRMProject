@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using CRMKurs.EntityClasses;
+using CRMKurs.EntityClasses.Staff;
 using DesktopAppCRM;
 
 namespace CRMKurs
@@ -72,18 +73,15 @@ namespace CRMKurs
                 if (_bossInformation != null)
                 {
                     _okToLogin = true;
-                    _tempRes = DialogResult.OK;
                 }
                 else
                 {
                     _bossInformation = BossLogin();
-                    _tempRes = DialogResult.Yes;
                 }
             }
             else
             {
                 _bossInformation = BossLogin();
-                _tempRes = DialogResult.Yes;
             }
             if (!_okToLogin) //Web Sitesine yönlendirme
             {
@@ -103,19 +101,28 @@ namespace CRMKurs
             {
                 if (Login())
                 {
-                    DialogResult = _tempRes;
-
+                    _tempRes = DialogResult.OK;
+                    Close();
                 }
             }
         }
         bool Login()
         {
+            //DBConnection.DbCon.Worker.Add(new Worker
+            //{
+            //    OwnerId = "1",
+            //    KullaniciAdi = "Enes",
+            //    EMail = "test@test.com",
+            //    Sifre = "123456",
+            //    Statu = Worker.Status.Kullanıcı
+            //});
+            //DBConnection.DbCon.SaveChanges();
             if (Check)
             {
                 var workers = DBConnection.DbCon.Worker;
                 if (workers.Any())
                 {
-                    var worker = DBConnection.DbCon.Worker.FirstOrDefault(x => x.KullaniciAdi == txtKullanıcıAdı.Text && x.Şifre == txtŞifre.Text && x.OwnerId == DataBaseConnectionOptions.OwnerUserId);
+                    var worker = DBConnection.DbCon.Worker.FirstOrDefault(x => x.KullaniciAdi == txtKullanıcıAdı.Text && x.Sifre == txtŞifre.Text && x.OwnerId == DataBaseConnectionOptions.OwnerUserId);
                     if (worker == null)
                     {
                         MessageBox.Show("Kullanıcı Adı veya Şifre hatalı", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);

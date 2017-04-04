@@ -70,3 +70,5 @@ C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.CustomTools.L
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.DebugForms.AddDebugForm.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.CustomTools.PropertyGridMVC.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Migrations.test.resources
+C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.CustomTools.PropertyGridMVCList.resources
+C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.frmPropsWithList.resources

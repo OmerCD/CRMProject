@@ -32,7 +32,7 @@ namespace CRMKurs
             if (txtŞifre.Text != txtŞifret.Text) return;
             var calisan = new EntityClasses.Staff.Worker {
                 KullaniciAdi =txtKullanıcı.Text,
-                Şifre=txtŞifre.Text,
+                Sifre=txtŞifre.Text,
                 OwnerId = DataBaseConnectionOptions.OwnerUserId
             };
             DBConnection.DbCon.Worker.Add(calisan);

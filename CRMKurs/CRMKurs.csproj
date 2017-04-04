@@ -98,6 +98,12 @@
     <Compile Include="CustomTools\PhoneTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CustomTools\PropertyGridMVCList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomTools\PropertyGridMVCList.Designer.cs">
+      <DependentUpon>PropertyGridMVCList.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomTools\PropertyGridMVC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -128,6 +134,12 @@
     <Compile Include="EntityClasses\Sheep.cs" />
     <Compile Include="EntityClasses\Staff\Worker.cs" />
     <Compile Include="ExtraFieldInfo.cs" />
+    <Compile Include="frmPropsWithList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPropsWithList.Designer.cs">
+      <DependentUpon>frmPropsWithList.cs</DependentUpon>
+    </Compile>
     <Compile Include="LogControl.cs" />
     <Compile Include="MainCRMWindows.cs">
       <SubType>Form</SubType>
@@ -167,9 +179,9 @@
     </Compile>
     <Compile Include="ListViewComparer.cs" />
     <Compile Include="EntityClasses\MainBoss.cs" />
-    <Compile Include="Migrations\201703231433225_test.cs" />
-    <Compile Include="Migrations\201703231433225_test.Designer.cs">
-      <DependentUpon>201703231433225_test.cs</DependentUpon>
+    <Compile Include="Migrations\201704040756318_test.cs" />
+    <Compile Include="Migrations\201704040756318_test.Designer.cs">
+      <DependentUpon>201704040756318_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelBuild.cs" />
@@ -210,11 +222,17 @@
     <EmbeddedResource Include="CustomTools\LogLabel.resx">
       <DependentUpon>LogLabel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomTools\PropertyGridMVCList.resx">
+      <DependentUpon>PropertyGridMVCList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomTools\PropertyGridMVC.resx">
       <DependentUpon>PropertyGridMVC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DebugForms\AddDebugForm.resx">
       <DependentUpon>AddDebugForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPropsWithList.resx">
+      <DependentUpon>frmPropsWithList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainCRMWindows.resx">
       <DependentUpon>MainCRMWindows.cs</DependentUpon>
@@ -234,8 +252,8 @@
     <EmbeddedResource Include="frmMultipleAdder.resx">
       <DependentUpon>frmMultipleAdder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703231433225_test.resx">
-      <DependentUpon>201703231433225_test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704040756318_test.resx">
+      <DependentUpon>201704040756318_test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Okul\frmKurum.resx">
       <DependentUpon>frmKurum.cs</DependentUpon>

@@ -167,5 +167,13 @@ namespace CRMKurs
         {
             ColorPanel.Hide();
         }
+
+        private void kişiTürleriToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var frm = new frmPropsWithList())
+            {
+                frm.ShowDialog();
+            }
+        }
     }
 }
