@@ -118,9 +118,8 @@ namespace CRMKurs.CustomTools
                 var attr = prop.GetCustomAttributes(typeof(PropertyMVC), false);
                 if (attr.Length != 0)
                 {
-                    Control requiredControl = null;
-
                     var attribute = (PropertyMVC)attr[0];
+                    Control requiredControl = null;
                     switch (attribute.DesiredControl)
                     {
                         case ControlEnum.MultilineTextBox:

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Data;
 using System.Data.Entity;
@@ -21,7 +22,9 @@ namespace CRMKurs.CustomTools
     {
         private object _selectedTable;
         private object _selectedObject;
+        private Type _tableType;
         Dictionary<string, Control> _valueControls = new Dictionary<string, Control>();
+        List<string> _idList = new List<string>();
         public object SelectedObject
         {
             get
@@ -53,29 +56,43 @@ namespace CRMKurs.CustomTools
 
         private void RefreshTableValues()
         {
+            string indexName="";
             lVTableValues.Items.Clear();
-            var test = _selectedTable;
-            var tableType = _selectedTable.GetType();
-            var tableName = tableType.Name;
+            SelectedObject = _selectedTable;
+            _tableType = _selectedTable.GetType();
             var tableQuery = "SELECT ";
-            var dizi = tableType.GetProperties();
+            var dizi = _tableType.GetProperties();
             List<string> alanlar = new List<string>();
-            for (int i = 0; i < dizi.Length; i++)
+            foreach (PropertyInfo property in dizi)
             {
-                if (dizi[i].CustomAttributes.Any(data => data.AttributeType == typeof(PropertyMVC)))
+                var customAttributes = property.CustomAttributes;
+                var attributeDatas = customAttributes as CustomAttributeData[] ?? customAttributes.ToArray();
+                if(!attributeDatas.Any()) continue;
+                if (attributeDatas.Any(x => x.AttributeType == typeof(KeyAttribute)))
                 {
-                    string deger = dizi[i].Name;
-                    tableQuery += deger + " ";
-                    lVTableValues.Columns.Add(deger);
-                    alanlar.Add(deger);
-                    tableQuery += ",";
+                    indexName = property.Name;
+                    tableQuery += indexName + " ,";
+                    continue;
                 }
+                
+                if (attributeDatas.Any(x => x.AttributeType != typeof(PropertyMVC))) continue;
+                string deger = property.Name;
+                lVTableValues.Columns.Add(deger).Name = deger;
+                if (property.GetCustomAttribute<PropertyMVC>().DesiredControl == ControlEnum.Entity)
+                    deger += "_Id";
+                tableQuery += deger + " ";
+                alanlar.Add(deger);
+                tableQuery += ",";
+            }
+            if (string.IsNullOrEmpty(indexName))
+            {
+                throw new IdNotFoundException();
             }
             tableQuery = tableQuery.Substring(0, tableQuery.Length - 1);
             tableQuery += " FROM ";
-            tableQuery += tableType.Name;
+            tableQuery += _tableType.Name;
             tableQuery += " WHERE OwnerId = " + DataBaseConnectionOptions.OwnerUserId;
-            var propQuery = GetPropValue(DBConnection.DbCon, _selectedTable.GetType().Name).ToString();
+            //var propQuery = GetPropValue(DBConnection.DbCon, _selectedTable.GetType().Name).ToString();
 
 
 
@@ -87,12 +104,17 @@ namespace CRMKurs.CustomTools
                     while (rd.Read())
                     {
                         if (!rd.HasRows) continue;
-                        ListViewItem lv = new ListViewItem();
-                        lv.Text = rd[alanlar[0]].ToString();  //satırın ilk değeri text olmayınca olmuyo
+                        _idList.Add(rd[indexName].ToString());
+                        ListViewItem lv = new ListViewItem()
+                        {
+                            Text = rd[alanlar[0]].ToString()
+                        };
+                        
+                        //satırın ilk değeri text olmayınca olmuyo
                         for (int i = 1; i < alanlar.Count; i++)
                         {
-                            string Field = rd[alanlar[i]].ToString();
-                            lv.SubItems.Add(Field);
+                            string field = rd[alanlar[i]].ToString();
+                            lv.SubItems.Add(field).Text=field;
                         }
                         lVTableValues.Items.Add(lv);
                     }
@@ -100,7 +122,6 @@ namespace CRMKurs.CustomTools
             }
             DBConnection.QueryConnection.Close();
         }
-
         object GetForeignKeyField(PropertyInfo property, string idValue)
         {
             object classInstance = Activator.CreateInstance(property.PropertyType);
@@ -133,6 +154,7 @@ namespace CRMKurs.CustomTools
             var props = _selectedObject.GetType().GetProperties();
             foreach (var prop in props)
             {
+                var testAttr = prop.CustomAttributes;
                 if (prop.CustomAttributes.Any(data => data.AttributeType == typeof(PropertyMVC)))
                 {
                     var value = _valueControls[prop.Name].Text;
@@ -180,12 +202,13 @@ namespace CRMKurs.CustomTools
             foreach (var prop in props)
             {
                 bool extraArea = false;
-                var attr = prop.GetCustomAttributes(typeof(PropertyMVC), false);
-                if (attr.Length != 0)
+                var attr = prop.GetCustomAttribute<PropertyMVC>();
+                //var attr = prop.GetCustomAttributes(typeof(PropertyMVC), false);
+                if (attr != null)
                 {
                     Control requiredControl = null;
 
-                    var attribute = (PropertyMVC)attr[0];
+                    var attribute = attr;
                     switch (attribute.DesiredControl)
                     {
                         case ControlEnum.MultilineTextBox:
@@ -195,9 +218,9 @@ namespace CRMKurs.CustomTools
                         case ControlEnum.MultipleAdder:
 
                             break;
-                        case ControlEnum.Entity: // Entity id veya class ataması yapılacak
+                        case ControlEnum.Entity:
                             var propQuery = GetPropValue(DBConnection.DbCon, prop.PropertyType.Name).ToString();
-                            var fieldNames = TakeFieldNames(propQuery);
+                            //var fieldNames = TakeFieldNames(propQuery);
                             DataComboBox cbx = new DataComboBox();
                             #region Düzenleme için bilgi getirme kodu
                             DBConnection.QueryConnection.Open();
@@ -227,26 +250,24 @@ namespace CRMKurs.CustomTools
 
                             break;
                     }
-                    if (requiredControl != null)
+                    if (requiredControl == null) continue;
+                    string propName = prop.Name;
+                    //prop.SetValue(SelectedObject, "Test");
+                    var propValue = prop.GetValue(_selectedObject);
+                    var lbl = new System.Windows.Forms.Label
                     {
-                        string propName = prop.Name;
-                        //prop.SetValue(SelectedObject, "Test");
-                        var propValue = prop.GetValue(_selectedObject);
-                        var lbl = new System.Windows.Forms.Label
-                        {
-                            Text = propName,
-                            Location = new Point(0, y),
-                            AutoSize = true
-                        };
-                        requiredControl.Size = new Size(150, 25);
-                        requiredControl.Location = new Point(x, y);
-                        if (propValue != null) requiredControl.Text = propValue.ToString();
-                        y += extraArea ? difference + 5 : difference;
-                        extraArea = false;
-                        panelPropArea.Controls.Add(lbl);
-                        panelPropArea.Controls.Add(requiredControl);
-                        _valueControls.Add(prop.Name, requiredControl);
-                    }
+                        Text = propName,
+                        Location = new Point(0, y),
+                        AutoSize = true
+                    };
+                    requiredControl.Size = new Size(150, 25);
+                    requiredControl.Location = new Point(x, y);
+                    if (propValue != null) requiredControl.Text = propValue.ToString();
+                    y += extraArea ? difference + 5 : difference;
+                    extraArea = false;
+                    panelPropArea.Controls.Add(lbl);
+                    panelPropArea.Controls.Add(requiredControl);
+                    _valueControls.Add(prop.Name, requiredControl);
                 }
             }
         }
@@ -282,5 +303,38 @@ namespace CRMKurs.CustomTools
         {
             var testValue = SelectedObject;
         }
+
+        private void lVTableValues_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var props = _tableType.GetProperties();
+            var query = GetPropValue(DBConnection.DbCon, _tableType.Name);
+            int c = 0;
+            ListViewItem lv = lVTableValues.SelectedItems[0];
+            foreach (Control control in panelPropArea.Controls)
+            {
+                if (!(control is System.Windows.Forms.Label))
+                {
+                    if (control is TextBox)
+                    {
+                        control.Text = lv.SubItems[c].Text; // Burda kaldım
+                    }
+                    else if (control is ComboBox)
+                    {
+                        (control as ComboBox).SelectedValue = lv.SubItems[c].Text;
+                    }
+                    c++;
+                }
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+
+    internal class IdNotFoundException : Exception
+    {
+
     }
 }

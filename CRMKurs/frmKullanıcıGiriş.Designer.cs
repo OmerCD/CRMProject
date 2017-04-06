@@ -69,6 +69,7 @@
             this.txtKullanıcıAdı.Name = "txtKullanıcıAdı";
             this.txtKullanıcıAdı.Size = new System.Drawing.Size(100, 20);
             this.txtKullanıcıAdı.TabIndex = 3;
+            this.txtKullanıcıAdı.Text = "Enes";
             // 
             // txtŞifre
             // 
@@ -77,6 +78,7 @@
             this.txtŞifre.PasswordChar = '*';
             this.txtŞifre.Size = new System.Drawing.Size(100, 20);
             this.txtŞifre.TabIndex = 4;
+            this.txtŞifre.Text = "123456";
             // 
             // frmKullanıcıGiriş
             // 

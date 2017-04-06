@@ -20,7 +20,7 @@ namespace CRMKurs
 
         private void frmPropsWithList_Load(object sender, EventArgs e)
         {
-            propertyGridMVCList1.SelectedTable = new PersonTypes();
+            propertyGridMVCList1.SelectedTable = new Person();
         }
     }
 }
