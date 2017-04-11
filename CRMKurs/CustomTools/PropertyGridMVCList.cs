@@ -41,7 +41,6 @@ namespace CRMKurs.CustomTools
                 }
             }
         }
-
         public object SelectedTable
         {
             set
@@ -53,7 +52,6 @@ namespace CRMKurs.CustomTools
                 }
             }
         }
-
         private void RefreshTableValues()
         {
             string indexName="";
@@ -62,6 +60,8 @@ namespace CRMKurs.CustomTools
             _tableType = _selectedTable.GetType();
             var tableQuery = "SELECT ";
             var dizi = _tableType.GetProperties();
+            var entityFields = new List<string>();
+            var entityFieldsForJoin = new List<string>();
             List<string> alanlar = new List<string>();
             foreach (PropertyInfo property in dizi)
             {
@@ -71,17 +71,27 @@ namespace CRMKurs.CustomTools
                 if (attributeDatas.Any(x => x.AttributeType == typeof(KeyAttribute)))
                 {
                     indexName = property.Name;
-                    tableQuery += indexName + " ,";
+                    tableQuery += _tableType.Name + "." + indexName + " ,";
                     continue;
                 }
                 
-                if (attributeDatas.Any(x => x.AttributeType != typeof(PropertyMVC))) continue;
+                if (property.GetCustomAttribute<PropertyMVC>() == null) continue;
                 string deger = property.Name;
                 lVTableValues.Columns.Add(deger).Name = deger;
                 if (property.GetCustomAttribute<PropertyMVC>().DesiredControl == ControlEnum.Entity)
-                    deger += "_Id";
+                {
+                    entityFields.Add(deger);
+                    entityFieldsForJoin.Add(deger + "_Id");
+                    alanlar.Add(deger);
+                    deger += ".Isim AS "+deger;
+                }
+                else
+                {
+                    alanlar.Add(deger);
+                    deger = _tableType.Name+"." + deger;
+                }
                 tableQuery += deger + " ";
-                alanlar.Add(deger);
+                
                 tableQuery += ",";
             }
             if (string.IsNullOrEmpty(indexName))
@@ -91,11 +101,15 @@ namespace CRMKurs.CustomTools
             tableQuery = tableQuery.Substring(0, tableQuery.Length - 1);
             tableQuery += " FROM ";
             tableQuery += _tableType.Name;
-            tableQuery += " WHERE OwnerId = " + DataBaseConnectionOptions.OwnerUserId;
-            //var propQuery = GetPropValue(DBConnection.DbCon, _selectedTable.GetType().Name).ToString();
+            for (int i = 0; i < entityFields.Count; i++)
+            {
+                tableQuery += " INNER JOIN " + entityFields[i] + " ON " + _tableType.Name + "." + entityFieldsForJoin[i] +
+                              " = " + entityFields[i] + ".Id ";
+            }
+            tableQuery += " WHERE " + _tableType.Name+".OwnerId = " + DataBaseConnectionOptions.OwnerUserId;
 
 
-
+            MessageBox.Show(tableQuery);
             DBConnection.QueryConnection.Open();
             using (MySqlCommand cmd = new MySqlCommand(tableQuery, DBConnection.QueryConnection))
             {
@@ -109,12 +123,12 @@ namespace CRMKurs.CustomTools
                         {
                             Text = rd[alanlar[0]].ToString()
                         };
-                        
+
                         //satırın ilk değeri text olmayınca olmuyo
                         for (int i = 1; i < alanlar.Count; i++)
                         {
                             string field = rd[alanlar[i]].ToString();
-                            lv.SubItems.Add(field).Text=field;
+                            lv.SubItems.Add(field).Text = field;
                         }
                         lVTableValues.Items.Add(lv);
                     }
@@ -170,7 +184,6 @@ namespace CRMKurs.CustomTools
                 }
             }
         }
-
         public PropertyGridMVCList()
         {
             InitializeComponent();
@@ -198,7 +211,6 @@ namespace CRMKurs.CustomTools
             int x = 80, y = 5;
             int difference = 30;
             //var tableQuery = GetPropValue(DBConnection.DbCon, objType.Name).ToString(); //  verilen tabloyu almak için query'i veriyor
-
             foreach (var prop in props)
             {
                 bool extraArea = false;
@@ -245,9 +257,7 @@ namespace CRMKurs.CustomTools
                             #endregion
                             break;
                         default:
-
                             requiredControl = GetControl(attribute.DesiredControl, attribute.Source);
-
                             break;
                     }
                     if (requiredControl == null) continue;
@@ -303,30 +313,40 @@ namespace CRMKurs.CustomTools
         {
             var testValue = SelectedObject;
         }
-
         private void lVTableValues_SelectedIndexChanged(object sender, EventArgs e)
         {
             var props = _tableType.GetProperties();
             var query = GetPropValue(DBConnection.DbCon, _tableType.Name);
             int c = 0;
+            if (lVTableValues.SelectedIndices.Count==0)
+            {
+                return;
+            }
             ListViewItem lv = lVTableValues.SelectedItems[0];
+
             foreach (Control control in panelPropArea.Controls)
             {
                 if (!(control is System.Windows.Forms.Label))
                 {
                     if (control is TextBox)
                     {
-                        control.Text = lv.SubItems[c].Text; // Burda kaldım
+                        control.Text = lv.SubItems[c].Text; 
                     }
-                    else if (control is ComboBox)
+                    else if (control is DataComboBox)
                     {
-                        (control as ComboBox).SelectedValue = lv.SubItems[c].Text;
+                        DataComboBox cbx = control as DataComboBox;
+                        //cbx.SelectedIndex = cbx.RealValues.IndexOf(_idList[lv.Index]);
+                        foreach (var cbxItem in cbx.Items)
+                        {
+                            if (cbxItem.ToString() != lv.SubItems[c].Text) continue;
+                            cbx.SelectedItem = cbxItem;
+                            break;
+                        }
                     }
                     c++;
                 }
             }
         }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
 

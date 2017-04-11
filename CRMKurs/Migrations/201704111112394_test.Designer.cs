@@ -13,7 +13,7 @@ namespace CRMKurs.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201704040756318_test"; }
+            get { return "201704111112394_test"; }
         }
         
         string IMigrationMetadata.Source

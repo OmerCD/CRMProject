@@ -12,9 +12,9 @@ namespace CRMKurs.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
-                        ExtraName = c.String(unicode: true),
-                        InputType = c.String(unicode: true),
-                        OwnerId = c.String(unicode: true),
+                        ExtraName = c.String(unicode: false),
+                        InputType = c.String(unicode: false),
+                        OwnerId = c.String(unicode: false),
                         ShowType_Id = c.String(maxLength: 128, storeType: "nvarchar"),
                     })
                 .PrimaryKey(t => t.Id)
@@ -26,11 +26,11 @@ namespace CRMKurs.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
-                        TypeName = c.String(maxLength: 25, storeType: "nvarchar"),
+                        Isim = c.String(maxLength: 25, storeType: "nvarchar"),
                         OwnerId = c.String(unicode: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .Index(t => t.TypeName, unique: true);
+                .Index(t => t.Isim, unique: true);
             
             CreateTable(
                 "dbo.Institution",
@@ -162,7 +162,7 @@ namespace CRMKurs.Migrations
             DropIndex("dbo.Worker", new[] { "KullaniciAdi" });
             DropIndex("dbo.Log", new[] { "Worker_Id" });
             DropIndex("dbo.Institution", new[] { "Telefon" });
-            DropIndex("dbo.PersonTypes", new[] { "TypeName" });
+            DropIndex("dbo.PersonTypes", new[] { "Isim" });
             DropIndex("dbo.ExtraField", new[] { "ShowType_Id" });
             DropTable("dbo.Person");
             DropTable("dbo.Olay");

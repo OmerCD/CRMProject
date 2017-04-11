@@ -65,7 +65,10 @@ namespace CRMKurs
         }
         private void frmKullanıcıGiriş_Load(object sender, EventArgs e)
         {
-            
+            //Worker wrk = new Worker { KullaniciAdi = "Enes", Sifre = "123456", OwnerId = "1", Statu = Worker.Status.Yönetici };
+            //DBConnection.DbCon.Worker.Add(wrk);
+            //DBConnection.DbCon.SaveChanges();
+
             _tempRes = DialogResult.Cancel;
             if (File.Exists(_filePath))
             {

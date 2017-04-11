@@ -13,6 +13,6 @@ namespace CRMKurs.EntityClasses
         [Index(IsUnique =  true)]
         [MaxLength(25)]
         [PropertyMVC(ControlEnum.TextBox)]
-        public string TypeName { get; set; }
+        public string Isim { get; set; }
     }
 }
