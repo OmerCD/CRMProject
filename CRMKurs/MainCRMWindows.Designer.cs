@@ -36,8 +36,14 @@
             this.aktiviteGörevToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.teklifToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.takvimToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.opsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kişiTürleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.asdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.asdToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.asdaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.asdasfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ColorPanel = new System.Windows.Forms.Panel();
-            this.PanelLogs = new System.Windows.Forms.FlowLayoutPanel();
             this.DeepSkyBlueBox = new System.Windows.Forms.PictureBox();
             this.GreenYellowBox = new System.Windows.Forms.PictureBox();
             this.TomatoBox = new System.Windows.Forms.PictureBox();
@@ -47,14 +53,8 @@
             this.YellowGreenBox = new System.Windows.Forms.PictureBox();
             this.RedBox = new System.Windows.Forms.PictureBox();
             this.YellowBox = new System.Windows.Forms.PictureBox();
+            this.PanelLogs = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.opsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.kişiTürleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.asdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.asdToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.asdaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.asdasfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.renkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.StripMenu.SuspendLayout();
             this.ColorPanel.SuspendLayout();
@@ -154,6 +154,59 @@
             this.takvimToolStripMenuItem.MouseEnter += new System.EventHandler(this.ChangeColorOfText);
             this.takvimToolStripMenuItem.MouseLeave += new System.EventHandler(this.ChangeColorOfText);
             // 
+            // opsToolStripMenuItem
+            // 
+            this.opsToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.opsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.kişiTürleriToolStripMenuItem});
+            this.opsToolStripMenuItem.Image = global::CRMKurs.Properties.Resources.setting;
+            this.opsToolStripMenuItem.Name = "opsToolStripMenuItem";
+            this.opsToolStripMenuItem.Size = new System.Drawing.Size(28, 46);
+            this.opsToolStripMenuItem.Click += new System.EventHandler(this.opsToolStripMenuItem_Click);
+            // 
+            // kişiTürleriToolStripMenuItem
+            // 
+            this.kişiTürleriToolStripMenuItem.Name = "kişiTürleriToolStripMenuItem";
+            this.kişiTürleriToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.kişiTürleriToolStripMenuItem.Text = "Kişi Türleri";
+            this.kişiTürleriToolStripMenuItem.Click += new System.EventHandler(this.kişiTürleriToolStripMenuItem_Click);
+            // 
+            // asdToolStripMenuItem
+            // 
+            this.asdToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.asdToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.asdToolStripMenuItem1,
+            this.asdaToolStripMenuItem,
+            this.asdasfToolStripMenuItem});
+            this.asdToolStripMenuItem.Image = global::CRMKurs.Properties.Resources.info;
+            this.asdToolStripMenuItem.Name = "asdToolStripMenuItem";
+            this.asdToolStripMenuItem.Size = new System.Drawing.Size(28, 46);
+            // 
+            // asdToolStripMenuItem1
+            // 
+            this.asdToolStripMenuItem1.Name = "asdToolStripMenuItem1";
+            this.asdToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+            // 
+            // asdaToolStripMenuItem
+            // 
+            this.asdaToolStripMenuItem.Name = "asdaToolStripMenuItem";
+            this.asdaToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.asdaToolStripMenuItem.Text = "asda";
+            // 
+            // asdasfToolStripMenuItem
+            // 
+            this.asdasfToolStripMenuItem.Name = "asdasfToolStripMenuItem";
+            this.asdasfToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.asdasfToolStripMenuItem.Text = "asdasf";
+            // 
+            // renkToolStripMenuItem
+            // 
+            this.renkToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.renkToolStripMenuItem.Image = global::CRMKurs.Properties.Resources.theme_brush;
+            this.renkToolStripMenuItem.Name = "renkToolStripMenuItem";
+            this.renkToolStripMenuItem.Size = new System.Drawing.Size(28, 46);
+            this.renkToolStripMenuItem.Click += new System.EventHandler(this.renkToolStripMenuItem_Click);
+            // 
             // ColorPanel
             // 
             this.ColorPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -173,13 +226,7 @@
             this.ColorPanel.TabIndex = 5;
             this.ColorPanel.Visible = false;
             this.ColorPanel.LostFocus += new System.EventHandler(this.ColorPanel_LostFocus);
-            // 
-            // PanelLogs
-            // 
-            this.PanelLogs.Location = new System.Drawing.Point(12, 64);
-            this.PanelLogs.Name = "PanelLogs";
-            this.PanelLogs.Size = new System.Drawing.Size(703, 263);
-            this.PanelLogs.TabIndex = 7;
+            this.ColorPanel.MouseLeave += new System.EventHandler(this.ColorPanel_MouseLeave);
             // 
             // DeepSkyBlueBox
             // 
@@ -271,6 +318,13 @@
             this.YellowBox.TabStop = false;
             this.YellowBox.Click += new System.EventHandler(this.ChangeThemeColor);
             // 
+            // PanelLogs
+            // 
+            this.PanelLogs.Location = new System.Drawing.Point(12, 64);
+            this.PanelLogs.Name = "PanelLogs";
+            this.PanelLogs.Size = new System.Drawing.Size(703, 263);
+            this.PanelLogs.TabIndex = 7;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.MidnightBlue;
@@ -282,59 +336,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(109, 50);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
-            // 
-            // opsToolStripMenuItem
-            // 
-            this.opsToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.opsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.kişiTürleriToolStripMenuItem});
-            this.opsToolStripMenuItem.Image = global::CRMKurs.Properties.Resources.setting;
-            this.opsToolStripMenuItem.Name = "opsToolStripMenuItem";
-            this.opsToolStripMenuItem.Size = new System.Drawing.Size(28, 46);
-            this.opsToolStripMenuItem.Click += new System.EventHandler(this.opsToolStripMenuItem_Click);
-            // 
-            // kişiTürleriToolStripMenuItem
-            // 
-            this.kişiTürleriToolStripMenuItem.Name = "kişiTürleriToolStripMenuItem";
-            this.kişiTürleriToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.kişiTürleriToolStripMenuItem.Text = "Kişi Türleri";
-            this.kişiTürleriToolStripMenuItem.Click += new System.EventHandler(this.kişiTürleriToolStripMenuItem_Click);
-            // 
-            // asdToolStripMenuItem
-            // 
-            this.asdToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.asdToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.asdToolStripMenuItem1,
-            this.asdaToolStripMenuItem,
-            this.asdasfToolStripMenuItem});
-            this.asdToolStripMenuItem.Image = global::CRMKurs.Properties.Resources.info;
-            this.asdToolStripMenuItem.Name = "asdToolStripMenuItem";
-            this.asdToolStripMenuItem.Size = new System.Drawing.Size(28, 46);
-            // 
-            // asdToolStripMenuItem1
-            // 
-            this.asdToolStripMenuItem1.Name = "asdToolStripMenuItem1";
-            this.asdToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
-            // 
-            // asdaToolStripMenuItem
-            // 
-            this.asdaToolStripMenuItem.Name = "asdaToolStripMenuItem";
-            this.asdaToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.asdaToolStripMenuItem.Text = "asda";
-            // 
-            // asdasfToolStripMenuItem
-            // 
-            this.asdasfToolStripMenuItem.Name = "asdasfToolStripMenuItem";
-            this.asdasfToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.asdasfToolStripMenuItem.Text = "asdasf";
-            // 
-            // renkToolStripMenuItem
-            // 
-            this.renkToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.renkToolStripMenuItem.Image = global::CRMKurs.Properties.Resources.theme_brush;
-            this.renkToolStripMenuItem.Name = "renkToolStripMenuItem";
-            this.renkToolStripMenuItem.Size = new System.Drawing.Size(28, 46);
-            this.renkToolStripMenuItem.Click += new System.EventHandler(this.renkToolStripMenuItem_Click);
             // 
             // pictureBox2
             // 
@@ -352,8 +353,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(727, 339);
-            this.Controls.Add(this.PanelLogs);
             this.Controls.Add(this.ColorPanel);
+            this.Controls.Add(this.PanelLogs);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.StripMenu);
             this.Controls.Add(this.pictureBox2);

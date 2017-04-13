@@ -17,15 +17,15 @@ namespace CRMKurs.EntityClasses
             Doktor,
             Profesör
         }
-        [PropertyMVC(ControlEnum.Combobox,typeof(Hitaplar))]
+        [PropertyMVC("Hitap",ControlEnum.Combobox,typeof(Hitaplar))]
         public string Hitap { get; set; }
-        [PropertyMVC(ControlEnum.Entity)]
+        [PropertyMVC("Kurum",ControlEnum.Entity)]
         public virtual Institution Institution { get; set; }
-        [PropertyMVC(ControlEnum.TextBox)]
-        public virtual string Sinif { get; set; }
+        [PropertyMVC("Sınıf",ControlEnum.TextBox)]
+        public string Sinif { get; set; }
         [Required]
-        [PropertyMVC(ControlEnum.Entity)]
-        public PersonTypes PersonTypes { get; set; }
+        [PropertyMVC("Kişi Türü",ControlEnum.Entity)]
+        public virtual PersonTypes PersonTypes { get; set; }
         public Person() : base() { }
     }
 }

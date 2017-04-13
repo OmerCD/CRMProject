@@ -24,7 +24,6 @@ namespace CRMKurs
         public MainCRMWindow()
         {
             InitializeComponent();
-
         }
         void WriteCipher(MainBoss boss)
         {
@@ -147,7 +146,7 @@ namespace CRMKurs
             //    DBConnection.DbCon.Logs.Add(logTest);
             //}
             DBConnection.DbCon.SaveChanges();
-            LoadLogs();
+            //LoadLogs();
         }
 
         void LoadLogs()
@@ -173,6 +172,17 @@ namespace CRMKurs
             using (var frm = new frmPropsWithList())
             {
                 frm.ShowDialog();
+            }
+        }
+
+        private void ColorPanel_MouseLeave(object sender, EventArgs e)
+        {
+            if (ColorPanel.Visible)
+            {
+                if (!ColorPanel.RectangleToScreen(ColorPanel.DisplayRectangle).Contains(MousePosition))
+                {
+                    ColorPanel.Hide();
+                }
             }
         }
     }

@@ -36,6 +36,7 @@
             // 
             // btnOnayla
             // 
+            this.btnOnayla.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOnayla.BackColor = System.Drawing.Color.GreenYellow;
             this.btnOnayla.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOnayla.ForeColor = System.Drawing.Color.SaddleBrown;
@@ -58,6 +59,7 @@
             // 
             // btnAlanEkle
             // 
+            this.btnAlanEkle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAlanEkle.BackColor = System.Drawing.Color.GreenYellow;
             this.btnAlanEkle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAlanEkle.ForeColor = System.Drawing.Color.SaddleBrown;
@@ -75,7 +77,7 @@
             this.btnClose.BackColor = System.Drawing.Color.Red;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnClose.Location = new System.Drawing.Point(290, 12);
+            this.btnClose.Location = new System.Drawing.Point(261, 12);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(35, 25);
             this.btnClose.TabIndex = 4;
@@ -88,7 +90,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Khaki;
-            this.ClientSize = new System.Drawing.Size(337, 324);
+            this.ClientSize = new System.Drawing.Size(308, 324);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnAlanEkle);
             this.Controls.Add(this.GeneralPanel);

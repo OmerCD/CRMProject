@@ -18,7 +18,7 @@ namespace CRMKurs.CustomTools
     public partial class PropertyGridMVC : UserControl
     {
         private object _selectedObject;
-        Dictionary<string,Control> _valueControls= new Dictionary<string, Control>();
+        Dictionary<string, Control> _valueControls = new Dictionary<string, Control>();
         public object SelectedObject
         {
             get
@@ -29,17 +29,17 @@ namespace CRMKurs.CustomTools
             set
             {
                 _selectedObject = value;
-                if (value!=null)
+                if (value != null)
                 {
                     CreateFields();
                 }
             }
         }
 
-        object GetForeignKeyField(PropertyInfo property,string idValue)
+        object GetForeignKeyField(PropertyInfo property, string idValue)
         {
             object classInstance = Activator.CreateInstance(property.PropertyType);
-            var propQuery = GetPropValue(DBConnection.DbCon, property.PropertyType.Name).ToString();
+            var propQuery = GetPropValue(DBConnection.DbCon, property.PropertyType.Name) + " Where Id = " + idValue;
             DBConnection.QueryConnection.Open();
             using (MySqlCommand cmd = new MySqlCommand(propQuery, DBConnection.QueryConnection))
             {
@@ -48,13 +48,10 @@ namespace CRMKurs.CustomTools
                     while (rd.Read())
                     {
                         if (!rd.HasRows) continue;
-                        string idField = rd["Id"].ToString();
-                        if (idField != idValue) continue;
-                        
                         var instancePorperties = classInstance.GetType().GetProperties();
                         foreach (var instancePorperty in instancePorperties)
                         {
-                                    instancePorperty.SetValue(classInstance, rd[instancePorperty.Name].ToString());
+                            instancePorperty.SetValue(classInstance, rd[instancePorperty.Name].ToString());
                         }
                         break;
                     }
@@ -68,13 +65,13 @@ namespace CRMKurs.CustomTools
             var props = _selectedObject.GetType().GetProperties();
             foreach (var prop in props)
             {
-                if (prop.CustomAttributes.Any(data =>data.AttributeType==typeof(PropertyMVC) ))
+                if (prop.CustomAttributes.Any(data => data.AttributeType == typeof(PropertyMVC)))
                 {
                     var value = _valueControls[prop.Name].Text;
                     if (prop.GetCustomAttribute<PropertyMVC>().DesiredControl == ControlEnum.Entity)
                     {
-                       var foreignObject =  GetForeignKeyField(prop, ((DataComboBox) _valueControls[prop.Name]).GetSelectedValue);
-                        prop.SetValue(_selectedObject,foreignObject);
+                        var foreignObject = GetForeignKeyField(prop, ((DataComboBox)_valueControls[prop.Name]).GetSelectedValue);
+                        prop.SetValue(_selectedObject, foreignObject);
                     }
                     else
                     {
@@ -123,7 +120,7 @@ namespace CRMKurs.CustomTools
                     switch (attribute.DesiredControl)
                     {
                         case ControlEnum.MultilineTextBox:
-                            requiredControl = new TextBox {Multiline = true};
+                            requiredControl = new TextBox { Multiline = true };
                             extraArea = true;
                             break;
                         case ControlEnum.MultipleAdder:
@@ -131,7 +128,7 @@ namespace CRMKurs.CustomTools
                             break;
                         case ControlEnum.Entity: // Entity id veya class ataması yapılacak
                             var propQuery = GetPropValue(DBConnection.DbCon, prop.PropertyType.Name).ToString();
-                            var fieldNames = TakeFieldNames(propQuery);
+                            //var fieldNames = TakeFieldNames(propQuery);
                             DataComboBox cbx = new DataComboBox();
                             #region Düzenleme için bilgi getirme kodu
                             DBConnection.QueryConnection.Open();
@@ -148,7 +145,7 @@ namespace CRMKurs.CustomTools
                                 }
                             }
                             DBConnection.QueryConnection.Close();
-                            if (cbx.Items.Count!=0)
+                            if (cbx.Items.Count != 0)
                             {
                                 cbx.SelectedIndex = 0;
                             }
@@ -179,7 +176,7 @@ namespace CRMKurs.CustomTools
                         extraArea = false;
                         panelPropArea.Controls.Add(lbl);
                         panelPropArea.Controls.Add(requiredControl);
-                        _valueControls.Add(prop.Name,requiredControl);
+                        _valueControls.Add(prop.Name, requiredControl);
                     }
                 }
             }

@@ -29,7 +29,6 @@ namespace CRMKurs
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (txtŞifre.Text != txtŞifret.Text) return;
             var calisan = new EntityClasses.Staff.Worker {
                 KullaniciAdi =txtKullanıcı.Text,
                 Sifre=txtŞifre.Text,

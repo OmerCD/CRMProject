@@ -58,6 +58,7 @@ namespace CRMKurs
                     Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\CRM\\");
                     using (File.Create(_filePath))
                     _okToLogin = true;
+                    _tempRes=DialogResult.Yes;
                     return frm.BossInfo;
                 }
                 return null;
@@ -76,6 +77,7 @@ namespace CRMKurs
                 if (_bossInformation != null)
                 {
                     _okToLogin = true;
+                    _tempRes=DialogResult.OK;
                 }
                 else
                 {
@@ -104,7 +106,6 @@ namespace CRMKurs
             {
                 if (Login())
                 {
-                    _tempRes = DialogResult.OK;
                     Close();
                 }
             }

@@ -84,7 +84,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(381, 225);
+            this.ClientSize = new System.Drawing.Size(293, 174);
             this.Controls.Add(this.txtŞifre);
             this.Controls.Add(this.txtKullanıcıAdı);
             this.Controls.Add(this.linkLabel1);

@@ -35,8 +35,6 @@
             this.txtŞifre = new System.Windows.Forms.TextBox();
             this.cBStatü = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtŞifret = new System.Windows.Forms.TextBox();
             this.emailTextBox1 = new CRMKurs.CustomTools.EmailTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -62,7 +60,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 143);
+            this.label3.Location = new System.Drawing.Point(12, 108);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 2;
@@ -86,14 +84,14 @@
             // cBStatü
             // 
             this.cBStatü.FormattingEnabled = true;
-            this.cBStatü.Location = new System.Drawing.Point(91, 140);
+            this.cBStatü.Location = new System.Drawing.Point(91, 105);
             this.cBStatü.Name = "cBStatü";
             this.cBStatü.Size = new System.Drawing.Size(121, 21);
             this.cBStatü.TabIndex = 5;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(91, 190);
+            this.button1.Location = new System.Drawing.Point(91, 155);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(78, 25);
             this.button1.TabIndex = 6;
@@ -101,25 +99,9 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 79);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Şifre (Tekrar) ";
-            // 
-            // txtŞifret
-            // 
-            this.txtŞifret.Location = new System.Drawing.Point(91, 76);
-            this.txtŞifret.Name = "txtŞifret";
-            this.txtŞifret.Size = new System.Drawing.Size(100, 20);
-            this.txtŞifret.TabIndex = 8;
-            // 
             // emailTextBox1
             // 
-            this.emailTextBox1.Location = new System.Drawing.Point(91, 108);
+            this.emailTextBox1.Location = new System.Drawing.Point(91, 73);
             this.emailTextBox1.MaxLength = 30;
             this.emailTextBox1.Name = "emailTextBox1";
             this.emailTextBox1.Size = new System.Drawing.Size(100, 20);
@@ -128,7 +110,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 111);
+            this.label5.Location = new System.Drawing.Point(12, 76);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 13);
             this.label5.TabIndex = 7;
@@ -138,11 +120,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(305, 233);
+            this.ClientSize = new System.Drawing.Size(229, 186);
             this.Controls.Add(this.emailTextBox1);
-            this.Controls.Add(this.txtŞifret);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cBStatü);
             this.Controls.Add(this.txtŞifre);
@@ -167,8 +147,6 @@
         private System.Windows.Forms.TextBox txtŞifre;
         private System.Windows.Forms.ComboBox cBStatü;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtŞifret;
         private CustomTools.EmailTextBox emailTextBox1;
         private System.Windows.Forms.Label label5;
     }

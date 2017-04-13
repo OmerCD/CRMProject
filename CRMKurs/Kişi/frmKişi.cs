@@ -21,8 +21,28 @@ namespace CRMKurs.Kişi
 
         private void btnYeni_Click(object sender, EventArgs e)
         {
+            //var testPerson = new Person
+            //{
+            //    OwnerId = "1",
+            //    Institution = DBConnection.DbCon.Institution.First(),
+            //    PersonTypes = DBConnection.DbCon.PersonTypes.First(),
+            //    Adres = "testAdres",
+            //    Bolge = "testBolge",
+            //    EPosta = "testEposta",
+            //    Hitap = "Garışık",
+            //    Il = "testIl",
+            //    Isim = "Namık",
+            //    Notlar = "Not yok çay için",
+            //    PostaKodu = "Komadı",
+            //    Sinif = "3/c",
+            //    Telefon = "0543",
+            //    Tur = "İnsanımsı",
+            //    Ulke = "Burası"
+            //};
             var newEntity = (Person)propGrid.SelectedObject;
             DBConnection.DbCon.Person.Add(newEntity);
+            //var newPersonType = (PersonTypes) propGrid.SelectedObject;
+            //DBConnection.DbCon.PersonTypes.Add(newPersonType);
             DBConnection.DbCon.SaveChanges();
             //using (var frm = new frmKişDüzenle("-1"))
             //{
@@ -35,6 +55,10 @@ namespace CRMKurs.Kişi
         private void frmÖğrenci_Load(object sender, EventArgs e)
         {
             RefreshPeople();
+            //propGrid.SelectedObject = new PersonTypes
+            //{
+            //    Isim = "Test1",
+            //};
             propGrid.SelectedObject = new Person
             {
                 Adres = "Yok",

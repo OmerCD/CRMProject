@@ -14,7 +14,8 @@ namespace CRMKurs.EntityClasses
         public string OlayAdi{ get; set; }
         [PropertyMVC(ControlEnum.TextBox)]
         public string OlayBilgi { get; set; }
-        public List<EntityClasses.Staff.Worker> Calisan { get; set; }
+        [PropertyMVC("Çalışan",ControlEnum.Entity)]
+        public List<Staff.Worker> Calisan { get; set; }
 
     } 
 }

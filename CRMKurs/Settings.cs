@@ -8,6 +8,6 @@ namespace CRMKurs
 {
     internal class Settings
     {
-        public static string[] Hitaplar => (new string[] {"Bay","Bayan","Doktor","Yar. Doc.","Doc.","Prof.Dr." });
+        public static string[] Hitaplar => (new [] {"Bay","Bayan","Doktor","Yar. Doc.","Doc.","Prof.Dr." });
     }
 }
