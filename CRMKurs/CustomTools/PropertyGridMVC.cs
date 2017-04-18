@@ -38,27 +38,27 @@ namespace CRMKurs.CustomTools
 
         object GetForeignKeyField(PropertyInfo property, string idValue)
         {
-            object classInstance = Activator.CreateInstance(property.PropertyType);
-            var propQuery = GetPropValue(DBConnection.DbCon, property.PropertyType.Name) + " Where Id = " + idValue;
-            DBConnection.QueryConnection.Open();
-            using (MySqlCommand cmd = new MySqlCommand(propQuery, DBConnection.QueryConnection))
-            {
-                using (MySqlDataReader rd = cmd.ExecuteReader())
-                {
-                    while (rd.Read())
-                    {
-                        if (!rd.HasRows) continue;
-                        var instancePorperties = classInstance.GetType().GetProperties();
-                        foreach (var instancePorperty in instancePorperties)
-                        {
-                            instancePorperty.SetValue(classInstance, rd[instancePorperty.Name].ToString());
-                        }
-                        break;
-                    }
-                }
-            }
-            DBConnection.QueryConnection.Close();
-            return classInstance;
+            //object classInstance = Activator.CreateInstance(property.PropertyType);
+            //var propQuery = GetPropValue(DBConnection.DbCon, property.PropertyType.Name) + " Where Id = " + idValue;
+            //DBConnection.QueryConnection.Open();
+            //using (MySqlCommand cmd = new MySqlCommand(propQuery, DBConnection.QueryConnection))
+            //{
+            //    using (MySqlDataReader rd = cmd.ExecuteReader())
+            //    {
+            //        while (rd.Read())
+            //        {
+            //            if (!rd.HasRows) continue;
+            //            var instancePorperties = classInstance.GetType().GetProperties();
+            //            foreach (var instancePorperty in instancePorperties)
+            //            {
+            //                instancePorperty.SetValue(classInstance, rd[instancePorperty.Name].ToString());
+            //            }
+            //            break;
+            //        }
+            //    }
+            //}
+            //DBConnection.QueryConnection.Close();
+            return DBConnection.DbCon.Set(property.PropertyType).Find(idValue);
         }
         private void AssignValues()
         {
@@ -112,78 +112,76 @@ namespace CRMKurs.CustomTools
             foreach (var prop in props)
             {
                 bool extraArea = false;
-                var attr = prop.GetCustomAttributes(typeof(PropertyMVC), false);
-                if (attr.Length != 0)
+                var attribute = prop.GetCustomAttribute<PropertyMVC>();
+                if (attribute == null) continue;
+                Control requiredControl = null;
+                switch (attribute.DesiredControl)
                 {
-                    var attribute = (PropertyMVC)attr[0];
-                    Control requiredControl = null;
-                    switch (attribute.DesiredControl)
-                    {
-                        case ControlEnum.MultilineTextBox:
-                            requiredControl = new TextBox { Multiline = true };
-                            extraArea = true;
-                            break;
-                        case ControlEnum.MultipleAdder:
+                    case ControlEnum.MultilineTextBox:
+                        requiredControl = new TextBox { Multiline = true };
+                        extraArea = true;
+                        break;
+                    case ControlEnum.MultipleAdder:
 
-                            break;
-                        case ControlEnum.Entity: // Entity id veya class ataması yapılacak
-                            var propQuery = GetPropValue(DBConnection.DbCon, prop.PropertyType.Name).ToString();
-                            //var fieldNames = TakeFieldNames(propQuery);
-                            DataComboBox cbx = new DataComboBox();
-                            #region Düzenleme için bilgi getirme kodu
-                            DBConnection.QueryConnection.Open();
-                            using (MySqlCommand cmd = new MySqlCommand(propQuery, DBConnection.QueryConnection))
+                        break;
+                    case ControlEnum.Entity: // Entity id veya class ataması yapılacak
+                        var propQuery = GetPropValue(DBConnection.DbCon, prop.PropertyType.Name);
+                            
+                        //var fieldNames = TakeFieldNames(propQuery);
+                        DataComboBox cbx = new DataComboBox();
+                        #region Düzenleme için bilgi getirme kodu
+                        DBConnection.QueryConnection.Open();
+                        using (MySqlCommand cmd = new MySqlCommand(propQuery.ToString(), DBConnection.QueryConnection))
+                        {
+                            using (MySqlDataReader rd = cmd.ExecuteReader())
                             {
-                                using (MySqlDataReader rd = cmd.ExecuteReader())
+                                while (rd.Read())
                                 {
-                                    while (rd.Read())
-                                    {
-                                        if (!rd.HasRows) continue;
-                                        cbx.Items.Add(rd[1]);
-                                        cbx.RealValues.Add(rd[0].ToString());
-                                    }
+                                    if (!rd.HasRows) continue;
+                                    cbx.Items.Add(rd[1]);
+                                    cbx.RealValues.Add(rd[0].ToString());
                                 }
                             }
-                            DBConnection.QueryConnection.Close();
-                            if (cbx.Items.Count != 0)
-                            {
-                                cbx.SelectedIndex = 0;
-                            }
-                            requiredControl = cbx;
-                            #endregion
-                            break;
-                        default:
-
-                            requiredControl = GetControl(attribute.DesiredControl, attribute.Source);
-
-                            break;
-                    }
-                    if (requiredControl != null)
-                    {
-                        string propName = prop.Name;
-                        //prop.SetValue(SelectedObject, "Test");
-                        var propValue = prop.GetValue(_selectedObject);
-                        var lbl = new System.Windows.Forms.Label
+                        }
+                        DBConnection.QueryConnection.Close();
+                        if (cbx.Items.Count != 0)
                         {
-                            Text = propName,
-                            Location = new Point(0, y),
-                            AutoSize = true
-                        };
-                        requiredControl.Size = new Size(150, 25);
-                        requiredControl.Location = new Point(x, y);
-                        if (propValue != null) requiredControl.Text = propValue.ToString();
-                        y += extraArea ? difference + 5 : difference;
-                        extraArea = false;
-                        panelPropArea.Controls.Add(lbl);
-                        panelPropArea.Controls.Add(requiredControl);
-                        _valueControls.Add(prop.Name, requiredControl);
-                    }
+                            cbx.SelectedIndex = 0;
+                        }
+                        requiredControl = cbx;
+                        #endregion
+                        break;
+                    default:
+
+                        requiredControl = GetControl(attribute.DesiredControl, attribute.Source);
+
+                        break;
+                }
+                if (requiredControl != null)
+                {
+                    string propName = prop.Name;
+                    //prop.SetValue(SelectedObject, "Test");
+                    var propValue = prop.GetValue(_selectedObject);
+                    var lbl = new System.Windows.Forms.Label
+                    {
+                        Text = attribute.DisplayName,
+                        Location = new Point(0, y),
+                        AutoSize = true
+                    };
+                    requiredControl.Size = new Size(150, 25);
+                    requiredControl.Location = new Point(x, y);
+                    if (propValue != null) requiredControl.Text = propValue.ToString();
+                    y += extraArea ? difference + 5 : difference;
+                    extraArea = false;
+                    panelPropArea.Controls.Add(lbl);
+                    panelPropArea.Controls.Add(requiredControl);
+                    _valueControls.Add(prop.Name, requiredControl);
                 }
             }
         }
         public object GetPropValue(object src, string propName)
         {
-            return src.GetType().GetProperty(propName).GetValue(src, null);
+            return src.GetType().GetProperty(propName).GetValue(src);
         }
         Control GetControl(ControlEnum cEnum, params object[] sourceObjects)
         {

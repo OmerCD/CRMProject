@@ -13,27 +13,27 @@ namespace CRMKurs.EntityClasses.Abstract
     public abstract class MainEntity:EntityIdDefine
     {
         public MainEntity() : base() { }
-        [PropertyMVC(ControlEnum.TextBox)]
+        [PropertyMVC("İsim", ControlEnum.TextBox)]
         public string Isim { get; set; }
-        [PropertyMVC(ControlEnum.TextBox)]
+        [PropertyMVC("Tür", ControlEnum.TextBox)]
         public string Tur { get; set; }
-        [PropertyMVC(ControlEnum.TextBox)]
+        [PropertyMVC("EPosta", ControlEnum.TextBox)]
         public string EPosta { get; set; }
         [Index(IsUnique = true, Order = 1)]
         [MaxLength(11)]
-        [PropertyMVC(ControlEnum.TextBox)]
+        [PropertyMVC("Telefon", ControlEnum.TextBox)]
         public string Telefon { get; set; }
-        [PropertyMVC(ControlEnum.MultilineTextBox)]
+        [PropertyMVC("Adres", ControlEnum.MultilineTextBox)]
         public string Adres { get; set; }
-        [PropertyMVC(ControlEnum.Combobox)]
+        [PropertyMVC("İl", ControlEnum.TextBox)]
         public string Il { get; set; }
-        [PropertyMVC(ControlEnum.Combobox)]
+        [PropertyMVC("Bölge", ControlEnum.TextBox)]
         public string Bolge { get; set; }
-        [PropertyMVC(ControlEnum.Combobox)]
+        [PropertyMVC("Ülke", ControlEnum.TextBox)]
         public string Ulke { get; set; }
-        [PropertyMVC(ControlEnum.TextBox)]
+        [PropertyMVC("Posta Kodu", ControlEnum.TextBox)]
         public string PostaKodu { get; set; }
-        [PropertyMVC(ControlEnum.MultilineTextBox)]
+        [PropertyMVC("Notlar", ControlEnum.MultilineTextBox)]
         public string Notlar { get; set; }
     }
 }

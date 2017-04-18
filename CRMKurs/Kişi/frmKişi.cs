@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Migrations;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -40,7 +41,7 @@ namespace CRMKurs.Kişi
             //    Ulke = "Burası"
             //};
             var newEntity = (Person)propGrid.SelectedObject;
-            DBConnection.DbCon.Person.Add(newEntity);
+            DBConnection.DbCon.Person.AddOrUpdate(newEntity);
             //var newPersonType = (PersonTypes) propGrid.SelectedObject;
             //DBConnection.DbCon.PersonTypes.Add(newPersonType);
             DBConnection.DbCon.SaveChanges();
