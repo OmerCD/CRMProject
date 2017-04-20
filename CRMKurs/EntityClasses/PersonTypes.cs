@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace CRMKurs.EntityClasses
 {
-    public class PersonTypes : CRMKurs.EntityClasses.Abstract.EntityIdDefine
+    public class PersonTypes : Abstract.EntityIdDefine
     {
         [Index(IsUnique =  true)]
         [MaxLength(25)]
-        [PropertyMVC(ControlEnum.TextBox)]
-        public string TypeName { get; set; }
+        [PropertyMVC("İsim",ControlEnum.TextBox)]
+        public string Isim { get; set; }
     }
 }

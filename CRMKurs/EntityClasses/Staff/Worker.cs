@@ -21,7 +21,7 @@ namespace CRMKurs.EntityClasses.Staff
         /// Çalışanların kullanıcı şifresi
         /// </summary>
         [PropertyMVC(ControlEnum.TextBox)]
-        public string Şifre { get; set; }
+        public string Sifre { get; set; }
         public enum Status
         {
             Yönetici,

@@ -37,6 +37,7 @@
             this.teklifToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.takvimToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kişiTürleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asdToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.asdaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,9 +53,9 @@
             this.YellowGreenBox = new System.Windows.Forms.PictureBox();
             this.RedBox = new System.Windows.Forms.PictureBox();
             this.YellowBox = new System.Windows.Forms.PictureBox();
+            this.PanelLogs = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.PanelLogs = new System.Windows.Forms.FlowLayoutPanel();
             this.StripMenu.SuspendLayout();
             this.ColorPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DeepSkyBlueBox)).BeginInit();
@@ -112,6 +113,7 @@
             this.öğretmenToolStripMenuItem.Name = "öğretmenToolStripMenuItem";
             this.öğretmenToolStripMenuItem.Size = new System.Drawing.Size(73, 46);
             this.öğretmenToolStripMenuItem.Text = "Öğretmen";
+            this.öğretmenToolStripMenuItem.Click += new System.EventHandler(this.öğretmenToolStripMenuItem_Click);
             this.öğretmenToolStripMenuItem.MouseEnter += new System.EventHandler(this.ChangeColorOfText);
             this.öğretmenToolStripMenuItem.MouseLeave += new System.EventHandler(this.ChangeColorOfText);
             // 
@@ -140,6 +142,7 @@
             this.teklifToolStripMenuItem.Name = "teklifToolStripMenuItem";
             this.teklifToolStripMenuItem.Size = new System.Drawing.Size(48, 46);
             this.teklifToolStripMenuItem.Text = "Teklif";
+            this.teklifToolStripMenuItem.Click += new System.EventHandler(this.teklifToolStripMenuItem_Click);
             this.teklifToolStripMenuItem.MouseEnter += new System.EventHandler(this.ChangeColorOfText);
             this.teklifToolStripMenuItem.MouseLeave += new System.EventHandler(this.ChangeColorOfText);
             // 
@@ -156,10 +159,19 @@
             // opsToolStripMenuItem
             // 
             this.opsToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.opsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.kişiTürleriToolStripMenuItem});
             this.opsToolStripMenuItem.Image = global::CRMKurs.Properties.Resources.setting;
             this.opsToolStripMenuItem.Name = "opsToolStripMenuItem";
             this.opsToolStripMenuItem.Size = new System.Drawing.Size(28, 46);
             this.opsToolStripMenuItem.Click += new System.EventHandler(this.opsToolStripMenuItem_Click);
+            // 
+            // kişiTürleriToolStripMenuItem
+            // 
+            this.kişiTürleriToolStripMenuItem.Name = "kişiTürleriToolStripMenuItem";
+            this.kişiTürleriToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.kişiTürleriToolStripMenuItem.Text = "Kişi Türleri";
+            this.kişiTürleriToolStripMenuItem.Click += new System.EventHandler(this.kişiTürleriToolStripMenuItem_Click);
             // 
             // asdToolStripMenuItem
             // 
@@ -216,6 +228,7 @@
             this.ColorPanel.TabIndex = 5;
             this.ColorPanel.Visible = false;
             this.ColorPanel.LostFocus += new System.EventHandler(this.ColorPanel_LostFocus);
+            this.ColorPanel.MouseLeave += new System.EventHandler(this.ColorPanel_MouseLeave);
             // 
             // DeepSkyBlueBox
             // 
@@ -307,6 +320,13 @@
             this.YellowBox.TabStop = false;
             this.YellowBox.Click += new System.EventHandler(this.ChangeThemeColor);
             // 
+            // PanelLogs
+            // 
+            this.PanelLogs.Location = new System.Drawing.Point(12, 64);
+            this.PanelLogs.Name = "PanelLogs";
+            this.PanelLogs.Size = new System.Drawing.Size(703, 263);
+            this.PanelLogs.TabIndex = 7;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.MidnightBlue;
@@ -330,20 +350,13 @@
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
             // 
-            // PanelLogs
-            // 
-            this.PanelLogs.Location = new System.Drawing.Point(12, 64);
-            this.PanelLogs.Name = "PanelLogs";
-            this.PanelLogs.Size = new System.Drawing.Size(703, 263);
-            this.PanelLogs.TabIndex = 7;
-            // 
             // MainCRMWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(727, 339);
-            this.Controls.Add(this.PanelLogs);
             this.Controls.Add(this.ColorPanel);
+            this.Controls.Add(this.PanelLogs);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.StripMenu);
             this.Controls.Add(this.pictureBox2);
@@ -398,6 +411,7 @@
         private System.Windows.Forms.ToolStripMenuItem asdToolStripMenuItem1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.FlowLayoutPanel PanelLogs;
+        private System.Windows.Forms.ToolStripMenuItem kişiTürleriToolStripMenuItem;
     }
 }
 

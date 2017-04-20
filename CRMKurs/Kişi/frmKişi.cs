@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Migrations;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,10 +22,33 @@ namespace CRMKurs.Kişi
 
         private void btnYeni_Click(object sender, EventArgs e)
         {
-            using (var frm = new frmKişDüzenle("-1"))
-            {
-                if(frm.ShowDialog()==DialogResult.OK) RefreshPeople();
-            }
+            //var testPerson = new Person
+            //{
+            //    OwnerId = "1",
+            //    Institution = DBConnection.DbCon.Institution.First(),
+            //    PersonTypes = DBConnection.DbCon.PersonTypes.First(),
+            //    Adres = "testAdres",
+            //    Bolge = "testBolge",
+            //    EPosta = "testEposta",
+            //    Hitap = "Garışık",
+            //    Il = "testIl",
+            //    Isim = "Namık",
+            //    Notlar = "Not yok çay için",
+            //    PostaKodu = "Komadı",
+            //    Sinif = "3/c",
+            //    Telefon = "0543",
+            //    Tur = "İnsanımsı",
+            //    Ulke = "Burası"
+            //};
+            var newEntity = (Person)propGrid.SelectedObject;
+            DBConnection.DbCon.Person.AddOrUpdate(newEntity);
+            //var newPersonType = (PersonTypes) propGrid.SelectedObject;
+            //DBConnection.DbCon.PersonTypes.Add(newPersonType);
+            DBConnection.DbCon.SaveChanges();
+            //using (var frm = new frmKişDüzenle("-1"))
+            //{
+            //    if(frm.ShowDialog()==DialogResult.OK) RefreshPeople();
+            //}
             //var frm = new frmKişDüzenle("-1"); 
             //frm.ShowDialog();
         }
@@ -32,7 +56,24 @@ namespace CRMKurs.Kişi
         private void frmÖğrenci_Load(object sender, EventArgs e)
         {
             RefreshPeople();
-            propGrid.SelectedObject = new Person();
+            //propGrid.SelectedObject = new PersonTypes
+            //{
+            //    Isim = "Test1",
+            //};
+            propGrid.SelectedObject = new Person
+            {
+                Adres = "Yok",
+                Bolge = "Yok",
+                EPosta = "asdasd@asdasd.com",
+                Il = "İstanbul",
+                Isim = "Test",
+                Notlar = "Yok",
+                PostaKodu = "34303",
+                Telefon = "05468963589",
+                Ulke = "Türkiye",
+                Tur = "Yok",
+                Sinif = "Yok"
+            };
         }
 
         private void RefreshPeople()

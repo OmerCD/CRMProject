@@ -10,15 +10,15 @@ namespace CRMKurs.EntityClasses
 {
     class Offer : EntityIdDefine
     {
-        [PropertyMVC(ControlEnum.Entity)]
+        [PropertyMVC("Kişi",ControlEnum.Entity)]
         public Person Person { get; set; }
-        [PropertyMVC(ControlEnum.Entity)]
+        [PropertyMVC("İlgilenen",ControlEnum.Entity)]
         public Person Attendant { get; set; }
-        [PropertyMVC(ControlEnum.TextBox)]
+        [PropertyMVC("Tür",ControlEnum.TextBox)]
         public string Type { get; set; }
-        [PropertyMVC(ControlEnum.Entity)]
+        [PropertyMVC("Sorumlu",ControlEnum.Entity)]
         public Person Responsible { get; set; }
-        [PropertyMVC(ControlEnum.TextBox)]
+        [PropertyMVC("Notlar",ControlEnum.TextBox)]
         public string Notes { get; set; }   
 
     }

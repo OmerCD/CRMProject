@@ -24,7 +24,6 @@ namespace CRMKurs
         public MainCRMWindow()
         {
             InitializeComponent();
-
         }
         void WriteCipher(MainBoss boss)
         {
@@ -88,8 +87,10 @@ namespace CRMKurs
 
         private void öğretimToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Kişi.frmKişi frm = new Kişi.frmKişi();
-            frm.ShowDialog();
+            using (var frm = new frmPropsWithList(new Person(), "Öğrenci"))
+            {
+                frm.ShowDialog();
+            }
         }
 
         private void opsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -98,8 +99,10 @@ namespace CRMKurs
 
         private void okulToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new Okul.frmKurum();
-            frm.ShowDialog();
+            using (var frm = new frmPropsWithList(new Institution(), "Okul"))
+            {
+                frm.ShowDialog();
+            }
         }
 
         private void DropButton_Click(object sender, EventArgs e)
@@ -111,15 +114,6 @@ namespace CRMKurs
         private void MainCRMWindow_Load(object sender, EventArgs e)
         {
             new DBConnection();
-            var testGrid = new PropertyGridMVC
-            {
-                Size = new Size(250, 250),
-                Location = new Point(10, 60),
-                SelectedObject = new Person { Isim = "Ömer" }
-            };
-            Controls.Add(testGrid);
-            testGrid.BringToFront();
-
             var frm = new frmKullanıcıGiriş();
             DialogResult dR = frm.ShowDialog();
             switch (dR)
@@ -147,7 +141,7 @@ namespace CRMKurs
             //    DBConnection.DbCon.Logs.Add(logTest);
             //}
             DBConnection.DbCon.SaveChanges();
-            LoadLogs();
+            //LoadLogs();
         }
 
         void LoadLogs()
@@ -166,6 +160,41 @@ namespace CRMKurs
         private void ColorPanel_LostFocus(object sender, EventArgs e)
         {
             ColorPanel.Hide();
+        }
+
+        private void kişiTürleriToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var frm = new frmPropsWithList(new PersonTypes(), "Kişi Türleri"))
+            {
+                frm.ShowDialog();
+            }
+        }
+
+        private void ColorPanel_MouseLeave(object sender, EventArgs e)
+        {
+            if (ColorPanel.Visible)
+            {
+                if (!ColorPanel.RectangleToScreen(ColorPanel.DisplayRectangle).Contains(MousePosition))
+                {
+                    ColorPanel.Hide();
+                }
+            }
+        }
+
+        private void öğretmenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var frm = new frmPropsWithList(new Person(), "Öğretmenler"))
+            {
+                frm.ShowDialog();
+            }
+        }
+
+        private void teklifToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var frm = new frmPropsWithList(new Offer(), "Teklifler"))
+            {
+                frm.ShowDialog();
+            }
         }
     }
 }

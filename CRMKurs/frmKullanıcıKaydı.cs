@@ -29,11 +29,9 @@ namespace CRMKurs
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (txtŞifre.Text != txtŞifret.Text) return;
             var calisan = new EntityClasses.Staff.Worker {
                 KullaniciAdi =txtKullanıcı.Text,
-                Şifre=txtŞifre.Text,
-                OwnerId = DataBaseConnectionOptions.OwnerUserId
+                Sifre=txtŞifre.Text
             };
             DBConnection.DbCon.Worker.Add(calisan);
             DBConnection.DbCon.SaveChanges();

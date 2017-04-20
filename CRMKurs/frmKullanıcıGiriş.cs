@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using CRMKurs.EntityClasses;
+using CRMKurs.EntityClasses.Staff;
 using DesktopAppCRM;
 
 namespace CRMKurs
@@ -43,7 +45,7 @@ namespace CRMKurs
                 var Id = parts[1];
                 Id=Id.Substring(0, Id.IndexOf("\0"));
                 var boss = DBConnection.DbCon.MainBoss.FirstOrDefault(x => x.KullaniciAdi == KullanıcıAdı && x.OwnerId == Id);
-                MessageBox.Show(uText);
+                //MessageBox.Show(uText);
                 return boss;
             }
         }
@@ -57,6 +59,7 @@ namespace CRMKurs
                     Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\CRM\\");
                     using (File.Create(_filePath))
                     _okToLogin = true;
+                    _tempRes=DialogResult.Yes;
                     return frm.BossInfo;
                 }
                 return null;
@@ -64,7 +67,10 @@ namespace CRMKurs
         }
         private void frmKullanıcıGiriş_Load(object sender, EventArgs e)
         {
-            
+            //Worker wrk = new Worker { KullaniciAdi = "Enes", Sifre = "123456", OwnerId = "1", Statu = Worker.Status.Yönetici };
+            //DBConnection.DbCon.Worker.Add(wrk);
+            //DBConnection.DbCon.SaveChanges();
+
             _tempRes = DialogResult.Cancel;
             if (File.Exists(_filePath))
             {
@@ -72,29 +78,30 @@ namespace CRMKurs
                 if (_bossInformation != null)
                 {
                     _okToLogin = true;
-                    _tempRes = DialogResult.OK;
                 }
                 else
                 {
                     _bossInformation = BossLogin();
-                    _tempRes = DialogResult.Yes;
                 }
             }
             else
             {
                 _bossInformation = BossLogin();
-                _tempRes = DialogResult.Yes;
             }
             if (!_okToLogin) //Web Sitesine yönlendirme
             {
                 MessageBox.Show("Sunucu girişi başarısız", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Process.Start("www.deletecrm.com");
                 Application.Exit();
             }
             else
             {
                 if (_bossInformation != null)
+                {
                     DataBaseConnectionOptions.OwnerUserId = _bossInformation.OwnerId;
+                }
             }
+            
         }
 
         private void frmKullanıcıGiriş_KeyDown(object sender, KeyEventArgs e)
@@ -103,19 +110,28 @@ namespace CRMKurs
             {
                 if (Login())
                 {
-                    DialogResult = _tempRes;
-
+                    _tempRes = DialogResult.OK;
+                    Close();
                 }
             }
         }
         bool Login()
         {
+            //DBConnection.DbCon.Worker.Add(new Worker
+            //{
+            //    OwnerId = "1",
+            //    KullaniciAdi = "Enes",
+            //    EMail = "test@test.com",
+            //    Sifre = "123456",
+            //    Statu = Worker.Status.Kullanıcı
+            //});
+            //DBConnection.DbCon.SaveChanges();
             if (Check)
             {
                 var workers = DBConnection.DbCon.Worker;
                 if (workers.Any())
                 {
-                    var worker = DBConnection.DbCon.Worker.FirstOrDefault(x => x.KullaniciAdi == txtKullanıcıAdı.Text && x.Şifre == txtŞifre.Text && x.OwnerId == DataBaseConnectionOptions.OwnerUserId);
+                    var worker = DBConnection.DbCon.Worker.FirstOrDefault(x => x.KullaniciAdi == txtKullanıcıAdı.Text && x.Sifre == txtŞifre.Text && x.OwnerId == DataBaseConnectionOptions.OwnerUserId);
                     if (worker == null)
                     {
                         MessageBox.Show("Kullanıcı Adı veya Şifre hatalı", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -136,6 +152,21 @@ namespace CRMKurs
         private void frmKullanıcıGiriş_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult = _tempRes;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("www.deletecrm.com");
+
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            if (Login())
+            {
+                _tempRes = DialogResult.OK;
+                Close();
+            }
         }
     }
 }
