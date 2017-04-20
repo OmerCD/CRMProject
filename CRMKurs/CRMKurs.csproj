@@ -77,12 +77,6 @@
       <DependentUpon>Calendar.cs</DependentUpon>
     </Compile>
     <Compile Include="Cipher.cs" />
-    <Compile Include="Customer\Customer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Customer\Customer.Designer.cs">
-      <DependentUpon>Customer.cs</DependentUpon>
-    </Compile>
     <Compile Include="CustomTools\DataComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -216,9 +210,6 @@
     <EmbeddedResource Include="Calendar.resx">
       <DependentUpon>Calendar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Customer\Customer.resx">
-      <DependentUpon>Customer.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="CustomTools\LogLabel.resx">
       <DependentUpon>LogLabel.cs</DependentUpon>
     </EmbeddedResource>
@@ -305,7 +296,15 @@
   <ItemGroup>
     <None Include="Resources\setting.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\ic_playlist_add_white_24dp_1x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_mode_edit_white_24dp_1x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_delete_sweep_white_24dp_1x.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

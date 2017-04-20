@@ -27,5 +27,10 @@ namespace CRMKurs
         {
             MainCalendar.SetViewRange(MonthView.SelectionStart, MonthView.SelectionEnd);
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            var testItems = MainCalendar.Items;
+        }
     }
 }

@@ -27,6 +27,7 @@ namespace CRMKurs.CustomTools
         private string _tableQuery;
         Dictionary<string, Control> _valueControls = new Dictionary<string, Control>();
         List<string> _idList = new List<string>();
+        private List<string> _alanlar;
         public object SelectedObject
         {
             get
@@ -48,9 +49,26 @@ namespace CRMKurs.CustomTools
             set
             {
                 _selectedTable = value;
+                _tableType = _selectedTable.GetType();
                 if (value != null)
                 {
+                    //CreateTableColumns();
                     RefreshTableValues();
+                    //ListViewFill();
+                }
+            }
+        }
+
+        private void CreateTableColumns()
+        {
+            SelectedObject = _selectedTable;
+            var properties = _selectedTable.GetType().GetProperties();
+            foreach (var property in properties)
+            {
+                var attribute = property.GetCustomAttribute<PropertyMVC>();
+                if (attribute != null)
+                {
+                    lVTableValues.Columns.Add(attribute.DisplayName);
                 }
             }
         }
@@ -58,13 +76,14 @@ namespace CRMKurs.CustomTools
         {
             string indexName = "";
             lVTableValues.Items.Clear();
+            lVTableValues.Columns.Clear();
             SelectedObject = _selectedTable;
             _tableType = _selectedTable.GetType();
             var tableQuery = "SELECT ";
             var dizi = _tableType.GetProperties();
             var entityFields = new List<string>();
             var entityFieldsForJoin = new List<string>();
-            List<string> alanlar = new List<string>();
+            _alanlar = new List<string>();
             foreach (PropertyInfo property in dizi)
             {
                 var customAttributes = property.CustomAttributes;
@@ -84,12 +103,12 @@ namespace CRMKurs.CustomTools
                 {
                     entityFields.Add(deger);
                     entityFieldsForJoin.Add(deger + "_Id");
-                    alanlar.Add(deger);
+                    _alanlar.Add(deger);
                     deger += ".Isim AS " + deger;
                 }
                 else
                 {
-                    alanlar.Add(deger);
+                    _alanlar.Add(deger);
                     deger = _tableType.Name + "." + deger;
                 }
                 tableQuery += deger + " ";
@@ -122,13 +141,13 @@ namespace CRMKurs.CustomTools
                         _idList.Add(rd[indexName].ToString());
                         ListViewItem lv = new ListViewItem()
                         {
-                            Text = rd[alanlar[0]].ToString()
+                            Text = rd[_alanlar[0]].ToString()
                         };
 
                         //satırın ilk değeri text olmayınca olmuyo
-                        for (int i = 1; i < alanlar.Count; i++)
+                        for (int i = 1; i < _alanlar.Count; i++)
                         {
-                            string field = rd[alanlar[i]].ToString();
+                            string field = rd[_alanlar[i]].ToString();
                             lv.SubItems.Add(field).Text = field;
                         }
                         lVTableValues.Items.Add(lv);
@@ -138,52 +157,108 @@ namespace CRMKurs.CustomTools
             DBConnection.QueryConnection.Close();
         }
 
-        private void listViewFill()
+        private ListViewItem GetListViewItem(object instance)
+        {
+            var instanceType = instance.GetType();
+            var instanceProperties = instanceType.GetProperties();
+            ListViewItem lv = new ListViewItem();
+            foreach (PropertyInfo property in instanceProperties)
+            {
+                switch (property.Name)
+                {
+                    case "Isim":
+                        lv.Text = property.GetValue(instance).ToString();
+                        continue;
+                    case "Id":
+                        continue;
+                }
+                lv.SubItems.Add(property.GetValue(instance).ToString());
+            }
+            return lv;
+        }
+        private void ListViewFill()
         {
             _idList.Clear();
-            var dizi = _tableType.GetProperties();
+            //var dizi = _tableType.GetProperties();
             lVTableValues.Items.Clear();
-            List<string> alanlar = new List<string>();
-            foreach (PropertyInfo property in dizi)
+            //lVTableValues.Columns.Clear();
+            //List<string> alanlar = new List<string>();
+            //foreach (PropertyInfo property in dizi)
+            //{
+            //    if (property.GetCustomAttribute<PropertyMVC>() == null) continue;
+            //    string deger = property.Name;
+            //    lVTableValues.Columns.Add(deger).Name = deger;
+            //    alanlar.Add(deger);
+            //}
+            string tableQuery = "Select * From " + _tableType.Name + " Where OwnerId = '" + DataBaseConnectionOptions.OwnerUserId + "'";
+            var dBSet = DBConnection.DbCon.Set(_selectedObject.GetType()).SqlQuery(tableQuery);
+            foreach (var field in dBSet)
             {
-                if (property.GetCustomAttribute<PropertyMVC>() == null) continue;
-                string deger = property.Name;
-                lVTableValues.Columns.Add(deger).Name = deger;
-                if (property.GetCustomAttribute<PropertyMVC>().DesiredControl == ControlEnum.Entity)
+                Type tableType = field.GetType();
+                var properties = tableType.GetProperties();
+                _idList.Add(properties.First(x => x.Name == "Id").GetValue(field).ToString());
+                ListViewItem lv = new ListViewItem
                 {
-                    alanlar.Add(deger);
-                }
-                else
+                    Text = properties.First(x => x.Name == "Isim").GetValue(field).ToString()
+                };
+                for (int i = 0; i < properties.Length; i++)
                 {
-                    alanlar.Add(deger);
-                }
-            }
-
-            DBConnection.QueryConnection.Open();
-            using (MySqlCommand cmd = new MySqlCommand(_tableQuery, DBConnection.QueryConnection))
-            {
-                using (MySqlDataReader rd = cmd.ExecuteReader())
-                {
-                    while (rd.Read())
+                    if (properties[i].Name == "Isim" || properties[i].Name == "Id") continue;
+                    var attribute = properties[i].GetCustomAttribute<PropertyMVC>();
+                    if (attribute == null) continue;
+                    if (attribute.DesiredControl == ControlEnum.Entity)
                     {
-                        if (!rd.HasRows) continue;
-                        _idList.Add(rd["Id"].ToString());
-                        ListViewItem lv = new ListViewItem()
+                        try
                         {
-                            Text = rd[alanlar[0]].ToString()
-                        };
-
-                        //satırın ilk değeri text olmayınca olmuyo
-                        for (int i = 1; i < alanlar.Count; i++)
-                        {
-                            string field = rd[alanlar[i]].ToString();
-                            lv.SubItems.Add(field).Text = field;
+                            var entityField = properties[i].GetValue(field);
+                            var test = entityField.GetType().GetProperty("Isim").GetValue(entityField);
+                            lv.SubItems.Add(test.ToString());
                         }
-                        lVTableValues.Items.Add(lv);
+                        catch (System.Reflection.TargetInvocationException ex)
+                        {
+                            //var entityType = properties[i].PropertyType;
+                            //string query = "Select " + entityType.Name + ".Isim From " + entityType.Name +
+                            //               " Inner Join " +
+                            //               // ReSharper disable once PossibleNullReferenceException
+                            //               tableType.BaseType.Name + " on " + tableType.BaseType.Name + "." + entityType.Name + "_Id = " + entityType.Name + ".Id" +
+                            //               " Where "+entityType.Name+".OwnerId =" + DataBaseConnectionOptions.OwnerUserId;
+                            //var selectedSet = DBConnection.DbCon.Set(entityType).SqlQuery(query);
+                            //foreach (var selection in selectedSet)
+                            //{
+
+                            //}
+                        }
+                        continue;
                     }
+                    lv.SubItems.Add(properties[i].GetValue(field).ToString());
                 }
+                lVTableValues.Items.Add(lv);
             }
-            DBConnection.QueryConnection.Close();
+            //DBConnection.QueryConnection.Open();
+            //using (MySqlCommand cmd = new MySqlCommand(_tableQuery, DBConnection.QueryConnection))
+            //{
+            //    using (MySqlDataReader rd = cmd.ExecuteReader())
+            //    {
+            //        while (rd.Read())
+            //        {
+            //            if (!rd.HasRows) continue;
+            //            _idList.Add(rd["Id"].ToString());
+            //            ListViewItem lv = new ListViewItem()
+            //            {
+            //                Text = rd[alanlar[0]].ToString()
+            //            };
+
+            //            //satırın ilk değeri text olmayınca olmuyo
+            //            for (int i = 1; i < alanlar.Count; i++)
+            //            {
+            //                string field = rd[alanlar[i]].ToString();
+            //                lv.SubItems.Add(field).Text = field;
+            //            }
+            //            lVTableValues.Items.Add(lv);
+            //        }
+            //    }
+            //}
+            //DBConnection.QueryConnection.Close();
         }
         object GetForeignKeyField(PropertyInfo property, string idValue)
         {
@@ -191,6 +266,7 @@ namespace CRMKurs.CustomTools
         }
         private void AssignValues()
         {
+            _selectedObject = Activator.CreateInstance(_selectedObject.GetType());
             var props = _selectedObject.GetType().GetProperties();
             foreach (var prop in props)
             {
@@ -412,12 +488,14 @@ namespace CRMKurs.CustomTools
             object toAddObject = SelectedObject;
             var type = toAddObject.GetType();
             DBConnection.DbCon.Set(type).Add(toAddObject);
-            DBConnection.DbCon.SaveChanges();
-            listViewFill();
+            var message = DBConnection.SaveChanges();
+            if (message != "") MessageBox.Show(message);
+            RefreshTableValues();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (lVTableValues.SelectedIndices.Count == 0) return;
             object toAddObject = SelectedObject;
             Type type = toAddObject.GetType();
             var idProp = type.GetProperty("Id");
@@ -428,22 +506,22 @@ namespace CRMKurs.CustomTools
             var findResult = DBConnection.DbCon.Entry(foundObject);
             var currentValues = findResult.CurrentValues;
             currentValues.SetValues(toAddObject);
-            DBConnection.DbCon.SaveChanges();
-            listViewFill();
+            var message = DBConnection.SaveChanges();
+            if (message != "") MessageBox.Show(message);
+            RefreshTableValues();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (lVTableValues.SelectedIndices.Count == 0) return;
             object toRemoveObject = SelectedObject;
             Type type = toRemoveObject.GetType();
-            var idProp = type.GetProperty("Id");
             var idValue = _idList[lVTableValues.SelectedIndices[0]];
-            idProp.SetValue(toRemoveObject, idValue);
             var foundObject = DBConnection.DbCon.Set(type).Find(idValue);
             DBConnection.DbCon.Set(type).Remove(foundObject);
-            
-            DBConnection.DbCon.SaveChanges();
-            listViewFill();
+            var message = DBConnection.SaveChanges();
+            if (message != "") MessageBox.Show(message);
+            RefreshTableValues();
         }
     }
 

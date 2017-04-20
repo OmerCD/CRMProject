@@ -113,6 +113,7 @@
             this.öğretmenToolStripMenuItem.Name = "öğretmenToolStripMenuItem";
             this.öğretmenToolStripMenuItem.Size = new System.Drawing.Size(73, 46);
             this.öğretmenToolStripMenuItem.Text = "Öğretmen";
+            this.öğretmenToolStripMenuItem.Click += new System.EventHandler(this.öğretmenToolStripMenuItem_Click);
             this.öğretmenToolStripMenuItem.MouseEnter += new System.EventHandler(this.ChangeColorOfText);
             this.öğretmenToolStripMenuItem.MouseLeave += new System.EventHandler(this.ChangeColorOfText);
             // 
@@ -141,6 +142,7 @@
             this.teklifToolStripMenuItem.Name = "teklifToolStripMenuItem";
             this.teklifToolStripMenuItem.Size = new System.Drawing.Size(48, 46);
             this.teklifToolStripMenuItem.Text = "Teklif";
+            this.teklifToolStripMenuItem.Click += new System.EventHandler(this.teklifToolStripMenuItem_Click);
             this.teklifToolStripMenuItem.MouseEnter += new System.EventHandler(this.ChangeColorOfText);
             this.teklifToolStripMenuItem.MouseLeave += new System.EventHandler(this.ChangeColorOfText);
             // 

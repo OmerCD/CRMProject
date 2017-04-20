@@ -31,8 +31,7 @@ namespace CRMKurs
         {
             var calisan = new EntityClasses.Staff.Worker {
                 KullaniciAdi =txtKullanıcı.Text,
-                Sifre=txtŞifre.Text,
-                OwnerId = DataBaseConnectionOptions.OwnerUserId
+                Sifre=txtŞifre.Text
             };
             DBConnection.DbCon.Worker.Add(calisan);
             DBConnection.DbCon.SaveChanges();

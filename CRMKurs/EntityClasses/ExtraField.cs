@@ -9,10 +9,8 @@ namespace CRMKurs.EntityClasses
 {
     class ExtraField : Abstract.EntityIdDefine
     {
-        public ExtraField() : base() { }
-
         [NotMapped]
-        public static string[] FieldTypes => (new[] {"Tarih","Yazı","Not","Sayı","Para","Liste","Düğme","Hesaplanan/Sabit","Kurum/Kişi","Saat","Konum","Kullanıcı","İlleri","İlçeler"}); // Seçilebilecek Ekstra alan türleri
+        public static string[] FieldTypes => new[] {"Tarih","Yazı","Not","Sayı","Para","Liste","Düğme","Hesaplanan/Sabit","Kurum/Kişi","Saat","Konum","Kullanıcı","İlleri","İlçeler"}; // Seçilebilecek Ekstra alan türleri
         public string ExtraName { get; set; }
         /// <summary>
         /// FieldTypes'dan alınacak türün saklanacığı yer.

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -44,7 +45,7 @@ namespace CRMKurs
                 var Id = parts[1];
                 Id=Id.Substring(0, Id.IndexOf("\0"));
                 var boss = DBConnection.DbCon.MainBoss.FirstOrDefault(x => x.KullaniciAdi == KullanıcıAdı && x.OwnerId == Id);
-                MessageBox.Show(uText);
+                //MessageBox.Show(uText);
                 return boss;
             }
         }
@@ -77,7 +78,6 @@ namespace CRMKurs
                 if (_bossInformation != null)
                 {
                     _okToLogin = true;
-                    _tempRes=DialogResult.OK;
                 }
                 else
                 {
@@ -91,13 +91,17 @@ namespace CRMKurs
             if (!_okToLogin) //Web Sitesine yönlendirme
             {
                 MessageBox.Show("Sunucu girişi başarısız", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Process.Start("www.deletecrm.com");
                 Application.Exit();
             }
             else
             {
                 if (_bossInformation != null)
+                {
                     DataBaseConnectionOptions.OwnerUserId = _bossInformation.OwnerId;
+                }
             }
+            
         }
 
         private void frmKullanıcıGiriş_KeyDown(object sender, KeyEventArgs e)
@@ -106,6 +110,7 @@ namespace CRMKurs
             {
                 if (Login())
                 {
+                    _tempRes = DialogResult.OK;
                     Close();
                 }
             }
@@ -147,6 +152,21 @@ namespace CRMKurs
         private void frmKullanıcıGiriş_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult = _tempRes;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("www.deletecrm.com");
+
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            if (Login())
+            {
+                _tempRes = DialogResult.OK;
+                Close();
+            }
         }
     }
 }
