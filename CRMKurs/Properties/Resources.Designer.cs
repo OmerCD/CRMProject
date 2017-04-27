@@ -39,7 +39,7 @@ namespace CRMKurs.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CRMKurs.Properties.Resources", typeof(Resources).Assembly);
+                    var temp = new global::System.Resources.ResourceManager("CRMKurs.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -65,7 +65,7 @@ namespace CRMKurs.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap ic_delete_sweep_white_24dp_1x {
             get {
-                object obj = ResourceManager.GetObject("ic_delete_sweep_white_24dp_1x", resourceCulture);
+                var obj = ResourceManager.GetObject("ic_delete_sweep_white_24dp_1x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -75,7 +75,7 @@ namespace CRMKurs.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap ic_mode_edit_white_24dp_1x {
             get {
-                object obj = ResourceManager.GetObject("ic_mode_edit_white_24dp_1x", resourceCulture);
+                var obj = ResourceManager.GetObject("ic_mode_edit_white_24dp_1x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -85,7 +85,7 @@ namespace CRMKurs.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap ic_playlist_add_white_24dp_1x {
             get {
-                object obj = ResourceManager.GetObject("ic_playlist_add_white_24dp_1x", resourceCulture);
+                var obj = ResourceManager.GetObject("ic_playlist_add_white_24dp_1x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -95,7 +95,7 @@ namespace CRMKurs.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap info {
             get {
-                object obj = ResourceManager.GetObject("info", resourceCulture);
+                var obj = ResourceManager.GetObject("info", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -105,7 +105,7 @@ namespace CRMKurs.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap logo_dark {
             get {
-                object obj = ResourceManager.GetObject("logo-dark", resourceCulture);
+                var obj = ResourceManager.GetObject("logo-dark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -115,7 +115,7 @@ namespace CRMKurs.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap setting {
             get {
-                object obj = ResourceManager.GetObject("setting", resourceCulture);
+                var obj = ResourceManager.GetObject("setting", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -125,7 +125,7 @@ namespace CRMKurs.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap theme_brush {
             get {
-                object obj = ResourceManager.GetObject("theme_brush", resourceCulture);
+                var obj = ResourceManager.GetObject("theme_brush", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

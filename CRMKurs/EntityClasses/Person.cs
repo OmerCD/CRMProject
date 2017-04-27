@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using CRMKurs.Attributes;
 using CRMKurs.EntityClasses.Abstract;
 
 namespace CRMKurs.EntityClasses
@@ -24,6 +20,7 @@ namespace CRMKurs.EntityClasses
         [PropertyMVC("Sınıf",ControlEnum.TextBox)]
         public string Sinif { get; set; }
         [Required]
+        [ExtraFieldSeperator]
         [PropertyMVC("Kişi Türü",ControlEnum.Entity)]
         public virtual PersonTypes PersonTypes { get; set; }
         public Person() : base() { }

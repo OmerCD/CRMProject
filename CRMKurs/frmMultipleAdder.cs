@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CRMKurs
@@ -16,7 +11,17 @@ namespace CRMKurs
         public string Result=>_result;
         Type _creationType;
         int _x, _y,_counter;
-        readonly int SPACING = 30;
+        private const int Spacing = 30;
+
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+            if (m.Msg == WM_NCHITTEST)
+                m.Result = (IntPtr)(HT_CAPTION);
+        }
+
+        private const int WM_NCHITTEST = 0x84;
+        private const int HT_CAPTION = 0x2;
         public frmMultipleAdder(string Current,Type type)
         {
             InitializeComponent();
@@ -28,10 +33,10 @@ namespace CRMKurs
         }
         Control AddControl(Control container) // Her butona ve her control'e ID vermek gerekiyor
         {
-            string attTag = _counter.ToString();
-            Label lbl = new Label(); //Numaralandırma için labellar
+            var attTag = _counter.ToString();
+            var lbl = new Label(); //Numaralandırma için labellar
             lbl.ForeColor = Color.White;
-            Button btn = new Button(); //Alan çıkarmak için butonlar
+            var btn = new Button(); //Alan çıkarmak için butonlar
             btn.Size = new Size(20, 20);
             btn.Text = "-";
             btn.Tag = attTag;
@@ -39,7 +44,7 @@ namespace CRMKurs
             btn.FlatStyle = FlatStyle.Flat;
             btn.BackColor = Color.DeepSkyBlue;
             btn.ForeColor = Color.White;
-            Control cont = (Control)Activator.CreateInstance(_creationType); //Verilen control tipindeki instancelar
+            var cont = (Control)Activator.CreateInstance(_creationType); //Verilen control tipindeki instancelar
 
             
             cont.Location = new Point(_x, _y);
@@ -48,7 +53,7 @@ namespace CRMKurs
             btn.Location = new Point(_x + 110, _y);
             lbl.Text = _counter.ToString();
             lbl.Tag = attTag;
-            _y += SPACING;
+            _y += Spacing;
             _counter++;
             container.Controls.Add(btn);
             container.Controls.Add(cont);
@@ -58,10 +63,10 @@ namespace CRMKurs
         private void Btn_Click(object sender, EventArgs e)
         {
             _counter--;
-            _y -= SPACING;
-            var tagToRemove = (sender as Control).Tag;
-            int tagCheck = Convert.ToInt32(tagToRemove);
-            List<Control> controlsToRemove = new List<Control>();
+            _y -= Spacing;
+            var tagToRemove = ((Control) sender).Tag;
+            var tagCheck = Convert.ToInt32(tagToRemove);
+            var controlsToRemove = new List<Control>();
             foreach (Control cont in GeneralPanel.Controls)
             {
                 if (cont.Tag==tagToRemove)
@@ -71,8 +76,8 @@ namespace CRMKurs
                 }
                 else if (Convert.ToInt32(cont.Tag) > tagCheck)
                 {
-                    cont.Location = new Point(cont.Location.X, cont.Location.Y - SPACING);
-                    string newTag = (Convert.ToInt32(cont.Tag) - 1).ToString();
+                    cont.Location = new Point(cont.Location.X, cont.Location.Y - Spacing);
+                    var newTag = (Convert.ToInt32(cont.Tag) - 1).ToString();
                     cont.Tag = newTag;
                     if (cont is Label)
                     {
@@ -93,15 +98,14 @@ namespace CRMKurs
 
         private void frmMultipleAdder_Load(object sender, EventArgs e)
         {
-            
-            string[] seperated = _current.Split(';');
-            for (int i = 0; i < seperated.Length; i++)
+            var seperated = _current.Split(';');
+            foreach (var seperate in seperated)
             {
-                if (seperated[i] == string.Empty)
+                if (seperate == string.Empty)
                 {
                     continue;
                 }
-                AddControl(GeneralPanel).Text=seperated[i];
+                AddControl(GeneralPanel).Text=seperate;
             }
         }
 
@@ -120,25 +124,23 @@ namespace CRMKurs
             _result = "";
             foreach (Control cont in GeneralPanel.Controls)
             {
-                if (cont.GetType() == _creationType)
+                if (cont.GetType() != _creationType) continue;
+                if (cont is CustomTools.EmailTextBox)
                 {
-                    if (cont is CustomTools.EmailTextBox)
+                    if (cont.Text.Length > 0)
                     {
-                        if (cont.Text.Length > 0)
+                        if (!(cont as CustomTools.EmailTextBox).CorrectCheck())
                         {
-                            if (!(cont as CustomTools.EmailTextBox).CorrectCheck())
-                            {
-                                MessageBox.Show("E-Posta adreslerinin doğruluğunu kontrol edin\n" + cont.Text, "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                return;
-                            }
+                            MessageBox.Show("E-Posta adreslerinin doğruluğunu kontrol edin\n" + cont.Text, "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
                         }
                     }
-                    if (cont.Text == string.Empty)
-                    {
-                        continue;
-                    }
-                    _result += cont.Text + ';';
                 }
+                if (cont.Text == string.Empty)
+                {
+                    continue;
+                }
+                _result += cont.Text + ';';
             }
             DialogResult = DialogResult.OK;
         }

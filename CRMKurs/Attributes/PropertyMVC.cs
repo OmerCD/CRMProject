@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
-namespace CRMKurs
+namespace CRMKurs.Attributes
 {
-    [System.AttributeUsage(System.AttributeTargets.Property)]
+    [AttributeUsage(AttributeTargets.Property)]
     class PropertyMVC : Attribute
     {
         public string DisplayName { get; set; }

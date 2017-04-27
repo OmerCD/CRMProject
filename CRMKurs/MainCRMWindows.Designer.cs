@@ -56,6 +56,7 @@
             this.PanelLogs = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.ekstraAlanlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StripMenu.SuspendLayout();
             this.ColorPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DeepSkyBlueBox)).BeginInit();
@@ -160,7 +161,8 @@
             // 
             this.opsToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.opsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.kişiTürleriToolStripMenuItem});
+            this.kişiTürleriToolStripMenuItem,
+            this.ekstraAlanlarToolStripMenuItem});
             this.opsToolStripMenuItem.Image = global::CRMKurs.Properties.Resources.setting;
             this.opsToolStripMenuItem.Name = "opsToolStripMenuItem";
             this.opsToolStripMenuItem.Size = new System.Drawing.Size(28, 46);
@@ -169,7 +171,7 @@
             // kişiTürleriToolStripMenuItem
             // 
             this.kişiTürleriToolStripMenuItem.Name = "kişiTürleriToolStripMenuItem";
-            this.kişiTürleriToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.kişiTürleriToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.kişiTürleriToolStripMenuItem.Text = "Kişi Türleri";
             this.kişiTürleriToolStripMenuItem.Click += new System.EventHandler(this.kişiTürleriToolStripMenuItem_Click);
             // 
@@ -350,6 +352,13 @@
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
             // 
+            // ekstraAlanlarToolStripMenuItem
+            // 
+            this.ekstraAlanlarToolStripMenuItem.Name = "ekstraAlanlarToolStripMenuItem";
+            this.ekstraAlanlarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ekstraAlanlarToolStripMenuItem.Text = "Ekstra Alanlar";
+            this.ekstraAlanlarToolStripMenuItem.Click += new System.EventHandler(this.ekstraAlanlarToolStripMenuItem_Click);
+            // 
             // MainCRMWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -412,6 +421,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.FlowLayoutPanel PanelLogs;
         private System.Windows.Forms.ToolStripMenuItem kişiTürleriToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ekstraAlanlarToolStripMenuItem;
     }
 }
 

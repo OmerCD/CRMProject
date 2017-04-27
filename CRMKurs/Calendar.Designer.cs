@@ -29,11 +29,11 @@ namespace CRMKurs
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange1 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange2 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange3 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange4 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange5 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            var calendarHighlightRange1 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            var calendarHighlightRange2 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            var calendarHighlightRange3 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            var calendarHighlightRange4 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            var calendarHighlightRange5 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
             this.MainCalendar = new System.Windows.Forms.Calendar.Calendar();
             this.MonthView = new System.Windows.Forms.Calendar.MonthView();
             this.btnSave = new System.Windows.Forms.Button();

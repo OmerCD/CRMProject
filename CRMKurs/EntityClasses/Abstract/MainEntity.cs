@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data;
-using MySql.Data.Entity;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using CRMKurs.Attributes;
 
 namespace CRMKurs.EntityClasses.Abstract
 {
     public abstract class MainEntity:EntityIdDefine
     {
-        public MainEntity() : base() { }
+        [DisplayProperty]
         [PropertyMVC("İsim", ControlEnum.TextBox)]
         public string Isim { get; set; }
         [PropertyMVC("Tür", ControlEnum.TextBox)]

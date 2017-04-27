@@ -44,7 +44,6 @@ namespace CRMKurs.CustomTools
             this.LabelName.Size = new System.Drawing.Size(35, 13);
             this.LabelName.TabIndex = 0;
             this.LabelName.Text = "Name";
-            this.LabelName.Click += new System.EventHandler(this.PersonName_Click);
             // 
             // LabelDate
             // 

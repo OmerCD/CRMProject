@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
 using System.Linq;
 using System.Reflection;
-using System.Reflection.Emit;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using CRMKurs.Attributes;
 using MySql.Data.MySqlClient;
 
 namespace CRMKurs.CustomTools
@@ -87,9 +82,9 @@ namespace CRMKurs.CustomTools
         }
         string[] TakeFieldNames(string query)
         {
-            List<string> returnValues = new List<string>();
-            string[] splitQuery = query.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-            for (int i = 1; i < splitQuery.Length; i++)
+            var returnValues = new List<string>();
+            var splitQuery = query.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            for (var i = 1; i < splitQuery.Length; i++)
             {
                 if (splitQuery[i].StartsWith("`Extent"))
                 {
@@ -103,15 +98,15 @@ namespace CRMKurs.CustomTools
         {
             panelPropArea.Controls.Clear();
             _valueControls = new Dictionary<string, Control>();
-            Type objType = _selectedObject.GetType();
+            var objType = _selectedObject.GetType();
             var props = objType.GetProperties();
             int x = 80, y = 5;
-            int difference = 30;
+            var difference = 30;
             //var tableQuery = GetPropValue(DBConnection.DbCon, objType.Name).ToString(); //  verilen tabloyu almak için query'i veriyor
 
             foreach (var prop in props)
             {
-                bool extraArea = false;
+                var extraArea = false;
                 var attribute = prop.GetCustomAttribute<PropertyMVC>();
                 if (attribute == null) continue;
                 Control requiredControl = null;
@@ -128,12 +123,12 @@ namespace CRMKurs.CustomTools
                         var propQuery = GetPropValue(DBConnection.DbCon, prop.PropertyType.Name);
                             
                         //var fieldNames = TakeFieldNames(propQuery);
-                        DataComboBox cbx = new DataComboBox();
+                        var cbx = new DataComboBox();
                         #region Düzenleme için bilgi getirme kodu
                         DBConnection.QueryConnection.Open();
-                        using (MySqlCommand cmd = new MySqlCommand(propQuery.ToString(), DBConnection.QueryConnection))
+                        using (var cmd = new MySqlCommand(propQuery.ToString(), DBConnection.QueryConnection))
                         {
-                            using (MySqlDataReader rd = cmd.ExecuteReader())
+                            using (var rd = cmd.ExecuteReader())
                             {
                                 while (rd.Read())
                                 {
@@ -159,7 +154,7 @@ namespace CRMKurs.CustomTools
                 }
                 if (requiredControl != null)
                 {
-                    string propName = prop.Name;
+                    var propName = prop.Name;
                     //prop.SetValue(SelectedObject, "Test");
                     var propValue = prop.GetValue(_selectedObject);
                     var lbl = new System.Windows.Forms.Label

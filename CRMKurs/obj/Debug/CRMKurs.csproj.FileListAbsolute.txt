@@ -60,13 +60,8 @@ C:\Users\ccy-05\Desktop\CRMProject-master\CRMProject-master\CRMKurs\obj\Debug\CR
 C:\Users\ccy-05\Desktop\CRMProject-master\CRMProject-master\CRMKurs\obj\Debug\CRMKurs.frmKullanıcıKaydı.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.frmKullanıcıKaydı.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.frmExtraField.resources
-C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Kişi.frmKişi.resources
-C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Kişi.frmKişDüzenle.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.frmBossLogin.resources
-C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Okul.frmKurum.resources
-C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Okul.frmKurumDüzenle.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.CustomTools.LogLabel.resources
-C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.DebugForms.AddDebugForm.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.CustomTools.PropertyGridMVC.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.CustomTools.PropertyGridMVCList.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.frmPropsWithList.resources

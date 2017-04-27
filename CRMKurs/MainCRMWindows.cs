@@ -1,19 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using CRMKurs;
 using CRMKurs.CustomTools;
 using CRMKurs.EntityClasses;
-using CRMKurs.EntityClasses.Staff;
-using CRMKurs.Migrations;
 
 namespace CRMKurs
 {
@@ -27,18 +19,18 @@ namespace CRMKurs
         }
         void WriteCipher(MainBoss boss)
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
                           "\\CRM\\settings";
-            int NumberOfRetries = 3;
-            int DelayOnRetry = 1000;
+            var NumberOfRetries = 3;
+            var DelayOnRetry = 1000;
 
                 try
                 {
                     using (
-                        StreamWriter sw =
+                        var sw =
                             new StreamWriter(path))
                     {
-                        for (int i = 0; i <= NumberOfRetries; i++)
+                        for (var i = 0; i <= NumberOfRetries; i++)
                         {
 
                             sw.Write(Cipher.Encrypt("$" + boss.KullaniciAdi + "ô" + boss.OwnerId + "$",
@@ -65,7 +57,7 @@ namespace CRMKurs
         }
         void ChangeThemeColor(object sender, EventArgs e)
         {
-            Color c = ((PictureBox)sender).BackColor;
+            var c = ((PictureBox)sender).BackColor;
             ChangeThemeColors(c);
         }
         void ChangeThemeColors(Color color)
@@ -74,20 +66,21 @@ namespace CRMKurs
         }
         void ChangeColorOfText(object sender, EventArgs e)
         {
-            ToolStripMenuItem item = ((ToolStripMenuItem)sender);
+            var item = ((ToolStripMenuItem)sender);
             item.ForeColor = item.ForeColor == Color.Black ? Color.White : Color.Black;
 
         }
 
         private void takvimToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Calendar clndr = new Calendar();
+            var clndr = new Calendar();
             clndr.ShowDialog();
         }
 
         private void öğretimToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var frm = new frmPropsWithList(new Person(), "Öğrenci"))
+            var personToSend = new Person {PersonTypes = DBConnection.DbCon.PersonTypes.First(x=>x.Isim=="Ögrenci")};
+            using (var frm = new frmPropsWithList(personToSend, "Öğrenci"))
             {
                 frm.ShowDialog();
             }
@@ -115,7 +108,7 @@ namespace CRMKurs
         {
             new DBConnection();
             var frm = new frmKullanıcıGiriş();
-            DialogResult dR = frm.ShowDialog();
+            var dR = frm.ShowDialog();
             switch (dR)
             {
                 case DialogResult.Yes:
@@ -125,6 +118,7 @@ namespace CRMKurs
                     Application.Exit();
                     break;
             }
+
             //for (int i = 0; i < 5; i++)
             //{
             //    var logTest = new Log
@@ -140,6 +134,7 @@ namespace CRMKurs
             //    };
             //    DBConnection.DbCon.Logs.Add(logTest);
             //}
+
             DBConnection.DbCon.SaveChanges();
             //LoadLogs();
         }
@@ -183,7 +178,8 @@ namespace CRMKurs
 
         private void öğretmenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var frm = new frmPropsWithList(new Person(), "Öğretmenler"))
+            var personToSend = new Person { PersonTypes = DBConnection.DbCon.PersonTypes.First(x => x.Isim == "Ögretmen") };
+            using (var frm = new frmPropsWithList(personToSend, "Öğretmenler"))
             {
                 frm.ShowDialog();
             }
@@ -192,6 +188,14 @@ namespace CRMKurs
         private void teklifToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var frm = new frmPropsWithList(new Offer(), "Teklifler"))
+            {
+                frm.ShowDialog();
+            }
+        }
+
+        private void ekstraAlanlarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var frm = new frmExtraField())
             {
                 frm.ShowDialog();
             }

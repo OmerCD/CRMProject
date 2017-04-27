@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace CRMKurs.CustomTools
 {
@@ -13,8 +8,8 @@ namespace CRMKurs.CustomTools
         protected override void OnColumnClick(ColumnClickEventArgs e)
         {
             base.OnColumnClick(e);
-            ColumnHeader new_sorting_column = Columns[e.Column];
-            System.Windows.Forms.SortOrder sort_order;
+            var new_sorting_column = Columns[e.Column];
+            SortOrder sort_order;
             if (SortingColumn == null)
             {
                 sort_order = SortOrder.Ascending;

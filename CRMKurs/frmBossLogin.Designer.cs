@@ -33,11 +33,12 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnGiris = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtŞifre
             // 
-            this.txtŞifre.Location = new System.Drawing.Point(97, 63);
+            this.txtŞifre.Location = new System.Drawing.Point(97, 42);
             this.txtŞifre.Name = "txtŞifre";
             this.txtŞifre.PasswordChar = '*';
             this.txtŞifre.Size = new System.Drawing.Size(100, 20);
@@ -53,17 +54,18 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(108, 122);
+            this.linkLabel1.Location = new System.Drawing.Point(9, 84);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(55, 13);
+            this.linkLabel1.Size = new System.Drawing.Size(103, 13);
             this.linkLabel1.TabIndex = 7;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "linkLabel1";
+            this.linkLabel1.Text = "www.deletecrm.com";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 66);
+            this.label2.Location = new System.Drawing.Point(9, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 13);
             this.label2.TabIndex = 6;
@@ -78,16 +80,29 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Kullanıcı:";
             // 
+            // btnGiris
+            // 
+            this.btnGiris.Location = new System.Drawing.Point(122, 79);
+            this.btnGiris.Name = "btnGiris";
+            this.btnGiris.Size = new System.Drawing.Size(75, 23);
+            this.btnGiris.TabIndex = 10;
+            this.btnGiris.Text = "Giriş";
+            this.btnGiris.UseVisualStyleBackColor = true;
+            this.btnGiris.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmBossLogin
             // 
+            this.AcceptButton = this.btnGiris;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(277, 169);
+            this.ClientSize = new System.Drawing.Size(216, 114);
+            this.Controls.Add(this.btnGiris);
             this.Controls.Add(this.txtŞifre);
             this.Controls.Add(this.txtKullanıcıAdı);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.KeyPreview = true;
             this.Name = "frmBossLogin";
             this.Text = "frmBossLogin";
@@ -105,5 +120,6 @@
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnGiris;
     }
 }

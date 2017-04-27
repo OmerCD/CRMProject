@@ -17,8 +17,8 @@ public class ListViewComparer : System.Collections.IComparer
     public int Compare(object object_x, object object_y)
     {
         // Get the objects as ListViewItems.
-        ListViewItem item_x = object_x as ListViewItem;
-        ListViewItem item_y = object_y as ListViewItem;
+        var item_x = object_x as ListViewItem;
+        var item_y = object_y as ListViewItem;
 
         // Get the corresponding sub-item values.
         string string_x;
@@ -54,7 +54,7 @@ public class ListViewComparer : System.Collections.IComparer
         {
             DateTime date_x, date_y;
             if (DateTime.TryParse(string_x, out date_x) &&
-                System.DateTime.TryParse(string_y, out date_y))
+                DateTime.TryParse(string_y, out date_y))
             {
                 // Treat as a date.
                 result = date_x.CompareTo(date_y);

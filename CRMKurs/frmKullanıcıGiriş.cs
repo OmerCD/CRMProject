@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using CRMKurs.EntityClasses;
-using CRMKurs.EntityClasses.Staff;
 using DesktopAppCRM;
 
 namespace CRMKurs
@@ -30,7 +23,7 @@ namespace CRMKurs
 
         MainBoss ReadCipher()
         {
-            using (StreamReader sr = new StreamReader(_filePath))
+            using (var sr = new StreamReader(_filePath))
             {
                 var encryptedText = sr.ReadToEnd();
                 if (encryptedText=="" || string.IsNullOrEmpty(encryptedText))

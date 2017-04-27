@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CRMKurs.EntityClasses;
 
 namespace CRMKurs
@@ -11,7 +7,7 @@ namespace CRMKurs
     class ExtraFieldInfo : EntityClasses.Abstract.EntityIdDefine
     {
         [Required]
-        public ExtraField E_Field { get; set; }
+        public ExtraField EField { get; set; }
         public string Infos { get; set; }
     }
 
@@ -33,11 +29,11 @@ namespace CRMKurs
 
         private void SeperateInfo(string wholeInfo)
         {
-            bool infoSwitch = true;
+            var infoSwitch = true;
             string info = "", personId = "";
             #region Iteration
 
-            foreach (char letter in wholeInfo)
+            foreach (var letter in wholeInfo)
             {
                 if (infoSwitch)
                 {
