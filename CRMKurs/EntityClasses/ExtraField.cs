@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Windows.Forms;
 
 namespace CRMKurs.EntityClasses
 {
@@ -26,7 +27,7 @@ namespace CRMKurs.EntityClasses
             }
         }
 
-        public static string GetGetFieldName(string typeName)
+        public static string GetFieldName(string typeName)
         {
             switch (typeName)
             {
@@ -38,6 +39,23 @@ namespace CRMKurs.EntityClasses
                     return "Sayı";
                 case "decimal(8,2)":
                     return "Para";
+                default:
+                    throw new KeyNotFoundException();
+            }
+        }
+
+        public static Control GetControl(string typeName)
+        {
+            switch (typeName)
+            {
+                case "DateTime":
+                    return new DateTimePicker();
+                case "varchar(60)":
+                    return new TextBox();
+                case "int":
+                    return new TextBox();
+                case "decimal(8,2)":
+                    return new TextBox();
                 default:
                     throw new KeyNotFoundException();
             }

@@ -154,7 +154,6 @@ namespace CRMKurs.CustomTools
                 }
                 if (requiredControl != null)
                 {
-                    var propName = prop.Name;
                     //prop.SetValue(SelectedObject, "Test");
                     var propValue = prop.GetValue(_selectedObject);
                     var lbl = new System.Windows.Forms.Label

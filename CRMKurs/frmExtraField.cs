@@ -76,7 +76,7 @@ namespace CRMKurs
                                 tür = "Kurum";
                                 break;
                         }
-                        lvItem.SubItems.AddRange(new []{dr["AlanAdi"].ToString(),tür,ExtraField.GetGetFieldName(dr["VeriTuru"].ToString())});
+                        lvItem.SubItems.AddRange(new []{dr["AlanAdi"].ToString(),tür,ExtraField.GetFieldName(dr["VeriTuru"].ToString())});
                         LVTypes.Items.Add(lvItem);
                     }
                 }

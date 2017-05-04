@@ -18,7 +18,6 @@ C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\bin\Debug\CRMKurs.exe.config
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\bin\Debug\CRMKurs.exe
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\bin\Debug\CRMKurs.pdb
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\bin\Debug\MySql.Data.dll
-C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.csprojResolveAssemblyReference.cache
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Calendar.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.MainCRMWindow.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.frmMultipleAdder.resources
@@ -66,3 +65,4 @@ C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.CustomTools.P
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.CustomTools.PropertyGridMVCList.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.frmPropsWithList.resources
 C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.Migrations.test.resources
+C:\Users\CCY\Documents\GitHub\CRMProject\CRMKurs\obj\Debug\CRMKurs.csprojResolveAssemblyReference.cache

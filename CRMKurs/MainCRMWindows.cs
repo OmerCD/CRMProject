@@ -118,6 +118,11 @@ namespace CRMKurs
                     Application.Exit();
                     break;
             }
+            //var personToSend =
+            //    DBConnection.DbCon.Person.FirstOrDefault(
+            //        x => x.PersonTypes.Isim == "Ögretmen");
+            //var extraTest = new ExtraFieldController(personToSend);
+            //extraTest.AddValue("testValue", personToSend.Id);
 
             //for (int i = 0; i < 5; i++)
             //{

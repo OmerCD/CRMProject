@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using CRMKurs.Attributes;
+using CRMKurs.EntityClasses;
 using DesktopAppCRM;
 using MySql.Data.MySqlClient;
 
@@ -14,6 +15,8 @@ namespace CRMKurs.CustomTools
 
     public partial class PropertyGridMVCList : UserControl
     {
+        int x = 80, y = 5;
+        int difference = 30;
         private object _selectedTable;
         private object _selectedObject;
         private Type _tableType;
@@ -57,17 +60,30 @@ namespace CRMKurs.CustomTools
             SelectedObject = _selectedTable;
             _tableType = _selectedTable.GetType();
             var tableQuery = CreateTableQuery(out indexName);
-            DBConnection.QueryConnection.Open();
-            LoadListView(indexName, tableQuery);
             var extraFieldController = new ExtraFieldController(_selectedObject);
-            if (extraFieldController.Exists)
+            if (!extraFieldController.Exists) return;
+            var extraFieldsDictionary = extraFieldController.Fields;
+            LoadListView(indexName, tableQuery, extraFieldsDictionary);
+
+            foreach (var field in extraFieldsDictionary)
             {
-                
+                var text = new Label();
+                var control = ExtraField.GetControl(field.Value);
+
+                text.AutoSize = true;
+                text.Text = field.Key;
+                text.Location = new Point(2, y);
+                panelPropArea.Controls.Add(text);
+                control.Size = new Size(150, 25);
+                control.Location = new Point(x, y);
+                panelPropArea.Controls.Add(control);
+                y += difference;
             }
         }
 
-        private void LoadListView(string indexName, string tableQuery)
+        private void LoadListView(string indexName, string tableQuery, Dictionary<string, string> extraFields)
         {
+            DBConnection.QueryConnection.Open();
             using (var cmd = new MySqlCommand(tableQuery, DBConnection.QueryConnection))
             {
                 using (var rd = cmd.ExecuteReader())
@@ -183,8 +199,8 @@ namespace CRMKurs.CustomTools
             _valueControls = new Dictionary<string, Control>();
             var objType = _selectedObject.GetType();
             var props = objType.GetProperties();
-            int x = 80, y = 5;
-            var difference = 30;
+            x = 80; y = 5;
+            difference = 30;
             foreach (var prop in props)
             {
                 var extraArea = false;
@@ -215,7 +231,7 @@ namespace CRMKurs.CustomTools
                 var lbl = new Label
                 {
                     Text = attribute.DisplayName,
-                    Location = new Point(0, y),
+                    Location = new Point(2, y),
                     AutoSize = true
                 };
                 requiredControl.Size = new Size(150, 25);
